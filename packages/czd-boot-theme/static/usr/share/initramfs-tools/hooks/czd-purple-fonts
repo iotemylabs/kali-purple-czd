@@ -1,0 +1,17 @@
+#!/bin/sh
+# Plymouth's Image.Text needs the CZD fonts inside the initramfs (batch 03, plymouth-splash · 04).
+# A missing font silently falls back to DejaVu and the splash stops being CZD.
+PREREQ="plymouth"
+prereqs() { echo "$PREREQ"; }
+case "$1" in prereqs) prereqs; exit 0;; esac
+. /usr/share/initramfs-tools/hook-functions
+for f in /usr/share/fonts/truetype/czd/Archivo-Variable.ttf \
+         /usr/share/fonts/truetype/ibm-plex/IBMPlexMono-Bold.ttf \
+         /usr/share/fonts/truetype/ibm-plex/IBMPlexMono-Regular.ttf; do
+  [ -f "$f" ] && copy_file font "$f"
+done
+# fontconfig must be able to see them
+mkdir -p "$DESTDIR/etc/fonts/conf.d"
+[ -f /etc/fonts/fonts.conf ] && copy_file config /etc/fonts/fonts.conf
+[ -f /etc/fonts/conf.d/60-czd-purple.conf ] && copy_file config /etc/fonts/conf.d/60-czd-purple.conf
+exit 0

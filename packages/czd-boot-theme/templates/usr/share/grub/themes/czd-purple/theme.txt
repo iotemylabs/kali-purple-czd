@@ -1,0 +1,96 @@
+# CZD Purple — GRUB 2 theme (batch 03, grub-menu). GFXMODE 1920×1080, 112px margins.
+# Rows are the CZD time-plus-content row with a token in the left column. GRUB's boot_menu
+# draws one line per entry, so the token and the subtitle are folded into the entry title
+# by the live-build bootloader config (live-build/). Template rendered by tokens/generate.py.
+
+desktop-image: "background.png"
+desktop-image-scale-method: "stretch"
+desktop-color: "{{ surface.base }}"
+title-text: ""
+terminal-font: "czd-mono-24"
+terminal-left: "112"
+terminal-top: "112"
+terminal-width: "1696"
+terminal-height: "856"
+terminal-border: "0"
+
+# --- wordmark block, top-left ---------------------------------------------------
++ label {
+  left = 112
+  top = 112
+  width = 900
+  height = 48
+  align = "left"
+  font = "czd-ui-40"
+  color = "{{ text.primary }}"
+  text = "CZD PURPLE"
+}
++ label {
+  left = 112
+  top = 168
+  width = 900
+  height = 32
+  align = "left"
+  font = "czd-mono-24"
+  color = "{{ trace.gold }}"
+  text = "{{ build.tag_upper }} · UEFI X86_64"
+}
+
+# --- the menu: rows touch, selection is the 9-slice tint with 2px caps ------------
++ boot_menu {
+  left = 112
+  top = 320
+  width = 1696
+  height = 528
+  item_font = "czd-mono-30"
+  item_color = "{{ text.secondary }}"
+  selected_item_font = "czd-mono-30"
+  selected_item_color = "{{ trace.gold.surge }}"
+  item_height = 88
+  item_padding = 0
+  item_spacing = 0
+  item_icon_space = 0
+  icon_width = 0
+  icon_height = 0
+  selected_item_pixmap_style = "select_*.png"
+  scrollbar = false
+}
+
+# --- timeout: a 2px rule that shortens; GRUB's only motion ------------------------
++ progress_bar {
+  id = "__timeout__"
+  left = 112
+  top = 900
+  width = 1696
+  height = 2
+  show_text = false
+  text = ""
+  bar_style = "progress_bg.png"
+  highlight_style = "progress_hl.png"
+  fg_color = "{{ trace.gold }}"
+  bg_color = "{{ trace.gold.deep }}"
+  border_color = "{{ trace.gold.deep }}"
+}
++ label {
+  left = 112
+  top = 916
+  width = 900
+  height = 32
+  align = "left"
+  font = "czd-mono-24"
+  color = "{{ trace.gold }}"
+  id = "__timeout__"
+  text = "BOOTING LIVE IN %d S"
+}
+
+# --- key line, bottom-left --------------------------------------------------------
++ label {
+  left = 112
+  top = 936
+  width = 1200
+  height = 32
+  align = "left"
+  font = "czd-mono-24"
+  color = "{{ text.secondary }}"
+  text = "↑ ↓ SELECT · ENTER BOOT · E EDIT · C CONSOLE"
+}

@@ -161,6 +161,14 @@ class Out:
         p.write_text(content, encoding="utf-8", newline="\n")
         os.chmod(p, mode)
 
+    def write_bytes(self, pkg: str, rel: str, data: bytes):
+        p = PACKAGES / pkg / "generated" / rel
+        self.written.append(p)
+        if self.dry:
+            return
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_bytes(data)
+
     def copy(self, pkg: str, rel: str, src: Path):
         p = PACKAGES / pkg / "generated" / rel
         self.written.append(p)
@@ -814,7 +822,60 @@ def gen_wireshark(t: Tokens, out: Out):
     out.write("czd-terminal-profiles", "usr/share/wireshark/profiles/CZD/colorfilters", "\n".join(L))
 
 
-GENERATORS = [gen_tokens_package, gen_konsole, gen_gtk, gen_xresources, gen_vim, gen_kvantum, gen_kde_colors, gen_kdeglobals, gen_wireshark]
+def png_solid(width: int, height: int, rgba: tuple[int, int, int, int]) -> bytes:
+    """A minimal PNG encoder for flat rectangles (GRUB 9-slice pixmaps, Plymouth tracks).
+    No PIL dependency, so generate.py runs on any Python 3."""
+    import struct
+    import zlib
+
+    def chunk(tag: bytes, data: bytes) -> bytes:
+        return struct.pack(">I", len(data)) + tag + data + struct.pack(">I", zlib.crc32(tag + data) & 0xFFFFFFFF)
+
+    row = b"\x00" + bytes(rgba) * width
+    raw = row * height
+    return (b"\x89PNG\r\n\x1a\n"
+            + chunk(b"IHDR", struct.pack(">IIBBBBB", width, height, 8, 6, 0, 0, 0))
+            + chunk(b"IDAT", zlib.compress(raw, 9))
+            + chunk(b"IEND", b""))
+
+
+def gen_boot_pixmaps(t: Tokens, out: Out):
+    """GRUB selection 9-slice (batch 03, grub-menu · 02): 0.05 gold tint centre, 2px gold rules
+    top and bottom, nothing at the sides. Plus flat placeholders for the boot plates until the
+    trace-field renderer (stage 4) replaces them."""
+    gold = t.rgb("trace.gold")
+    base = t.rgb("surface.base")
+    deep = t.rgb("trace.gold.deep")
+    tint = (*gold, 13)            # 0.05 × 255
+    solid = (*gold, 255)
+    clear = (0, 0, 0, 0)
+    G = "usr/share/grub/themes/czd-purple/"
+    slices = {
+        "select_c": (8, 8, tint), "select_n": (8, 2, solid), "select_s": (8, 2, solid),
+        "select_e": (1, 8, tint), "select_w": (1, 8, tint),
+        "select_nw": (1, 2, solid), "select_ne": (1, 2, solid), "select_sw": (1, 2, solid), "select_se": (1, 2, solid),
+    }
+    for name, (w, h, c) in slices.items():
+        out.write_bytes("czd-boot-theme", G + name + ".png", png_solid(w, h, c))
+    # progress rule: gold on gold.deep (the track), 2px
+    out.write_bytes("czd-boot-theme", G + "progress_bg.png", png_solid(8, 2, (*deep, 255)))
+    out.write_bytes("czd-boot-theme", G + "progress_fg.png", png_solid(8, 2, solid))
+    out.write_bytes("czd-boot-theme", G + "progress_hl.png", png_solid(8, 2, solid))
+    # placeholder plates (stage 4 renders the real trace field): flat base surface
+    if not (PACKAGES / "czd-boot-theme" / "generated" / G / "background.png").exists() or True:
+        out.write_bytes("czd-boot-theme", G + "background.png", png_solid(1920, 1080, (*base, 255)))
+    P = "usr/share/plymouth/themes/czd-purple/"
+    out.write_bytes("czd-boot-theme", P + "background.png", png_solid(1920, 1080, (*base, 255)))
+    out.write_bytes("czd-boot-theme", P + "track.png", png_solid(640, 2, (*deep, 255)))
+    out.write_bytes("czd-boot-theme", P + "fill.png", png_solid(640, 2, solid))
+    out.write_bytes("czd-boot-theme", P + "well.png", png_solid(640, 72, (*t.rgb("surface.inset"), 255)))
+    out.write_bytes("czd-boot-theme", P + "well-border.png", png_solid(642, 74, solid))
+    out.write_bytes("czd-boot-theme", P + "caret.png", png_solid(2, 34, solid))
+    out.write_bytes("czd-boot-theme", P + "clear.png", png_solid(1, 1, clear))
+
+
+GENERATORS = [gen_tokens_package, gen_konsole, gen_gtk, gen_xresources, gen_vim, gen_kvantum,
+              gen_kde_colors, gen_kdeglobals, gen_wireshark, gen_boot_pixmaps]
 
 
 # ----------------------------------------------------------------------------

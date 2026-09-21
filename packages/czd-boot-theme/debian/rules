@@ -7,11 +7,23 @@ DEST = debian/czd-boot-theme
 %:
 	dh $@
 
+FONTS = ../../design/plates/_ds/*/assets/fonts
+GRUB  = $(DEST)/usr/share/grub/themes/czd-purple
+PLY   = $(DEST)/usr/share/plymouth/themes/czd-purple
+
 override_dh_auto_install:
 	@test -d generated || { echo "generated/ missing: run python3 tokens/generate.py first" >&2; exit 1; }
 	mkdir -p $(DEST)
 	cp -a generated/. $(DEST)/
 	@if [ -d static ]; then cp -a static/. $(DEST)/; fi
+	# GRUB reads only PF2. Batch 03: Archivo 600 at 40, Plex Mono 700 at 30 and 24, Plex Mono 400 at 26.
+	grub-mkfont -s 40 -n "czd-ui-40"   -o $(GRUB)/czd-ui-40.pf2   $(FONTS)/Archivo-Variable.ttf
+	grub-mkfont -s 30 -n "czd-mono-30" -o $(GRUB)/czd-mono-30.pf2 $(FONTS)/IBMPlexMono-Bold.ttf
+	grub-mkfont -s 24 -n "czd-mono-24" -o $(GRUB)/czd-mono-24.pf2 $(FONTS)/IBMPlexMono-Bold.ttf
+	grub-mkfont -s 26 -n "czd-mono-26" -o $(GRUB)/czd-mono-26.pf2 $(FONTS)/IBMPlexMono-Regular.ttf
+	# The logo is the only artwork: gold crops from the design package, never redrawn.
+	cp ../../design/plates/assets/czd-mark-gold.png     $(PLY)/mark.png
+	cp ../../design/plates/assets/czd-wordmark-gold.png $(PLY)/wordmark.png
 	find $(DEST) -name .gitkeep -delete
 	find $(DEST) -type d -empty -delete
 

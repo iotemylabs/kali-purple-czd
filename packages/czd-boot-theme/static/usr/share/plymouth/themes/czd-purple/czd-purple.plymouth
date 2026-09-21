@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=CZD Purple
+Description=Charleston Zero Day boot splash and LUKS prompt. One plate, no spinner, no fade.
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/czd-purple
+ScriptFile=/usr/share/plymouth/themes/czd-purple/czd-purple.script

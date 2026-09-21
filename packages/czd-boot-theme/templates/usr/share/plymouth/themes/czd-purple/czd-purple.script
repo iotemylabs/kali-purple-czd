@@ -1,0 +1,167 @@
+// CZD Purple — Plymouth script theme (batch 03, plymouth-splash and plymouth-unlock;
+// batch 06, plymouth-timing). Four sprites on one baked background: mark, wordmark, a 640×2
+// track, and one text line. Everything centres on x960; the stack sits at y380→700 and lifts
+// 80px when a passphrase field appears. Progress redraws only on real boot_progress
+// callbacks, never interpolated. No spinner, no fade, nothing eases.
+// Template: colours are tokens rendered by tokens/generate.py.
+
+// --- geometry, in plate pixels (1920 × 1080), scaled to the real window -----------------
+plate_w = 1920;
+plate_h = 1080;
+screen_w = Window.GetWidth();
+screen_h = Window.GetHeight();
+scale = screen_h / plate_h;
+if (screen_w / plate_w < scale) scale = screen_w / plate_w;
+offset_x = (screen_w - plate_w * scale) / 2;
+offset_y = (screen_h - plate_h * scale) / 2;
+
+fun px(x) { return Math.Int(x * scale + offset_x); }
+fun py(y) { return Math.Int(y * scale + offset_y); }
+
+Window.SetBackgroundTopColor({{ surface.base | floats }});
+Window.SetBackgroundBottomColor({{ surface.base | floats }});
+
+// --- the baked plate -------------------------------------------------------------------
+background.image = Image("background.png").Scale(Math.Int(plate_w * scale), Math.Int(plate_h * scale));
+background.sprite = Sprite(background.image);
+background.sprite.SetPosition(Math.Int(offset_x), Math.Int(offset_y), -100);
+
+// --- sprite stack: mark, wordmark, track, text --------------------------------------------
+stack_top = 380;            // lifts to 300 when the field is shown
+lift = 0;
+
+mark.image = Image("mark.png");
+mark.image = mark.image.Scale(Math.Int(mark.image.GetWidth() * scale * 0.5), Math.Int(mark.image.GetHeight() * scale * 0.5));
+mark.sprite = Sprite(mark.image);
+
+wordmark.image = Image("wordmark.png");
+wordmark.image = wordmark.image.Scale(Math.Int(wordmark.image.GetWidth() * scale * 0.5), Math.Int(wordmark.image.GetHeight() * scale * 0.5));
+wordmark.sprite = Sprite(wordmark.image);
+
+track.image = Image("track.png").Scale(Math.Int(640 * scale), Math.Int(2 * scale) + 1);
+track.sprite = Sprite(track.image);
+fill.image = Image("fill.png");
+fill.sprite = Sprite();
+
+line.sprite = Sprite();
+sub.sprite = Sprite();
+
+fun text_image(str, r, g, b) {
+  return Image.Text(str, r, g, b, 1, "IBM Plex Mono Bold " + Math.Int(24 * scale));
+}
+fun text_image_ui(str, r, g, b) {
+  return Image.Text(str, r, g, b, 1, "Archivo Semi-Bold " + Math.Int(40 * scale));
+}
+
+fun layout() {
+  top = stack_top - lift;
+  cx = 960;
+  y = top;
+  mark.sprite.SetPosition(px(cx) - mark.image.GetWidth() / 2, py(y), 10);
+  y = y + mark.image.GetHeight() / scale + 24;
+  wordmark.sprite.SetPosition(px(cx) - wordmark.image.GetWidth() / 2, py(y), 10);
+  y = y + wordmark.image.GetHeight() / scale + 48;
+  track_y = y;
+  track.sprite.SetPosition(px(cx - 320), py(track_y), 10);
+  fill.sprite.SetPosition(px(cx - 320), py(track_y), 11);
+  y = y + 2 + 32;
+  line_y = y;
+  if (line.image) line.sprite.SetPosition(px(cx) - line.image.GetWidth() / 2, py(line_y), 10);
+  sub_y = y + 40;
+  if (sub.image) sub.sprite.SetPosition(px(cx) - sub.image.GetWidth() / 2, py(sub_y), 10);
+}
+
+fun set_line(str) {
+  line.image = text_image(str, {{ trace.gold | floats }});
+  line.sprite.SetImage(line.image);
+  layout();
+}
+fun set_sub(str) {
+  sub.image = text_image(str, {{ text.secondary | floats }});
+  sub.sprite.SetImage(sub.image);
+  layout();
+}
+
+set_line("{{ build.tag_upper }} · KALI PURPLE");
+set_sub("ESC FOR DETAILS");
+layout();
+
+// --- progress: the track fills on real callbacks, in steps ----------------------------------
+last_step = -1;
+fun progress_callback(duration, progress) {
+  step = Math.Int(progress * 7);           // seven jumps on a typical boot (batch 06)
+  if (step == last_step) return;
+  last_step = step;
+  w = Math.Int(640 * scale * (step / 7));
+  if (w < 1) w = 1;
+  fill.sprite.SetImage(fill.image.Scale(w, Math.Int(2 * scale) + 1));
+}
+Plymouth.SetBootProgressFunction(progress_callback);
+
+// --- messages: systemd's status line, verbatim, in the text slot ----------------------------
+fun message_callback(text) {
+  if (text == "") return;
+  set_sub(text);
+}
+Plymouth.SetMessageFunction(message_callback);
+Plymouth.SetUpdateStatusFunction(fun(status) { });
+
+// --- LUKS: one delta. Track becomes a field, stack lifts 80px, nothing else moves ------------
+well.image = Image("well.png").Scale(Math.Int(640 * scale), Math.Int(72 * scale));
+well_border.image = Image("well-border.png").Scale(Math.Int(642 * scale), Math.Int(74 * scale));
+well.sprite = Sprite();
+well_border.sprite = Sprite();
+bullets.sprite = Sprite();
+caret.image = Image("caret.png").Scale(Math.Int(2 * scale), Math.Int(34 * scale));
+caret.sprite = Sprite();
+attempt = 0;
+
+fun display_password_callback(prompt, bullet_count) {
+  lift = 80;
+  track.sprite.SetOpacity(0);
+  fill.sprite.SetOpacity(0);
+  if (bullet_count == 0) attempt = attempt + 1;
+  layout();
+  fy = track_y - 8;
+  well_border.sprite.SetImage(well_border.image);
+  well_border.sprite.SetPosition(px(960 - 321), py(fy - 1), 12);
+  well.sprite.SetImage(well.image);
+  well.sprite.SetPosition(px(960 - 320), py(fy), 13);
+  dots = "";
+  for (i = 0; i < bullet_count; i++) dots = dots + "•";
+  bullets.image = Image.Text(dots, {{ text.primary | floats }}, 1, "IBM Plex Mono Bold " + Math.Int(24 * scale));
+  bullets.sprite.SetImage(bullets.image);
+  bullets.sprite.SetPosition(px(960 - 320 + 16), py(fy) + (well.image.GetHeight() - bullets.image.GetHeight()) / 2, 14);
+  caret.sprite.SetImage(caret.image);
+  caret.sprite.SetPosition(px(960 - 320 + 16) + bullets.image.GetWidth() + Math.Int(4 * scale), py(fy) + (well.image.GetHeight() - caret.image.GetHeight()) / 2, 14);
+  set_line("// UNLOCK " + prompt);
+  set_sub("ENTER TO UNLOCK · ATTEMPT " + attempt + " OF 10 · ESC FOR DETAILS");
+  well_border.sprite.SetOpacity(1);
+  well.sprite.SetOpacity(1);
+  bullets.sprite.SetOpacity(1);
+  caret.sprite.SetOpacity(1);
+}
+Plymouth.SetDisplayPasswordFunction(display_password_callback);
+
+fun display_normal_callback() {
+  lift = 0;
+  well_border.sprite.SetOpacity(0);
+  well.sprite.SetOpacity(0);
+  bullets.sprite.SetOpacity(0);
+  caret.sprite.SetOpacity(0);
+  track.sprite.SetOpacity(1);
+  fill.sprite.SetOpacity(1);
+  set_line("{{ build.tag_upper }} · KALI PURPLE");
+  set_sub("ESC FOR DETAILS");
+}
+Plymouth.SetDisplayNormalFunction(display_normal_callback);
+
+fun display_question_callback(prompt, entry) {
+  set_line(prompt);
+  set_sub(entry);
+}
+Plymouth.SetDisplayQuestionFunction(display_question_callback);
+
+// --- quit: hold the last frame; SDDM paints the same plate ------------------------------------
+fun quit_callback() { }
+Plymouth.SetQuitFunction(quit_callback);
