@@ -54,13 +54,8 @@ Rectangle {
             smooth: true
         }
 
-        // --- top-left wordmark block ------------------------------------------
-        Column {
-            x: 112; y: 112
-            spacing: 8
-            Text { text: "CZD PURPLE"; color: inkPrimary; font { family: fontUi; pixelSize: 40; weight: Font.DemiBold; letterSpacing: -0.6 } }
-            Text { text: "A KALI PURPLE RESPIN · KDE PLASMA 6"; color: gold; font { family: fontMono; pixelSize: 24; weight: Font.Bold; letterSpacing: 3.4 } }
-        }
+        // The wordmark (top-left) and the attribution (bottom-left) are painted by wallpaper-lock
+        // itself; the greeter adds only the clock, the form and the power row.
 
         // --- top-right clock ---------------------------------------------------
         Column {
@@ -145,15 +140,6 @@ Rectangle {
                     activeFocusOnTab: true
                 }
             }
-        }
-
-        // --- bottom-left event block ------------------------------------------
-        Column {
-            x: 112; y: 1080 - 112 - height
-            spacing: 8
-            Text { text: eventLine; color: inkPrimary; font { family: fontMono; pixelSize: 24; weight: Font.Bold; letterSpacing: 3.4 } }
-            Text { text: siteLine; color: gold; font { family: fontMono; pixelSize: 24; weight: Font.Bold; letterSpacing: 3.4 } }
-            Text { text: "BUILD " + buildString + " · KALI-PURPLE"; color: inkSecondary; font { family: fontMono; pixelSize: 24; weight: Font.Medium; letterSpacing: 3.4 } }
         }
 
         // --- bottom-right power row -------------------------------------------

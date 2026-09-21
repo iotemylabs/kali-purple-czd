@@ -58,7 +58,10 @@ exec > >(tee -a "$ROOT/build.log") 2>&1
 log "CZD Purple build · $TAG · $(date -u +%FT%TZ) · host $(hostname) · $(cat /etc/debian_version 2>/dev/null || echo '?')"
 
 # ---------------------------------------------------------------- 1. tokens ---
-log "1/4 tokens -> generated files"
+log "1/4 tokens -> generated files (renders the wallpapers and boot plates)"
+python3 -c "import PIL" 2>/dev/null || { echo "missing python3-pil (apt install python3-pil)" >&2; exit 1; }
+command -v rsvg-convert >/dev/null || { echo "missing rsvg-convert (apt install librsvg2-bin)" >&2; exit 1; }
+[ -f /usr/share/icons/hicolor/scalable/apps/kali-menu.svg ] || echo "note: kali-menu not installed on this host; the dragon slot stays empty (build on Kali for a release)"
 python3 tokens/generate.py --tag "$TAG" >/dev/null
 
 # --------------------------------------------------------------- 2. packages ---

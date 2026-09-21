@@ -23,7 +23,7 @@ Build string for this cycle: `CZD-2026-10-231`. The git tag is the build string.
 Root, wired, Kali or Debian 13 amd64, 40 GB free. 55–80 minutes end to end.
 
 ```bash
-apt install live-build debootstrap squashfs-tools xorriso devscripts debhelper python3
+apt install live-build debootstrap squashfs-tools xorriso devscripts debhelper grub-common python3 python3-pil librsvg2-bin
 git clone https://github.com/iotemylabs/kali-purple-czd && cd kali-purple-czd
 git checkout czd-2026-10-231          # the tag you intend to ship, not main
 python3 tokens/generate.py

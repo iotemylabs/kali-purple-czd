@@ -14,7 +14,7 @@ The key is never in the repo, never on a build host, never in CI. There is no CI
 ## The build
 
 ```bash
-sudo apt install live-build debootstrap squashfs-tools xorriso devscripts debhelper python3   # 2 min
+sudo apt install live-build debootstrap squashfs-tools xorriso devscripts debhelper grub-common python3 python3-pil librsvg2-bin   # 2 min
 git clone https://github.com/iotemylabs/kali-purple-czd && cd kali-purple-czd                  # 1 min
 git checkout czd-2026-10-231                                                                    # the tag, not main
 python3 tokens/generate.py                                                                      # 20 s

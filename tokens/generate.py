@@ -861,11 +861,14 @@ def gen_boot_pixmaps(t: Tokens, out: Out):
     out.write_bytes("czd-boot-theme", G + "progress_bg.png", png_solid(8, 2, (*deep, 255)))
     out.write_bytes("czd-boot-theme", G + "progress_fg.png", png_solid(8, 2, solid))
     out.write_bytes("czd-boot-theme", G + "progress_hl.png", png_solid(8, 2, solid))
-    # placeholder plates (stage 4 renders the real trace field): flat base surface
-    if not (PACKAGES / "czd-boot-theme" / "generated" / G / "background.png").exists() or True:
-        out.write_bytes("czd-boot-theme", G + "background.png", png_solid(1920, 1080, (*base, 255)))
+    # boot plates from the trace-field renderer; flat base surface when it has not run
+    rendered = PACKAGES / "czd-wallpapers" / "rendered"
     P = "usr/share/plymouth/themes/czd-purple/"
-    out.write_bytes("czd-boot-theme", P + "background.png", png_solid(1920, 1080, (*base, 255)))
+    for rel, name in ((G + "background.png", "plate-grub.png"), (P + "background.png", "plate-plymouth.png")):
+        if (rendered / name).exists():
+            out.copy("czd-boot-theme", rel, rendered / name)
+        else:
+            out.write_bytes("czd-boot-theme", rel, png_solid(1920, 1080, (*base, 255)))
     out.write_bytes("czd-boot-theme", P + "track.png", png_solid(640, 2, (*deep, 255)))
     out.write_bytes("czd-boot-theme", P + "fill.png", png_solid(640, 2, solid))
     out.write_bytes("czd-boot-theme", P + "well.png", png_solid(640, 72, (*t.rgb("surface.inset"), 255)))
@@ -919,10 +922,11 @@ def main(argv=None):
     ap.add_argument("--force", action="store_true", help="allow --tag to differ from $meta.version_string")
     ap.add_argument("--list", action="store_true", help="list output paths without writing")
     ap.add_argument("--clean", action="store_true", help="delete packages/*/generated and exit")
+    ap.add_argument("--no-render", action="store_true", help="skip the trace-field renderer (keeps existing rendered plates)")
     a = ap.parse_args(argv)
 
     if a.clean:
-        for g in PACKAGES.glob("*/generated"):
+        for g in list(PACKAGES.glob("*/generated")) + list(PACKAGES.glob("czd-wallpapers/rendered")):
             shutil.rmtree(g)
             print(f"removed {g.relative_to(ROOT)}")
         return 0
@@ -935,6 +939,15 @@ def main(argv=None):
                          f"Edit the token file (respin edit 01) or pass --force.")
     tokens = Tokens(data, tag)
     out = Out(dry=a.list)
+
+    if not a.list and not a.no_render:
+        try:
+            sys.path.insert(0, str(Path(__file__).resolve().parent))
+            import render_plates
+            for k, p in render_plates.render(tokens).items():
+                print(f"rendered {k} -> {p.relative_to(ROOT).as_posix()}", file=sys.stderr)
+        except RuntimeError as e:
+            print(f"render_plates skipped: {e} (flat placeholders will be used)", file=sys.stderr)
 
     render_templates(tokens, out)
     for g in GENERATORS:
