@@ -3,10 +3,15 @@ Name=CZD Purple
 Comment=Charleston Zero Day icon theme: 33 gold glyphs on a 24-unit grid, everything else from Breeze Dark
 Inherits=breeze-dark,hicolor
 Example=folder
-Directories=64x64/apps,scalable/apps,scalable/places,scalable/actions,scalable/status,scalable/devices,scalable/mimetypes,scalable/panel
+Directories=64x64/apps,128x128/apps,scalable/apps,scalable/places,scalable/actions,scalable/status,scalable/devices,scalable/mimetypes,scalable/panel
 
 [64x64/apps]
 Size=64
+Type=Fixed
+Context=Applications
+
+[128x128/apps]
+Size=128
 Type=Fixed
 Context=Applications
 

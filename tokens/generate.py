@@ -927,8 +927,30 @@ def gen_wallpapers(t: Tokens, out: Out):
             out.write_bytes("czd-wallpapers", root + "contents/images/1920x1080.png", png_solid(1920, 1080, base))
 
 
+def gen_launcher_icon(t: Tokens, out: Out):
+    """The CZD mark as the launcher icon: the gold crop fitted into 64 × 64 (and 128 × 128) squares
+    on transparency. The logo is never redrawn, only scaled."""
+    src = ROOT / "design" / "plates" / "assets" / "czd-mark-gold.png"
+    try:
+        from PIL import Image
+    except ImportError:
+        out.copy("czd-icon-theme", "usr/share/icons/czd-purple/64x64/apps/czd-mark.png", src)
+        return
+    mark = Image.open(src).convert("RGBA")
+    for size in (64, 128):
+        canvas = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+        scale = min(size / mark.width, size / mark.height)
+        m = mark.resize((max(1, round(mark.width * scale)), max(1, round(mark.height * scale))), Image.LANCZOS)
+        canvas.alpha_composite(m, ((size - m.width) // 2, (size - m.height) // 2))
+        p = out.base("czd-icon-theme") / f"usr/share/icons/czd-purple/{size}x{size}/apps/czd-mark.png"
+        out.written.append(p)
+        if not out.dry:
+            p.parent.mkdir(parents=True, exist_ok=True)
+            canvas.save(p, "PNG", optimize=True)
+
+
 GENERATORS = [gen_tokens_package, gen_konsole, gen_gtk, gen_xresources, gen_vim, gen_kvantum,
-              gen_kde_colors, gen_kdeglobals, gen_wireshark, gen_boot_pixmaps, gen_wallpapers]
+              gen_kde_colors, gen_kdeglobals, gen_wireshark, gen_boot_pixmaps, gen_wallpapers, gen_launcher_icon]
 
 
 # ----------------------------------------------------------------------------
