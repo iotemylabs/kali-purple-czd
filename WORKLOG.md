@@ -191,11 +191,35 @@ Screenshots taken over SSH with `spectacle -b` inside the autologin session.
   session-name lookup. Fixed by importing `QtQuick.Controls as QQC`. Test greeters must run
   with `QML_DISABLE_DISK_CACHE=1` or they can show the previous build.
 
+## 2026-09-22 · Stage 3c — welcome app and Calamares
+
+- `czd-welcome` is a PyQt6 script at `/usr/bin/czd-welcome`, 1280 × 760, five sections, the
+  label-plus-content rows from the plate. It reads `/usr/share/czd/czd-purple-tokens.json` and
+  the build string at runtime, so the script has no hex and never needs regenerating.
+  Yearly content is `/usr/share/czd-welcome/schedule.json` (respin edit 03; unknowns are TBC).
+  Autostart from `/etc/xdg/autostart`; closing without the checkbox writes a `Hidden=true`
+  override into `~/.config/autostart` (a user cannot delete a system .desktop file, and this is
+  the freedesktop way to say the same thing). A menu launcher exists for people who closed it
+  too fast; the plate left that open, and a launcher costs nothing.
+- Calamares: `calamares-settings-debian` stays in the image for its helper modules
+  (`bootloader-config`, `sources-media`, `dpkg-unsafe-io`); `installer/` overrides
+  `settings.conf`, the module configs and the branding through `includes.chroot`. Erase-and-
+  encrypt (LUKS2) is the initial choice, swap small, 28 GB and 8 GB requirements with only
+  storage and root as hard stops, sddm as the display manager, live-only packages removed
+  after install. Branding: 1400 × 860, sidebar on `surface.raised`, current step on
+  `trace.gold.deep`, a QSS with the gold NEXT and hairlines, five slides that cut every 8 s.
+- Verified on `czd-build` in the session: welcome window renders as the plate; Calamares
+  loads the CZD branding and stylesheet (window size, sidebar, mark, gold controls). Its
+  requirement checks fail there because it ran without root on a full disk, as expected.
+- Gaps: Calamares draws its own sidebar labels (Welcome, Location …); Qt stylesheets cannot
+  uppercase or number them, so the zero-padded mono labels from the plate need a Calamares
+  patch or acceptance. Locale and keyboard stay separate steps; the plate's own sidebar lists
+  seven steps that way, so that is consistent.
+
 ### Next
 
-- Stage 3: package contents. Plasma (global theme, Aurorae SVG templates, kdeglobals, panel
-  layout), SDDM QML, GRUB theme.txt + Plymouth script, XDG override dir, welcome app,
-  Calamares settings + branding under `installer/` and `includes.chroot`.
-- Stage 4: wallpaper and boot-plate rendering from the trace field. Needs a renderer decision:
-  headless Chromium against `design/plates/TraceField.dc.html`, or a Python/Cairo port.
-- Stage 5: first ISO build on `czd-build`, then boot it as a second Proxmox VM.
+- Icon theme: the 33 glyphs from batch 05 as SVG templates (currently inherits breeze-dark).
+- Stage 5: first ISO build on `czd-build` (`sudo ./build.sh --tag czd-2026-10-231`), then boot
+  the ISO as a second Proxmox VM: live boot, GRUB and Plymouth plates, SDDM, Calamares end to
+  end, removability check.
+- Live-build bootloader menu entries (LIVE / PERSIST / INSTALL rows) in the czd variant.
