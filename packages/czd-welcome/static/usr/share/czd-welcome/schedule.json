@@ -1,0 +1,18 @@
+{
+  "$note": "Respin edit 03. One JSON of sessions for the welcome window. Wrong until the programme is final; unknowns stay TBC.",
+  "date_line": "FRI OCT 02 – SAT OCT 03, 2026",
+  "wifi_ssid": "CZD-CON",
+  "defensive_tools": ["Zeek", "Suricata", "Velociraptor", "Arkime"],
+  "ctf": [
+    { "key": "WHEN",  "title": "TBC", "detail": "Both days. Opens after the first keynote, closes before the last talk." },
+    { "key": "WHERE", "title": "TBC", "detail": "" },
+    { "key": "BOARD", "title": "TBC", "detail": "The scoreboard is a web page; CZD themes the window, not the page." },
+    { "key": "RULES", "title": "Stay on the CTF network.", "detail": "Anything you find outside it is not part of the game." }
+  ],
+  "sessions": [
+    { "time": "9:00 AM",  "title": "Doors · badge pickup", "where": "TBC" },
+    { "time": "9:25 AM",  "title": "Opening", "where": "Main stage" },
+    { "time": "12:00 PM", "title": "Lunch", "where": "TBC" },
+    { "time": "TBC",      "title": "Lock lab", "where": "Riggleman 204 · picks provided · badge required" }
+  ]
+}

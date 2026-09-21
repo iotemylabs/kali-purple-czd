@@ -92,6 +92,10 @@ cp -a "$ROOT/live-build/kali-config/." "$LBC_DIR/kali-config/"
 # The eight .debs ride in as local packages for the chroot.
 mkdir -p "$LBC_DIR/kali-config/variant-$VARIANT/packages.chroot"
 cp -f "$OUT"/*.deb "$LBC_DIR/kali-config/variant-$VARIANT/packages.chroot/"
+# Calamares: CZD settings, module configs and branding override calamares-settings-debian's.
+mkdir -p "$LBC_DIR/kali-config/variant-$VARIANT/includes.chroot/etc/calamares"
+cp -a "$ROOT/installer/static/." "$LBC_DIR/kali-config/variant-$VARIANT/includes.chroot/etc/calamares/"
+cp -a "$ROOT/installer/generated/." "$LBC_DIR/kali-config/variant-$VARIANT/includes.chroot/etc/calamares/"
 # Build string into the image for the welcome app and the ISO name.
 mkdir -p "$LBC_DIR/kali-config/variant-$VARIANT/includes.chroot/etc"
 echo "$TAG" > "$LBC_DIR/kali-config/variant-$VARIANT/includes.chroot/etc/czd-build"

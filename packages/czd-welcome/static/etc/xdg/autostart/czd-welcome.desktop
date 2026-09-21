@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=CZD welcome
+Comment=First boot only. Closing it writes a Hidden override into ~/.config/autostart unless you tick the box.
+Exec=czd-welcome
+Icon=czd-mark
+Terminal=false
+OnlyShowIn=KDE;
+X-KDE-autostart-phase=2
+X-GNOME-Autostart-Delay=3

@@ -1,0 +1,323 @@
+#!/usr/bin/python3
+"""
+czd-welcome — the first-boot window (batch 06, czd-welcome).
+
+1280 × 760, Qt6 widgets. Five sections in a left column, four rows of the time-plus-content
+pattern on the right with a word in the label column instead of a clock. It is a list, not a
+tour: no carousel, no wizard. Opens once; the checkbox to keep it is off by default.
+
+Colours come from the installed token file at runtime, so this script carries no hex and the
+package rebuilds nothing when the gold changes. Content that changes every year lives in
+/usr/share/czd-welcome/schedule.json (respin edit 03); the build string in
+/usr/share/czd/build-string (never set by hand).
+"""
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QFont, QFontDatabase
+from PyQt6.QtWidgets import (QApplication, QCheckBox, QFrame, QHBoxLayout, QLabel, QPushButton,
+                             QScrollArea, QSizePolicy, QStackedWidget, QVBoxLayout, QWidget)
+
+TOKENS = Path(os.environ.get("CZD_TOKENS", "/usr/share/czd/czd-purple-tokens.json"))
+BUILD_STRING = Path("/usr/share/czd/build-string")
+SCHEDULE = Path(os.environ.get("CZD_SCHEDULE", "/usr/share/czd-welcome/schedule.json"))
+AUTOSTART_OVERRIDE = Path.home() / ".config" / "autostart" / "czd-welcome.desktop"
+
+
+def load_tokens() -> dict:
+    data = json.loads(TOKENS.read_text(encoding="utf-8"))
+    flat = {}
+
+    def walk(prefix, node):
+        if isinstance(node, dict):
+            if "hex" in node:
+                flat[prefix] = node["hex"]
+            for k, v in node.items():
+                walk(f"{prefix}.{k}" if prefix else k, v)
+        else:
+            flat[prefix] = node
+
+    walk("", data)
+    flat["_data"] = data
+    return flat
+
+
+def build_string() -> str:
+    try:
+        return BUILD_STRING.read_text(encoding="utf-8").strip()
+    except OSError:
+        return "TBC"
+
+
+def load_schedule() -> dict:
+    try:
+        return json.loads(SCHEDULE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+
+def rgba(hex_: str, a: float) -> str:
+    h = hex_.lstrip("#")
+    return f"rgba({int(h[0:2], 16)},{int(h[2:4], 16)},{int(h[4:6], 16)},{a})"
+
+
+class Welcome(QWidget):
+    def __init__(self, t: dict):
+        super().__init__()
+        self.t = t
+        self.ui = t["font.ui.family"]
+        self.mono = t["font.mono.family"]
+        self.build = build_string()
+        self.sched = load_schedule()
+        self.setWindowTitle("czd-welcome")
+        self.setFixedSize(1280, 760)
+        self.setStyleSheet(self.qss())
+        self.setObjectName("root")
+        self.build_ui()
+
+    # --- style --------------------------------------------------------------------------------
+    def qss(self) -> str:
+        t = self.t
+        gold, base, raised, inset = t["trace.gold"], t["surface.base"], t["surface.raised"], t["surface.inset"]
+        pri, sec, dis = t["text.primary"], t["text.secondary"], t["text.disabled"]
+        return f"""
+        QWidget#root {{ background: {base}; color: {pri}; }}
+        QLabel {{ background: transparent; color: {pri}; font-family: "{self.ui}"; font-size: 15px; }}
+        QLabel[role="eyebrow"] {{ color: {gold}; font-family: "{self.mono}"; font-size: 13px; font-weight: 700; letter-spacing: 2px; }}
+        QLabel[role="label"] {{ color: {gold}; font-family: "{self.mono}"; font-size: 13px; font-weight: 700; letter-spacing: 2px; }}
+        QLabel[role="headline"] {{ color: {pri}; font-family: "{self.ui}"; font-size: 40px; font-weight: 700; }}
+        QLabel[role="body"] {{ color: {sec}; font-family: "{self.ui}"; font-size: 16px; }}
+        QLabel[role="rowtitle"] {{ color: {pri}; font-family: "{self.ui}"; font-size: 18px; font-weight: 600; }}
+        QLabel[role="mono"] {{ color: {sec}; font-family: "{self.mono}"; font-size: 13px; }}
+        QLabel[role="tbc"] {{ color: {gold}; font-family: "{self.mono}"; font-size: 13px; font-weight: 700; }}
+        QWidget#sidebar {{ background: {raised}; border-right: 1px solid {rgba(gold, 0.13)}; }}
+        QPushButton[role="nav"] {{ background: transparent; color: {sec}; text-align: left; padding: 12px 16px; border: 1px solid transparent; border-radius: 0; font-family: "{self.mono}"; font-size: 13px; font-weight: 700; letter-spacing: 2px; }}
+        QPushButton[role="nav"]:checked {{ background: {rgba(gold, 0.05)}; color: {pri}; border: 1px solid {gold}; }}
+        QPushButton[role="nav"]:hover {{ background: {rgba(gold, 0.05)}; }}
+        QPushButton[role="primary"] {{ background: {gold}; color: {base}; border: none; border-radius: 0; padding: 12px 32px; font-family: "{self.mono}"; font-size: 13px; font-weight: 700; letter-spacing: 2px; }}
+        QPushButton[role="primary"]:hover {{ background: {t["trace.gold.surge"]}; }}
+        QPushButton[role="primary"]:pressed {{ background: {gold}; }}
+        QPushButton[role="secondary"] {{ background: transparent; color: {gold}; border: 1px solid {rgba(gold, 0.26)}; border-radius: 0; padding: 12px 24px; font-family: "{self.mono}"; font-size: 13px; font-weight: 700; letter-spacing: 2px; }}
+        QPushButton[role="secondary"]:hover {{ background: {rgba(gold, 0.05)}; border-color: {gold}; }}
+        QCheckBox {{ color: {sec}; font-family: "{self.mono}"; font-size: 13px; spacing: 12px; }}
+        QCheckBox::indicator {{ width: 16px; height: 16px; border: 1px solid {gold}; background: {inset}; border-radius: 0; }}
+        QCheckBox::indicator:checked {{ background: {gold}; border: 4px solid {inset}; outline: 1px solid {gold}; }}
+        QFrame[role="rule"] {{ background: {rgba(gold, 0.26)}; max-height: 1px; min-height: 1px; border: none; }}
+        QFrame[role="rule-soft"] {{ background: {rgba(gold, 0.13)}; max-height: 1px; min-height: 1px; border: none; }}
+        QFrame[role="rule-bold"] {{ background: {gold}; max-height: 2px; min-height: 2px; border: none; }}
+        QScrollArea {{ background: transparent; border: none; }}
+        QScrollBar:vertical {{ background: {inset}; width: 8px; margin: 0; border: none; }}
+        QScrollBar::handle:vertical {{ background: {rgba(gold, 0.26)}; min-height: 36px; border-radius: 0; }}
+        QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {{ height: 0; }}
+        """
+
+    # --- widgets --------------------------------------------------------------------------------
+    @staticmethod
+    def label(text, role, wrap=True):
+        w = QLabel(text)
+        w.setProperty("role", role)
+        w.setWordWrap(wrap)
+        w.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
+        return w
+
+    @staticmethod
+    def rule(role="rule"):
+        f = QFrame()
+        f.setProperty("role", role)
+        f.setFrameShape(QFrame.Shape.NoFrame)
+        return f
+
+    def row(self, key, title, detail):
+        """The time-plus-content row with a word in the label column."""
+        w = QWidget()
+        h = QHBoxLayout(w)
+        h.setContentsMargins(0, 14, 0, 14)
+        h.setSpacing(24)
+        k = self.label(key, "label", wrap=False)
+        k.setFixedWidth(140)
+        k.setAlignment(Qt.AlignmentFlag.AlignTop)
+        h.addWidget(k)
+        v = QVBoxLayout()
+        v.setSpacing(4)
+        v.addWidget(self.label(title, "rowtitle"))
+        if detail:
+            v.addWidget(self.label(detail, "body"))
+        h.addLayout(v, 1)
+        return w
+
+    def page(self, eyebrow, headline, lede, rows):
+        outer = QScrollArea()
+        outer.setWidgetResizable(True)
+        w = QWidget()
+        v = QVBoxLayout(w)
+        v.setContentsMargins(0, 0, 24, 0)
+        v.setSpacing(0)
+        v.addWidget(self.label(eyebrow, "eyebrow"))
+        v.addSpacing(12)
+        v.addWidget(self.label(headline, "headline"))
+        v.addSpacing(8)
+        if lede:
+            v.addWidget(self.label(lede, "body"))
+        v.addSpacing(24)
+        v.addWidget(self.rule("rule-bold"))
+        for i, (key, title, detail) in enumerate(rows):
+            if i:
+                v.addWidget(self.rule("rule-soft"))
+            v.addWidget(self.row(key, title, detail))
+        v.addWidget(self.rule("rule-bold"))
+        v.addStretch(1)
+        outer.setWidget(w)
+        return outer
+
+    # --- content ------------------------------------------------------------------------------
+    def pages(self):
+        t, d = self.t, self.t["_data"]
+        ev = d.get("event", {})
+        s = self.sched
+        date_line = s.get("date_line") or f'{ev.get("start", "TBC")} – {ev.get("end", "TBC")}'
+        menu_index = t.get("shell.menu_czd_index", 14)
+        defensive = s.get("defensive_tools") or ["Zeek", "Suricata", "Velociraptor", "Arkime"]
+
+        start = self.page("// 01 · START HERE", "So you booted it.",
+            "Kali Purple with a conference paint job and a short list of additions. Everything Kali ships "
+            "is still here and still named the same; what CZD added is below.",
+            [("LOGIN", "czd / czd. Change it before you join any network.", "Root is disabled; sudo works."),
+             ("WI-FI", s.get("wifi_ssid", "CZD-CON") + " is open. No password.", "Assume it is hostile."),
+             ("THE MENU", f"Kali's 01–13 are untouched. CZD's defensive set is {menu_index}.", " · ".join(defensive) + "."),
+             ("PERSISTENCE", "A live USB writes nothing.", "Pick PERSIST at the boot menu if you want your work on Saturday.")])
+
+        menu = self.page("// 02 · THE MENU", "Nothing moved.",
+            "Kali's tool menu numbers 01–13 exactly as upstream ships it. CZD adds one group after it.",
+            [("01–13", "Kali's tools, by tactic.", "Reconnaissance through Impact, then Forensics and Services. Same names, same order."),
+             (f"{menu_index:02d}", "CZD defensive.", " · ".join(defensive) + ". The SOC track uses these; the menu opens on them."),
+             ("PURPLE", "Identify · Protect · Detect · Respond · Recover.", "Kali Purple's own defensive menus, untouched."),
+             ("REMOVE", "apt purge 'czd-*'", "Eight packages. Pull them and you are on stock Kali Purple.")])
+
+        ctf_rows = [(r.get("key", "TBC"), r.get("title", "TBC"), r.get("detail", "")) for r in s.get("ctf", [])] or \
+                   [("WHEN", "TBC", "The CTF schedule lands in this window on the conference-week image."),
+                    ("WHERE", "TBC", ""), ("SCOREBOARD", "TBC", "The board is a web page; CZD themes the window, not the page."),
+                    ("RULES", "Stay on the CTF network.", "Anything you find outside it is not part of the game.")]
+        ctf = self.page("// 03 · THE CTF", "Two days, one board.", "", ctf_rows)
+
+        event_rows = [("DATES", date_line, ""),
+                      ("WHERE", ev.get("venue", "TBC"), ""),
+                      ("SITE", ev.get("site", "TBC"), ev.get("hashtag", "")),
+                      ("BY", ev.get("organizers", "TBC"), "")]
+        for r in s.get("sessions", [])[:6]:
+            event_rows.append((r.get("time", "TBC"), r.get("title", "TBC"), r.get("where", "")))
+        event = self.page("// 04 · THE EVENT", ev.get("name", "Charleston Zero Day"), "", event_rows)
+
+        credits = self.page("// 05 · CREDITS", "Eight packages, one token file.",
+            "A theme, delivered as packages, that can be removed.",
+            [("BUILD", self.build, "Quote it in every bug report. Theme bugs to CZD, tool bugs upstream to Kali."),
+             ("BASE", d.get("$meta", {}).get("base_distro", "Kali Purple"), d.get("$meta", {}).get("desktop", "")),
+             ("TYPE", f'{t["font.ui.family"]} · {t["font.mono.family"]}', "Both OFL, from google/fonts."),
+             ("LICENCE", "Themes MIT. Fonts OFL. The logo stays CZD's.", ""),
+             ("MADE BY", ev.get("organizers", "The CZD Board · IoTemy Labs"), "Best effort, in the hallway track.")])
+        return [("01 · START", start), ("02 · THE MENU", menu), ("03 · THE CTF", ctf), ("04 · THE EVENT", event), ("05 · CREDITS", credits)]
+
+    # --- layout ---------------------------------------------------------------------------------
+    def build_ui(self):
+        root = QHBoxLayout(self)
+        root.setContentsMargins(0, 0, 0, 0)
+        root.setSpacing(0)
+
+        side = QWidget()
+        side.setObjectName("sidebar")
+        side.setFixedWidth(300)
+        sv = QVBoxLayout(side)
+        sv.setContentsMargins(24, 32, 24, 24)
+        sv.setSpacing(4)
+        wm = self.label(self.t["_data"].get("$meta", {}).get("wordmark_spelling", "CZD PURPLE"), "headline")
+        wm.setStyleSheet("font-size: 28px;")
+        sv.addWidget(wm)
+        sv.addWidget(self.label("czd-welcome", "eyebrow"))
+        sv.addSpacing(32)
+
+        self.stack = QStackedWidget()
+        self.nav = []
+        for i, (name, page) in enumerate(self.pages()):
+            b = QPushButton(name)
+            b.setProperty("role", "nav")
+            b.setCheckable(True)
+            b.clicked.connect(lambda _, i=i: self.select(i))
+            sv.addWidget(b)
+            self.nav.append(b)
+            self.stack.addWidget(page)
+        sv.addStretch(1)
+        sv.addWidget(self.label(self.build, "mono"))
+        sv.addWidget(self.label("built on kali-rolling", "mono"))
+        root.addWidget(side)
+
+        main = QWidget()
+        mv = QVBoxLayout(main)
+        mv.setContentsMargins(48, 40, 48, 32)
+        mv.setSpacing(0)
+        mv.addWidget(self.stack, 1)
+
+        bar = QHBoxLayout()
+        bar.setSpacing(16)
+        self.keep = QCheckBox("Open this again next boot")
+        self.keep.setChecked(False)
+        bar.addWidget(self.keep)
+        bar.addStretch(1)
+        menu = QPushButton("THE MENU →")
+        menu.setProperty("role", "secondary")
+        menu.clicked.connect(self.open_menu)
+        bar.addWidget(menu)
+        close = QPushButton("CLOSE")
+        close.setProperty("role", "primary")
+        close.setDefault(True)
+        close.clicked.connect(self.close)
+        bar.addWidget(close)
+        mv.addSpacing(24)
+        mv.addWidget(self.rule("rule"))
+        mv.addSpacing(16)
+        mv.addLayout(bar)
+        root.addWidget(main, 1)
+        self.select(0)
+
+    def select(self, i):
+        for j, b in enumerate(self.nav):
+            b.setChecked(j == i)
+        self.stack.setCurrentIndex(i)
+
+    def open_menu(self):
+        # Kickoff over D-Bus; falls back to nothing rather than a dialog.
+        subprocess.Popen(["qdbus6", "org.kde.plasmashell", "/PlasmaShell", "org.kde.PlasmaShell.activateLauncherMenu"],
+                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    # --- self-disabling ---------------------------------------------------------------------------
+    def closeEvent(self, e):
+        try:
+            if self.keep.isChecked():
+                AUTOSTART_OVERRIDE.unlink(missing_ok=True)
+            else:
+                AUTOSTART_OVERRIDE.parent.mkdir(parents=True, exist_ok=True)
+                AUTOSTART_OVERRIDE.write_text("[Desktop Entry]\nType=Application\nName=czd-welcome\nHidden=true\n", encoding="utf-8")
+        except OSError:
+            pass
+        super().closeEvent(e)
+
+
+def main():
+    app = QApplication(sys.argv)
+    app.setApplicationName("czd-welcome")
+    app.setDesktopFileName("czd-welcome")
+    try:
+        t = load_tokens()
+    except (OSError, ValueError) as e:
+        print(f"czd-welcome: cannot read tokens at {TOKENS}: {e}", file=sys.stderr)
+        return 1
+    app.setFont(QFont(t["font.ui.family"], 11))
+    w = Welcome(t)
+    w.show()
+    return app.exec()
+
+
+if __name__ == "__main__":
+    sys.exit(main())

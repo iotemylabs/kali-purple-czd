@@ -152,8 +152,12 @@ class Out:
         self.dry = dry
         self.written: list[Path] = []
 
+    @staticmethod
+    def base(pkg: str) -> Path:
+        return (ROOT / "installer" if pkg == "installer" else PACKAGES / pkg) / "generated"
+
     def write(self, pkg: str, rel: str, content: str, mode: int = 0o644):
-        p = PACKAGES / pkg / "generated" / rel
+        p = self.base(pkg) / rel
         self.written.append(p)
         if self.dry:
             return
@@ -162,7 +166,7 @@ class Out:
         os.chmod(p, mode)
 
     def write_bytes(self, pkg: str, rel: str, data: bytes):
-        p = PACKAGES / pkg / "generated" / rel
+        p = self.base(pkg) / rel
         self.written.append(p)
         if self.dry:
             return
@@ -170,7 +174,7 @@ class Out:
         p.write_bytes(data)
 
     def copy(self, pkg: str, rel: str, src: Path):
-        p = PACKAGES / pkg / "generated" / rel
+        p = self.base(pkg) / rel
         self.written.append(p)
         if self.dry:
             return
@@ -178,20 +182,32 @@ class Out:
         shutil.copy2(src, p)
 
 
+def render_tree(tokens: Tokens, out: Out, tdir: Path, target: str):
+    """Render tdir/** into <target>/generated/** (target is a package name or 'installer')."""
+    for src in sorted(tdir.rglob("*")):
+        if src.is_dir():
+            continue
+        rel = src.relative_to(tdir).as_posix()
+        if src.suffix.lower() in {".png", ".jpg", ".ttf", ".otf", ".woff2", ".pf2", ".gz"}:
+            out.copy(target, rel, src)
+            continue
+        text = src.read_text(encoding="utf-8")
+        out.write(target, rel, render(text, tokens, str(src)), src.stat().st_mode & 0o777 or 0o644)
+
+
 def render_templates(tokens: Tokens, out: Out):
     for pkg in sorted(p for p in PACKAGES.iterdir() if p.is_dir()):
         tdir = pkg / "templates"
-        if not tdir.is_dir():
-            continue
-        for src in sorted(tdir.rglob("*")):
-            if src.is_dir():
-                continue
-            rel = src.relative_to(tdir).as_posix()
-            if src.suffix.lower() in {".png", ".jpg", ".ttf", ".otf", ".woff2", ".pf2", ".gz"}:
-                out.copy(pkg.name, rel, src)
-                continue
-            text = src.read_text(encoding="utf-8")
-            out.write(pkg.name, rel, render(text, tokens, str(src)), src.stat().st_mode & 0o777 or 0o644)
+        if tdir.is_dir():
+            render_tree(tokens, out, tdir, pkg.name)
+    # The Calamares branding lives outside the eight packages (rule 3) and rides into the live
+    # image through includes.chroot; it renders the same way.
+    inst = ROOT / "installer" / "templates"
+    if inst.is_dir():
+        render_tree(tokens, out, inst, "installer")
+        assets = ROOT / "design" / "plates" / "assets"
+        out.copy("installer", "branding/czd-purple/czd-mark.png", assets / "czd-mark-gold.png")
+        out.copy("installer", "branding/czd-purple/czd-lockup.png", assets / "czd-lockup-gold.png")
 
 
 # ----------------------------------------------------------------------------
@@ -926,7 +942,7 @@ def main(argv=None):
     a = ap.parse_args(argv)
 
     if a.clean:
-        for g in list(PACKAGES.glob("*/generated")) + list(PACKAGES.glob("czd-wallpapers/rendered")):
+        for g in list(PACKAGES.glob("*/generated")) + list(PACKAGES.glob("czd-wallpapers/rendered")) + list((ROOT / "installer").glob("generated")):
             shutil.rmtree(g)
             print(f"removed {g.relative_to(ROOT)}")
         return 0

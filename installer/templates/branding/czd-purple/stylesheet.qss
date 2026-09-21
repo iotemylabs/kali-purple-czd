@@ -1,0 +1,39 @@
+/* CZD Purple — Calamares widget styling (batch 08). Sidebar 340px on surface.raised, action bar
+   88px, zero radius, hairlines. NEXT is the only filled gold; BACK disabled is text.disabled. */
+* { border-radius: 0; font-family: "{{ font.ui.family }}"; }
+QWidget { background-color: {{ surface.base }}; color: {{ text.primary }}; }
+QLabel { background: transparent; }
+#sidebarApp { background-color: {{ surface.raised }}; min-width: 340px; max-width: 340px; border-right: 1px solid {{ trace.gold | rgba:0.13 }}; }
+#sidebarMenuApp { background-color: {{ surface.raised }}; }
+#sidebarMenuApp QLabel { font-family: "{{ font.mono.family }}"; font-weight: 700; letter-spacing: 2px; padding: 12px 16px; }
+#logoApp { background: transparent; margin: 24px 16px 16px 16px; }
+#labelStatus { color: {{ text.secondary }}; font-family: "{{ font.mono.family }}"; }
+#debugButton, #donateButton, #knownIssuesButton, #releaseNotesButton, #supportButton, #aboutButton {
+  background: transparent; color: {{ trace.gold }}; border: none; font-family: "{{ font.mono.family }}"; font-weight: 700; letter-spacing: 2px; padding: 8px 16px; }
+#view-button-next { background-color: {{ trace.gold }}; color: {{ surface.base }}; border: none; padding: 14px 32px; font-family: "{{ font.mono.family }}"; font-weight: 700; letter-spacing: 2px; min-height: 28px; }
+#view-button-next:hover { background-color: {{ trace.gold.surge }}; }
+#view-button-next:pressed { background-color: {{ trace.gold }}; }
+#view-button-next:disabled { background-color: {{ surface.base }}; color: {{ text.disabled }}; }
+#view-button-back, #view-button-cancel { background: transparent; color: {{ trace.gold }}; border: none; padding: 14px 24px; font-family: "{{ font.mono.family }}"; font-weight: 700; letter-spacing: 2px; }
+#view-button-back:disabled { color: {{ text.disabled }}; }
+#view-button-back:hover, #view-button-cancel:hover { color: {{ trace.gold.surge }}; }
+QPushButton { background-color: {{ surface.base }}; color: {{ text.primary }}; border: 1px solid {{ trace.gold | rgba:0.26 }}; padding: 8px 16px; }
+QPushButton:hover { background-color: {{ trace.gold | rgba:0.05 }}; border-color: {{ trace.gold }}; }
+QPushButton:disabled { color: {{ text.disabled }}; }
+QLineEdit, QComboBox, QListView, QTreeView, QTextEdit, QPlainTextEdit { background-color: {{ surface.inset }}; color: {{ text.primary }}; border: 1px solid {{ trace.gold | rgba:0.26 }}; padding: 8px; selection-background-color: {{ selection.bg }}; selection-color: {{ selection.fg }}; }
+QLineEdit:focus, QComboBox:focus { border: 1px solid {{ trace.gold }}; }
+QComboBox::drop-down { border: none; width: 32px; }
+QComboBox QAbstractItemView { background-color: {{ surface.overlay }}; border: 1px solid {{ trace.gold | rgba:0.26 }}; }
+QCheckBox, QRadioButton { color: {{ text.primary }}; spacing: 12px; }
+QCheckBox::indicator, QRadioButton::indicator { width: 16px; height: 16px; border: 1px solid {{ trace.gold }}; background: {{ surface.inset }}; }
+QCheckBox::indicator:checked, QRadioButton::indicator:checked { background: {{ trace.gold }}; border: 4px solid {{ surface.inset }}; outline: 1px solid {{ trace.gold }}; }
+QProgressBar { background-color: {{ trace.gold.deep }}; border: none; max-height: 2px; min-height: 2px; text-align: center; color: transparent; }
+QProgressBar::chunk { background-color: {{ trace.gold }}; }
+QScrollBar:vertical { background: {{ surface.inset }}; width: 8px; margin: 0; border: none; }
+QScrollBar:horizontal { background: {{ surface.inset }}; height: 8px; margin: 0; border: none; }
+QScrollBar::handle { background: {{ trace.gold | rgba:0.26 }}; min-height: 36px; min-width: 36px; }
+QScrollBar::add-line, QScrollBar::sub-line { height: 0; width: 0; }
+QHeaderView::section { background-color: {{ surface.raised }}; color: {{ text.secondary }}; border: none; border-bottom: 1px solid {{ trace.gold | rgba:0.26 }}; padding: 6px 8px; font-family: "{{ font.mono.family }}"; font-weight: 700; letter-spacing: 1px; }
+QTabBar::tab { background: {{ surface.base }}; color: {{ text.secondary }}; padding: 8px 16px; border-bottom: 1px solid transparent; }
+QTabBar::tab:selected { background: {{ trace.gold | rgba:0.05 }}; color: {{ text.primary }}; border-bottom: 1px solid {{ trace.gold }}; }
+QToolTip { background-color: {{ surface.overlay }}; color: {{ text.primary }}; border: 1px solid {{ trace.gold | rgba:0.26 }}; padding: 6px 8px; }

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=CZD welcome
+GenericName=First-boot notes
+Comment=Login, Wi-Fi, the menu, persistence. The window you closed too fast.
+Exec=czd-welcome
+Icon=czd-mark
+Terminal=false
+Categories=System;
+Keywords=czd;welcome;conference;

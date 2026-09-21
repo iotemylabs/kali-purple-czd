@@ -1,0 +1,34 @@
+# CZD Purple — Calamares branding (batch 08). Window 1400 × 860, sidebar as the schedule row,
+# one filled-gold NEXT per step. Rendered from tokens by tokens/generate.py.
+---
+componentName:   czd-purple
+welcomeStyleCalamares: false
+welcomeExpandingLogo: false
+windowExpanding: normal
+windowSize: 1400px,860px
+windowPlacement: center
+sidebar: widget
+navigation: widget
+strings:
+    productName:         CZD Purple
+    shortProductName:    CZD Purple
+    version:             {{ build.tag_upper }}
+    shortVersion:        {{ build.tag_upper }}
+    versionedName:       CZD Purple {{ build.tag_upper }}
+    shortVersionedName:  CZD Purple {{ build.tag_upper }}
+    bootloaderEntryName: CZD Purple
+    productUrl:          https://{{ event.site }}
+    supportUrl:          https://github.com/iotemylabs/kali-purple-czd/issues
+    knownIssuesUrl:      https://github.com/iotemylabs/kali-purple-czd/issues
+    releaseNotesUrl:     https://github.com/iotemylabs/kali-purple-czd/releases
+images:
+    productLogo:         "czd-mark.png"
+    productIcon:         "czd-mark.png"
+    productWelcome:      "czd-lockup.png"
+slideshow:               "show.qml"
+slideshowAPI:            2
+style:
+    SidebarBackground:        "{{ surface.raised }}"
+    SidebarText:              "{{ text.secondary }}"
+    SidebarTextCurrent:       "{{ text.primary }}"
+    SidebarBackgroundCurrent: "{{ trace.gold.deep }}"

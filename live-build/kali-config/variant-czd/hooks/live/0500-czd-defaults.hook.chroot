@@ -11,6 +11,7 @@ set -e
 [ -f /etc/czd-build ] && chmod 0644 /etc/czd-build || true
 
 # Calamares desktop launcher: name it the way the GRUB row does.
-if [ -f /usr/share/applications/calamares.desktop ]; then
-  sed -i 's/^Name=.*/Name=Install CZD Purple/' /usr/share/applications/calamares.desktop || true
-fi
+for f in /usr/share/applications/calamares.desktop /usr/share/applications/calamares-install-debian.desktop; do
+  [ -f "$f" ] || continue
+  sed -i 's/^Name=.*/Name=Install CZD Purple/; s/^Comment=.*/Comment=Calamares · erases the target disk. Nothing is written before step 06./; s/^Icon=.*/Icon=czd-mark/' "$f" || true
+done
