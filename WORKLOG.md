@@ -118,6 +118,26 @@ Verified on `czd-build` (2026-09-21):
   the KDE install as a systemd unit. SDDM autologin for `czd` is enabled on the VM so a Plasma
   session exists to screenshot over SSH with `spectacle -b`.
 
+## 2026-09-21 · Stage 3b — SDDM, boot theme, wallpapers (committed, not yet verified)
+
+- `czd-sddm-theme`: Qt6 QML greeter (`Main.qml` template) drawn on a 1920 × 1080 plate and
+  scaled uniformly, so the form lands at x600 y310 on any screen. No user list, no avatar.
+  Failed login swaps the PASSWORD label to `state.error` and names caps lock; nothing moves.
+  `theme.conf` points at the lock wallpaper package; `/etc/sddm.conf.d/20-czd-purple.conf`
+  selects the theme and is removed with the package.
+- `czd-boot-theme`: GRUB `theme.txt` template on the 112px grid with 9-slice selection pixmaps
+  (0.05 tint, 2px gold caps) and a 2px timeout rule; PF2 fonts built by `grub-mkfont` in
+  `debian/rules` from the design bundle; Plymouth script theme (stepped progress, LUKS field,
+  attempt counter); `grub.d` fragment; initramfs hook that copies the fonts in. `generate.py`
+  gained a dependency-free PNG writer for the flat pixmaps and placeholder plates.
+  Known limit: GRUB `boot_menu` items are single-line, so the two-line token + subtitle rows
+  from the plate fold into one entry title (set in the live-build bootloader config later).
+- `czd-wallpapers`: four Plasma wallpaper packages with metadata; images are flat base-surface
+  placeholders until the stage-4 renderer writes `packages/czd-wallpapers/rendered/*.png`.
+- VM: purging the running cloud kernel left `/boot/vmlinuz-7.1.5+kali-cloud-amd64` behind and
+  GRUB listed it first; the VM did not come back on SSH after reboot. Needs a console pick of
+  the `7.1.5+kali-amd64` entry, then delete the leftover cloud files and `update-grub`.
+
 ### Next
 
 - Stage 3: package contents. Plasma (global theme, Aurorae SVG templates, kdeglobals, panel
