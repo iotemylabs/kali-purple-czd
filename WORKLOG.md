@@ -138,6 +138,33 @@ Verified on `czd-build` (2026-09-21):
   GRUB listed it first; the VM did not come back on SSH after reboot. Needs a console pick of
   the `7.1.5+kali-amd64` entry, then delete the leftover cloud files and `update-grub`.
 
+## 2026-09-21 · Stage 3 verification on czd-build (standard kernel, real Plasma session)
+
+Screenshots taken over SSH with `spectacle -b` inside the autologin session.
+
+- **Plasma, first login, no user config:** CZD colour scheme, `czd-purple` desktop theme
+  (56px opaque panel with the hairline), Aurorae `czd-purple` decoration with gold 1px-stroke
+  glyphs, gold task highlight, mono clock, animations at Instant. System Settings, Dolphin and
+  Konsole all on the dark surfaces with Archivo. `~/.config/kdedefaults/package` reads
+  `org.czd.purple.desktop`, so startplasma applied our look-and-feel unaided.
+- **SDDM greeter in `--test-mode`:** matches the sddm-login plate: wordmark block, clock,
+  the 720 × 460 form, filled-gold SIGN IN, event lines, power row. Session name was empty
+  (wrong role lookup); fixed with a hidden ComboBox bound to `sessionModel` by `name`.
+- **Precedence fixes found by this pass:** Kali ships `/etc/default/grub.d/kali-themes.cfg` and
+  `/etc/sddm.conf.d/kde_settings.conf`; both sort after files named `czd-*`. Ours are now
+  `zz-czd-purple.cfg` / `zz-czd-purple.conf` and GRUB's generated config points at the CZD
+  theme at 1920×1080. `plasma-welcomerc` in the XDG tree stops Kali's welcome tour.
+- **Pitfall recorded:** reading KDE config over SSH (`kreadconfig6`) without the session's
+  `XDG_CONFIG_DIRS` shows Kali's values, not the session's. Read the env from a session
+  process first, or launch test apps with `systemd-run --user` so they inherit it.
+- **Gaps, deliberately left:**
+  - Kickoff (stock widget) cannot hide icons, start on a custom category, or drop the avatar.
+    The plasma-kickoff plate needs either a forked applet or acceptance of the stock layout.
+    Decision for the board; the rest of the shell does not depend on it.
+  - `dpkg -i` on the VM does not pull `breeze-icon-theme`, so category icons showed as
+    generic files there. Irrelevant in the ISO, where apt resolves the dependency.
+  - GRUB menu rows are single-line; the token column from the plate folds into the title.
+
 ### Next
 
 - Stage 3: package contents. Plasma (global theme, Aurorae SVG templates, kdeglobals, panel

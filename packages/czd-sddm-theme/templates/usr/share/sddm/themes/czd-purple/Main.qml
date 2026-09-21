@@ -117,11 +117,12 @@ Rectangle {
                 CzdField { id: passwordField; width: parent.width; echoMode: TextInput.Password; onAccepted: root.tryLogin() }
                 Item { width: 1; height: 24 }
 
-                // SESSION · PLASMA (WAYLAND) ↓
+                // SESSION · PLASMA (WAYLAND) ↓  — a hidden ComboBox resolves the session name by role.
+                ComboBox { id: sessionBox; visible: false; model: sessionModel; textRole: "name"; currentIndex: sessionIndex }
                 Row {
                     width: parent.width; height: 32
                     Text {
-                        text: "SESSION · " + (sessionModel.data(sessionModel.index(sessionIndex, 0), Qt.DisplayRole) || "").toUpperCase() + " ↓"
+                        text: "SESSION · " + (sessionBox.currentText || "TBC").toUpperCase() + " ↓"
                         color: gold
                         anchors.verticalCenter: parent.verticalCenter
                         font { family: fontMono; pixelSize: 24; weight: Font.Bold; letterSpacing: 3.4 }

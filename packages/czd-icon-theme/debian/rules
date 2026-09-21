@@ -12,6 +12,9 @@ override_dh_auto_install:
 	mkdir -p $(DEST)
 	cp -a generated/. $(DEST)/
 	@if [ -d static ]; then cp -a static/. $(DEST)/; fi
+	# The launcher icon is the CZD mark crop from the design package (the only artwork).
+	mkdir -p $(DEST)/usr/share/icons/czd-purple/64x64/apps
+	cp ../../design/plates/assets/czd-mark-gold.png $(DEST)/usr/share/icons/czd-purple/64x64/apps/czd-mark.png
 	find $(DEST) -name .gitkeep -delete
 	find $(DEST) -type d -empty -delete
 
