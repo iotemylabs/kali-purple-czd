@@ -3,7 +3,7 @@
 // x600 y310. No user list, no avatar, no blur, no radius, no shadow, 0ms motion.
 // Template: every colour below is a token rendered by tokens/generate.py.
 import QtQuick
-import QtQuick.Controls
+import QtQuick.Controls as QQC
 import QtQuick.Layouts
 import SddmComponents
 
@@ -113,7 +113,7 @@ Rectangle {
                 Item { width: 1; height: 24 }
 
                 // SESSION · PLASMA (WAYLAND) ↓  — a hidden ComboBox resolves the session name by role.
-                ComboBox { id: sessionBox; visible: false; model: sessionModel; textRole: "name"; currentIndex: sessionIndex }
+                QQC.ComboBox { id: sessionBox; visible: false; model: sessionModel; textRole: "name"; currentIndex: sessionIndex }
                 Row {
                     width: parent.width; height: 32
                     Text {

@@ -165,6 +165,32 @@ Screenshots taken over SSH with `spectacle -b` inside the autologin session.
     generic files there. Irrelevant in the ISO, where apt resolves the dependency.
   - GRUB menu rows are single-line; the token column from the plate folds into the title.
 
+## 2026-09-21 · Stage 4 — trace-field renderer
+
+- Decision: **Pillow port, not a browser.** `tokens/render_plates.py` re-implements
+  `design/plates/TraceField.dc.html` (its paths, vias, pads, active runs, surge gradients and both
+  vignettes are transcribed verbatim) plus the wordmark, event, sponsor and lock blocks from the
+  batch-02 plates. Deterministic, ~2 s on the VM, no numpy, no Chromium. The Build Handoff says
+  `generate.py` produces the wallpapers and boot plates, and now it does.
+- Outputs land in `packages/czd-wallpapers/rendered/` (ignored) and feed the four Plasma
+  wallpaper packages, the GRUB background and the Plymouth background. Without Pillow the
+  generator falls back to flat plates and says so; `build.sh` refuses to build without
+  `python3-pil` and `librsvg2-bin`.
+- The Kali dragon: `kali-menu.svg` is a gradient plate with the dragon knocked out in white, so
+  "recolour every fill" would have produced a gold square. The renderer strips the `<rect>`
+  plate and the translucent highlight paths and paints the remaining path in `trace.gold.dim`.
+  It only exists on a Kali host; on Debian the slot stays empty with a note.
+- Sponsors: the two SVG marks (Segra, UC tower) need `rsvg-convert`; a tier with no marks
+  collapses as the plate specifies. Segra's brand blue is barely visible on the field, exactly
+  as the plate warns; that is a sponsor-supplied-asset question, not a build one.
+- Verified on `czd-build` at a real 1920 × 1080: desktop wallpaper with dragon and panel strip
+  clear; renders match `design/png/02-wallpapers` to the eye.
+- SDDM: the lock plate carries the corner text, so the greeter now draws only the clock, the
+  form and the power row. A stale QML disk cache (`~/.cache/sddm-greeter-qt6`) had been hiding a
+  load failure: `SddmComponents` exports its own `ComboBox`, which shadowed Qt's and broke the
+  session-name lookup. Fixed by importing `QtQuick.Controls as QQC`. Test greeters must run
+  with `QML_DISABLE_DISK_CACHE=1` or they can show the previous build.
+
 ### Next
 
 - Stage 3: package contents. Plasma (global theme, Aurorae SVG templates, kdeglobals, panel

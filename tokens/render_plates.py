@@ -149,9 +149,14 @@ class Renderer:
         src = svg
         tmp = None
         if recolor:
+            # kali-menu.svg is a gradient-filled rounded plate with the dragon knocked out in
+            # white. The design wants the dragon alone: drop the plate (<rect>) and the
+            # translucent highlight paths, then paint what is left in the recolour.
             text = svg.read_text(encoding="utf-8", errors="replace")
+            text = re.sub(r"<rect\b[^>]*/>", "", text)
+            text = re.sub(r"<(path|circle|ellipse|polygon)\b[^>]*opacity:\s*0?\.\d+[^>]*/>", "", text)
             text = re.sub(r'(fill|stroke)="(?!none)[^"]*"', rf'\1="{recolor}"', text)
-            text = re.sub(r'(fill|stroke):\s*(?!none)#?[0-9A-Fa-f]{3,8}', rf"\1:{recolor}", text)
+            text = re.sub(r'(fill|stroke):\s*(?!none)[^;"]+', rf"\1:{recolor}", text)
             tmp = tempfile.NamedTemporaryFile("w", suffix=".svg", delete=False, encoding="utf-8")
             tmp.write(text); tmp.close()
             src = Path(tmp.name)
