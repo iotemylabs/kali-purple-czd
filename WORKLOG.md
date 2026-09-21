@@ -84,6 +84,19 @@ What was built:
 - `README.md`, `RELEASING.md` (gate table, respin edits with real file paths, key-holder table
   still `TBC`).
 
+Verified on `czd-build` (2026-09-21):
+
+- `make check` passes. All eight packages build with `dpkg-buildpackage`; lintian reports only
+  `empty-binary-package` for the five packages that have no content yet.
+- Installed `czd-purple-tokens`, `czd-terminal-profiles`, `czd-plasma-theme` on the VM. A login
+  shell shows `XDG_CONFIG_DIRS=/etc/xdg/xdg-czd-purple:/etc/xdg` and `~/.config/gtk-4.0/gtk.css`
+  is the expected symlink.
+- `apt purge 'czd-*'` removes everything, including the XDG tree and the profile.d activator.
+  Release gate row 07 holds for these three packages.
+- Lintian caught two things that were fixed before commit: files in `/etc/skel` (moved to the
+  XDG tree and Wireshark's global `profiles/` dir) and hand-rolled `fc-cache` calls (dropped;
+  fontconfig's dpkg trigger does it).
+
 ### Next
 
 - Stage 3: package contents. Plasma (global theme, Aurorae SVG templates, kdeglobals, panel
