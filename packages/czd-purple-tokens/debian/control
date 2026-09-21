@@ -1,0 +1,16 @@
+Source: czd-purple-tokens
+Section: misc
+Priority: optional
+Maintainer: IoTemy Labs <brett@iotemylabs.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+Homepage: https://github.com/iotemylabs/kali-purple-czd
+
+Package: czd-purple-tokens
+Architecture: all
+Depends: ${misc:Depends}, fonts-ibm-plex, fontconfig
+Description: CZD Purple design tokens, fonts and build string
+ The single source for every colour, size and spacing value in the CZD Purple
+ respin, as JSON, shell and CSS, plus the Archivo typeface and the build
+ string. Every other czd-* package depends on this one.

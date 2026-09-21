@@ -1,0 +1,6 @@
+czd-plasma-theme (1.0.0) kali-rolling; urgency=medium
+
+  * Initial release for Charleston Zero Day 2026.
+  * The build string comes from the git tag, never from this file.
+
+ -- IoTemy Labs <brett@iotemylabs.com>  Mon, 21 Sep 2026 20:00:00 +0000

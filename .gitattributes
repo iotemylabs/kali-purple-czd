@@ -1,0 +1,9 @@
+# Scripts and config must land on the Linux build host with LF endings regardless of
+# which OS committed them.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.ttf binary
+*.otf binary
+*.pf2 binary
+*.svg text eol=lf

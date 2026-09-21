@@ -1,0 +1,17 @@
+Source: czd-terminal-profiles
+Section: misc
+Priority: optional
+Maintainer: IoTemy Labs <brett@iotemylabs.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+Homepage: https://github.com/iotemylabs/kali-purple-czd
+
+Package: czd-terminal-profiles
+Architecture: all
+Depends: ${misc:Depends}, czd-purple-tokens (= ${binary:Version})
+Recommends: konsole
+Description: CZD Purple terminal and toolkit files (Konsole, GTK, Xresources, vim, Wireshark)
+ Konsole colour scheme and profile, GTK 3 and 4 theme, Xresources block, vim
+ and neovim colour scheme, and Wireshark colouring rules, all generated from
+ the CZD token file. Ships the sixteen-slot instrument palette.

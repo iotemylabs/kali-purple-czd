@@ -1,0 +1,38 @@
+## CZD Purple — live + installable image for Charleston Zero Day
+##
+## Built through Kali's live-build-config as variant "czd" (build.sh copies this tree in).
+## This is stock Kali Purple with KDE Plasma, plus the eight czd-* packages that arrive as
+## local .debs in packages.chroot. Nothing of Kali's is removed or renamed.
+
+## Live images always want these
+kali-linux-core
+kali-desktop-live
+
+## Desktop — Plasma 6, the only desktop CZD ships
+kali-desktop-kde
+
+## Kali Purple: the defensive menu and theme packages that make Kali "Purple"
+kali-menu-purple
+kali-themes-purple
+
+## Kali Purple tool menus (Identify / Protect / Detect / Respond / Recover)
+kali-tools-identify
+kali-tools-protect
+kali-tools-detect
+kali-tools-respond
+kali-tools-recover
+
+## Kali's default toolset stays, so the 01–13 menu is intact under ALL APPS
+kali-linux-default
+
+## Installer — Calamares from the live session (batch 08). debian-installer stays reachable
+## from the boot menu's advanced submenu; Calamares is what "Install CZD Purple" launches.
+calamares
+calamares-settings-debian
+
+## Toolkit reach (batch 07): Kvantum for non-KDE Qt, Plex Mono from Debian, Archivo from czd-purple-tokens
+qt6-style-kvantum
+fonts-ibm-plex
+
+## CZD defensive tooling — menu 14 and up (respin edit 06). Add what the SOC track actually uses.
+#<package>

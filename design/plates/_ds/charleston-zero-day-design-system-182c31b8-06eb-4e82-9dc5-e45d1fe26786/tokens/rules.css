@@ -1,0 +1,21 @@
+/* CZD rules & borders. Zero radius, zero shadow, zero gradient — everywhere. */
+:root{
+  --radius:0px;
+  --shadow:none;
+
+  --rule-w-hair:1px;
+  --rule-w-bold:2px;
+  --rule-standard:1px solid var(--czd-line);
+  --rule-soft:1px solid var(--czd-line-soft);
+  --rule-bold:2px solid var(--czd-gold);
+  --rule-section-cap:2px solid var(--czd-line);
+  --rule-dashed:1px dashed var(--czd-line);
+
+  --fold-tick-h:12px;
+  --fold-tick-w:1px;
+
+  /* Motion: near-none. State changes are instant value swaps. */
+  --ease:linear; /* @kind other */
+  --dur-instant:0ms; /* @kind other */
+  --dur-tick:90ms; /* @kind other */
+}

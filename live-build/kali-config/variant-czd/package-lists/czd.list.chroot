@@ -1,0 +1,11 @@
+## The eight CZD packages. They are not on any mirror; build.sh drops the freshly built
+## .debs into packages.chroot/ and live-build installs them from there. Listing them here
+## makes the dependency set explicit and makes a missing .deb a build failure, not a silent gap.
+czd-purple-tokens
+czd-plasma-theme
+czd-icon-theme
+czd-boot-theme
+czd-sddm-theme
+czd-terminal-profiles
+czd-wallpapers
+czd-welcome

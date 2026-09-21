@@ -1,0 +1,60 @@
+/* CZD type. Two families, nothing else. */
+:root{
+  --czd-font-display:"Archivo","Archivo Fallback",system-ui,sans-serif;
+  --czd-font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --font-display:var(--czd-font-display);
+  --font-mono:var(--czd-font-mono);
+  --font-body:var(--czd-font-mono);
+
+  --weight-display-regular:500;
+  --weight-display-semibold:600;
+  --weight-display-bold:700;
+  --weight-mono-regular:400;
+  --weight-mono-medium:500;
+  --weight-mono-semibold:600;
+  --weight-mono-bold:700;
+
+  /* Display tracking tightens as size grows */
+  --track-display-s:-0.015em;
+  --track-display-m:-0.022em;
+  --track-display-l:-0.028em;
+  --track-display-xl:-0.035em;
+  /* Mono tracking opens as type shrinks */
+  --track-mono:0.01em;
+  --track-eyebrow:0.14em;
+  --track-eyebrow-wide:0.20em;
+  --track-tag:0.14em;
+  --track-logo-slot:0.12em;
+
+  --leading-display-tight:0.84;
+  --leading-display:0.92;
+  --leading-display-loose:1.02;
+  --leading-mono:1.45;
+  --leading-mono-tight:1.2;
+
+  /* Signage scale — 1920x1080. Never below 24px. */
+  --size-signage-hero:132px;
+  --size-signage-title:72px;
+  --size-signage-subtitle:44px;
+  --size-signage-body:30px;
+  --size-signage-eyebrow:24px;
+  --size-signage-caption:24px;
+
+  /* Screen/web scale */
+  --size-display-xl:88px;
+  --size-display-l:56px;
+  --size-display-m:34px;
+  --size-display-s:22px;
+  --size-body:14px;
+  --size-body-s:12.5px;
+  --size-eyebrow:11px;
+  --size-caption:10.5px;
+
+  /* Print scale — program guide. Never below 8px mono. */
+  --size-print-display:19px;
+  --size-print-title:11px;
+  --size-print-body:8.5px;
+  --size-print-time:9px;
+  --size-print-eyebrow:8px;
+  --size-print-logo-slot:7.5px;
+}

@@ -1,0 +1,12 @@
+/* Minimal global base. Consumers get this by linking styles.css. */
+*,*::before,*::after{box-sizing:border-box;border-radius:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{margin:0;background:var(--surface-page);color:var(--text-body);font-family:var(--font-mono);font-size:var(--size-body);line-height:var(--leading-mono);font-feature-settings:"zero" 1}
+h1,h2,h3,h4{font-family:var(--font-display);color:var(--text-heading);font-weight:var(--weight-display-semibold);letter-spacing:var(--track-display-m);line-height:var(--leading-display);margin:0}
+p{margin:0;text-wrap:pretty}
+a{color:var(--link-color);text-decoration:none;border-bottom:1px solid var(--czd-line)}
+a:hover{color:var(--link-color-hover);border-bottom-color:var(--czd-gold)}
+a:active{color:var(--czd-gold)}
+hr{border:0;border-top:var(--rule-standard);margin:0}
+img,svg{display:block}
+::selection{background:var(--czd-gold);color:#0A0A0A}

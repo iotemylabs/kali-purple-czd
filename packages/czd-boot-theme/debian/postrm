@@ -1,0 +1,23 @@
+#!/bin/sh
+set -e
+case "$1" in
+  remove|purge)
+    if command -v plymouth-set-default-theme >/dev/null 2>&1; then
+      prev=""
+      if [ -f /var/lib/czd-boot-theme.previous-plymouth ]; then
+        prev=$(cat /var/lib/czd-boot-theme.previous-plymouth)
+      fi
+      if [ -n "$prev" ] && [ -d "/usr/share/plymouth/themes/$prev" ]; then
+        plymouth-set-default-theme -R "$prev" || true
+      else
+        plymouth-set-default-theme -R --reset || update-initramfs -u || true
+      fi
+      rm -f /var/lib/czd-boot-theme.previous-plymouth
+    fi
+    if command -v update-grub >/dev/null 2>&1 && [ -d /boot/grub ]; then
+      update-grub || true
+    fi
+    ;;
+esac
+#DEBHELPER#
+exit 0

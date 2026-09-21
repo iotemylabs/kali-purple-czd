@@ -1,0 +1,17 @@
+[Desktop Entry]
+DefaultProfile=CZD.profile
+
+[KonsoleWindow]
+ShowMenuBarByDefault=false
+RememberWindowSize=false
+
+[TabBar]
+TabBarVisibility=ShowTabBarWhenNeeded
+NewTabButton=false
+CloseTabButton=None
+ExpandTabWidth=false
+TabBarUseUserStyleSheet=false
+
+[MainWindow]
+MenuBar=Disabled
+ToolBarsMovable=Disabled

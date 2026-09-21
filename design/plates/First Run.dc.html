@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="design_doc_mode" content="canvas">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/rules.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/base.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/styles.css">
+  <script src="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:#050505;}
+    a{color:#E0A82E;} a:hover{color:#FFE9A8;}
+  </style>
+</helmet>
+
+<div style="background:#050505;padding:48px;display:flex;flex-direction:column;gap:32px;font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#A99C83;width:2016px;">
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:16px;">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// DELIVERABLE 06 · FIRST RUN</div>
+      <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:40px;line-height:1;letter-spacing:-0.035em;color:#F4F0E6;">czd-first-run</div>
+    </div>
+    <div style="font-size:11px;letter-spacing:0.14em;color:#6B6152;text-align:right;line-height:1.7;">4 SURFACES · 1920 × 1080 · sRGB<br>PANEL BOTTOM · DEFENSIVE = 14 · CZD-2026-10-231</div>
+  </div>
+
+  <div style="display:flex;gap:32px;flex-wrap:wrap;border-bottom:1px solid rgba(224,168,46,0.26);padding-bottom:20px;">
+    <div style="flex:1 1 460px;font-size:11px;line-height:1.8;">
+      <span style="color:#E0A82E;font-weight:700;letter-spacing:0.14em;">THE CALL · </span>Batch 03 drew the boot chain as four still plates and said nothing about time. This batch covers the moments between them and after them: <span style="color:#F4F0E6;">what the splash does while it waits, what the login does when you get it wrong, what the machine says on the first boot, and how it interrupts you afterwards.</span> All four are places a respin usually leaks its upstream — a stock Plymouth spinner, a Breeze notification, an Adwaita toast.
+    </div>
+    <div style="flex:1 1 460px;font-size:11px;line-height:1.8;">
+      <span style="color:#E0A82E;font-weight:700;letter-spacing:0.14em;">SETTLED IN 05, DRAWN HERE · </span>The panel is at the <span style="color:#F4F0E6;">bottom</span> — Kali's default, visible on both desktop plates below — and CZD's defensive tooling opens the menu at <span style="color:#F4F0E6;">14</span>, after Kali's 01–13, which is the line the welcome window leads with. Nothing in Kali's numbering moved, so a hand that knows where 06 Sniffing is still finds it there.
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:16px;margin-top:16px;">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// DELIVERABLE 06 · FIRST RUN</div>
+      <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:40px;line-height:1;letter-spacing:-0.035em;color:#F4F0E6;">plymouth-timing</div>
+    </div>
+    <div style="font-size:11px;letter-spacing:0.14em;color:#6B6152;text-align:right;line-height:1.7;">THE ENTIRE BOOT ANIMATION, SPECIFIED · 0 TWEENS · 0 EASING CURVES<br>/usr/share/plymouth/themes/czd-purple/czd-purple.script</div>
+  </div>
+
+  <div id="plymouth-timing" data-screen-label="plymouth-timing" style="position:relative;width:1920px;height:1080px;background:#0A0A0A;overflow:hidden;flex:0 0 auto;padding:64px 96px;box-sizing:border-box;display:flex;flex-direction:column;gap:28px;">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:32px;">
+      <div style="font-size:24px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;white-space:nowrap;">// 01 · WHAT MOVES, AND WHEN</div>
+      <div style="font-size:18px;font-weight:500;letter-spacing:0.10em;color:#6B6152;white-space:nowrap;">TYPICAL SSD BOOT 4–11s · LANE = ONE SPRITE · BLOCK = A VALUE THAT HOLDS</div>
+    </div>
+
+    <div style="display:flex;gap:24px;align-items:flex-end;">
+      <div style="width:300px;flex:0 0 300px;font-size:18px;font-weight:700;letter-spacing:0.14em;color:#6B6152;text-align:right;">SECONDS →</div>
+      <div style="position:relative;width:1404px;height:40px;flex:0 0 1404px;">
+        <div style="position:absolute;left:0;bottom:0;width:1404px;height:1px;background:rgba(224,168,46,0.26);"></div>
+        <div style="position:absolute;left:0;bottom:0;width:1px;height:14px;background:#E0A82E;"></div>
+        <div style="position:absolute;left:0;bottom:18px;font-size:18px;font-weight:600;color:#E0A82E;">0</div>
+        <div style="position:absolute;left:117px;bottom:0;width:1px;height:8px;background:rgba(224,168,46,0.26);"></div>
+        <div style="position:absolute;left:234px;bottom:0;width:1px;height:14px;background:#E0A82E;"></div>
+        <div style="position:absolute;left:234px;bottom:18px;font-size:18px;font-weight:600;color:#E0A82E;">2</div>
+        <div style="position:absolute;left:351px;bottom:0;width:1px;height:8px;background:rgba(224,168,46,0.26);"></div>
+        <div style="position:absolute;left:468px;bottom:0;width:1px;height:14px;background:#E0A82E;"></div>
+        <div style="position:absolute;left:468px;bottom:18px;font-size:18px;font-weight:600;color:#E0A82E;">4</div>
+        <div style="position:absolute;left:585px;bottom:0;width:1px;height:8px;background:rgba(224,168,46,0.26);"></div>
+        <div style="position:absolute;left:702px;bottom:0;width:1px;height:14px;background:#E0A82E;"></div>
+        <div style="position:absolute;left:702px;bottom:18px;font-size:18px;font-weight:600;color:#E0A82E;">6</div>
+        <div style="position:absolute;left:819px;bottom:0;width:1px;height:8px;background:rgba(224,168,46,0.26);"></div>
+        <div style="position:absolute;left:936px;bottom:0;width:1px;height:14px;background:#E0A82E;"></div>
+        <div style="position:absolute;left:936px;bottom:18px;font-size:18px;font-weight:600;color:#E0A82E;">8</div>
+        <div style="position:absolute;left:1053px;bottom:0;width:1px;height:8px;background:rgba(224,168,46,0.26);"></div>
+        <div style="position:absolute;left:1170px;bottom:0;width:1px;height:14px;background:#E0A82E;"></div>
+        <div style="position:absolute;left:1170px;bottom:18px;font-size:18px;font-weight:600;color:#E0A82E;">10</div>
+        <div style="position:absolute;left:1287px;bottom:0;width:1px;height:8px;background:rgba(224,168,46,0.26);"></div>
+        <div style="position:absolute;left:1403px;bottom:0;width:1px;height:14px;background:#E0A82E;"></div>
+        <div style="position:absolute;left:1360px;bottom:18px;font-size:18px;font-weight:600;color:#E0A82E;">12</div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:1px;background:rgba(224,168,46,0.13);border-top:1px solid rgba(224,168,46,0.26);border-bottom:1px solid rgba(224,168,46,0.26);">
+
+      <div style="display:flex;gap:24px;align-items:center;background:#0A0A0A;padding:14px 0;">
+        <div style="width:300px;flex:0 0 300px;font-size:20px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;text-align:right;">BACKGROUND</div>
+        <div style="position:relative;width:1404px;height:52px;flex:0 0 1404px;">
+          <div style="position:absolute;left:0;top:0;width:1287px;height:52px;background:rgba(224,168,46,0.05);border-top:2px solid #E0A82E;display:flex;align-items:center;padding:0 16px;box-sizing:border-box;">
+            <div style="font-size:18px;font-weight:500;letter-spacing:0.06em;color:#A99C83;">1920×1080 PNG blitted once at t=0 · identical file family as wallpaper-lock · never redrawn</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:24px;align-items:center;background:#0A0A0A;padding:14px 0;">
+        <div style="width:300px;flex:0 0 300px;font-size:20px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;text-align:right;">MARK + WORDMARK</div>
+        <div style="position:relative;width:1404px;height:52px;flex:0 0 1404px;">
+          <div style="position:absolute;left:0;top:0;width:1287px;height:52px;background:rgba(224,168,46,0.05);border-top:2px solid #E0A82E;display:flex;align-items:center;padding:0 16px;box-sizing:border-box;">
+            <div style="font-size:18px;font-weight:500;letter-spacing:0.06em;color:#A99C83;">opacity 1 from the first frame · no fade-in, no scale-up, no reveal — it is on screen or the machine is off</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:24px;align-items:center;background:#0A0A0A;padding:14px 0;">
+        <div style="width:300px;flex:0 0 300px;font-size:20px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;text-align:right;">PROGRESS TRACK</div>
+        <div style="position:relative;width:1404px;height:52px;flex:0 0 1404px;">
+          <div style="position:absolute;left:0;top:25px;width:1287px;height:2px;background:#4A320B;"></div>
+          <div style="position:absolute;left:0;top:19px;width:1px;height:14px;background:#E0A82E;"></div>
+          <div style="position:absolute;left:0;top:0;font-size:16px;font-weight:600;color:#8A6318;">0%</div>
+          <div style="position:absolute;left:117px;top:19px;width:1px;height:14px;background:#E0A82E;"></div>
+          <div style="position:absolute;left:117px;top:0;font-size:16px;font-weight:600;color:#8A6318;">8%</div>
+          <div style="position:absolute;left:234px;top:19px;width:1px;height:14px;background:#E0A82E;"></div>
+          <div style="position:absolute;left:234px;top:0;font-size:16px;font-weight:600;color:#8A6318;">23%</div>
+          <div style="position:absolute;left:456px;top:19px;width:1px;height:14px;background:#E0A82E;"></div>
+          <div style="position:absolute;left:456px;top:0;font-size:16px;font-weight:600;color:#8A6318;">41%</div>
+          <div style="position:absolute;left:702px;top:19px;width:1px;height:14px;background:#E0A82E;"></div>
+          <div style="position:absolute;left:702px;top:0;font-size:16px;font-weight:600;color:#8A6318;">60%</div>
+          <div style="position:absolute;left:842px;top:19px;width:1px;height:14px;background:#E0A82E;"></div>
+          <div style="position:absolute;left:842px;top:0;font-size:16px;font-weight:600;color:#8A6318;">78%</div>
+          <div style="position:absolute;left:1182px;top:19px;width:1px;height:14px;background:#E0A82E;"></div>
+          <div style="position:absolute;left:1182px;top:0;font-size:16px;font-weight:600;color:#8A6318;">94%</div>
+          <div style="position:absolute;left:1287px;top:19px;width:1px;height:14px;background:#E0A82E;"></div>
+          <div style="position:absolute;left:1287px;top:0;font-size:16px;font-weight:600;color:#E0A82E;">100%</div>
+          <div style="position:absolute;left:0;top:25px;height:2px;background:#E0A82E;width:{{ trackFill }};"></div>
+          <div style="position:absolute;left:0;top:38px;font-size:16px;font-weight:500;letter-spacing:0.06em;color:#6B6152;">redrawn only on a real boot_progress callback · 7 steps on a typical boot · never interpolated between them</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:24px;align-items:center;background:#0A0A0A;padding:14px 0;">
+        <div style="width:300px;flex:0 0 300px;font-size:20px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;text-align:right;">STATUS LINE</div>
+        <div style="position:relative;width:1404px;height:52px;flex:0 0 1404px;">
+          <div style="position:absolute;left:0;top:0;width:163px;height:52px;background:rgba(224,168,46,0.05);border-top:2px solid #E0A82E;border-right:1px solid rgba(224,168,46,0.26);display:flex;align-items:center;padding:0 12px;box-sizing:border-box;overflow:hidden;">
+            <div style="font-size:16px;font-weight:600;letter-spacing:0.06em;color:#A99C83;white-space:nowrap;">UDEV-SETTLE</div>
+          </div>
+          <div style="position:absolute;left:164px;top:0;width:292px;height:52px;background:rgba(224,168,46,0.05);border-top:2px solid #E0A82E;border-right:1px solid rgba(224,168,46,0.26);display:flex;align-items:center;padding:0 12px;box-sizing:border-box;overflow:hidden;">
+            <div style="font-size:16px;font-weight:600;letter-spacing:0.06em;color:#A99C83;white-space:nowrap;">MOUNTING /BOOT/EFI</div>
+          </div>
+          <div style="position:absolute;left:457px;top:0;width:385px;height:52px;background:rgba(224,168,46,0.05);border-top:2px solid #E0A82E;border-right:1px solid rgba(224,168,46,0.26);display:flex;align-items:center;padding:0 12px;box-sizing:border-box;overflow:hidden;">
+            <div style="font-size:16px;font-weight:600;letter-spacing:0.06em;color:#A99C83;white-space:nowrap;">STARTING NETWORKMANAGER</div>
+          </div>
+          <div style="position:absolute;left:843px;top:0;width:444px;height:52px;background:rgba(224,168,46,0.05);border-top:2px solid #E0A82E;display:flex;align-items:center;padding:0 12px;box-sizing:border-box;overflow:hidden;">
+            <div style="font-size:16px;font-weight:600;letter-spacing:0.06em;color:#A99C83;white-space:nowrap;">REACHED GRAPHICAL.TARGET</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:24px;align-items:center;background:#0A0A0A;padding:14px 0;">
+        <div style="width:300px;flex:0 0 300px;font-size:20px;font-weight:700;letter-spacing:0.14em;color:#6B6152;text-align:right;">UNLOCK (LUKS)</div>
+        <div style="position:relative;width:1404px;height:52px;flex:0 0 1404px;">
+          <div style="position:absolute;left:211px;top:0;width:257px;height:52px;border:1px dashed rgba(224,168,46,0.4);display:flex;align-items:center;padding:0 12px;box-sizing:border-box;overflow:hidden;">
+            <div style="font-size:16px;font-weight:600;letter-spacing:0.06em;color:#8A6318;white-space:nowrap;">ENCRYPTED INSTALLS ONLY</div>
+          </div>
+          <div style="position:absolute;left:480px;top:14px;font-size:16px;font-weight:500;letter-spacing:0.06em;color:#6B6152;">the clock stops here — nothing animates while a human is typing, and the track holds its last value</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:24px;align-items:center;background:#0A0A0A;padding:14px 0;">
+        <div style="width:300px;flex:0 0 300px;font-size:20px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;text-align:right;">HANDOFF → SDDM</div>
+        <div style="position:relative;width:1404px;height:52px;flex:0 0 1404px;">
+          <div style="position:absolute;left:1287px;top:0;width:117px;height:52px;background:#181307;border-top:2px solid #E0A82E;"></div>
+          <div style="position:absolute;left:0;top:14px;width:1287px;text-align:right;padding-right:16px;box-sizing:border-box;font-size:16px;font-weight:500;letter-spacing:0.06em;color:#6B6152;">plymouth quit --retain-splash · SDDM paints the same plate underneath before the splash lets go →</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="position:relative;height:0;">
+      <div style="position:absolute;left:324px;top:-501px;width:2px;height:501px;background:#FFE9A8;transform:translateX({{ playheadX }});"></div>
+      <div style="position:absolute;left:324px;top:4px;transform:translateX({{ playheadX }});font-size:20px;font-weight:700;letter-spacing:0.14em;color:#FFE9A8;white-space:nowrap;">t = {{ playheadLabel }}</div>
+    </div>
+
+    <div style="margin-top:auto;display:flex;gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+      <div style="flex:1 1 0;background:#0B0A07;padding:20px 24px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">WHAT THERE IS NONE OF</div>
+        <div style="font-size:18px;line-height:1.6;color:#A99C83;">No spinner. No throbber. No pulse, fade, wipe or logo reveal. No easing curve anywhere in the script.</div>
+      </div>
+      <div style="flex:1 1 0;background:#0B0A07;padding:20px 24px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">THE ONLY MOTION</div>
+        <div style="font-size:18px;line-height:1.6;color:#A99C83;">A 2px rule getting longer, in seven jumps, and four lines of text being replaced.</div>
+      </div>
+      <div style="flex:1 1 0;background:#0B0A07;padding:20px 24px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">IF BOOT IS FAST</div>
+        <div style="font-size:18px;line-height:1.6;color:#A99C83;">Under 4s the splash may paint two frames and quit. That is a correct boot, not a broken theme.</div>
+      </div>
+      <div style="flex:1 1 0;background:#0B0A07;padding:20px 24px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">SHUTDOWN</div>
+        <div style="font-size:18px;line-height:1.6;color:#A99C83;">Same plate, track empties right to left, status reads STOPPING. No separate theme.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">01 · A TIMING SHEET, NOT KEYFRAMES</div>
+      <div style="font-size:11px;line-height:1.7;">There is no animation to storyboard, so the spec is a table of values and the moments they change. Every block is a state that <span style="color:#F4F0E6;">holds</span> until something real happens — a udev event, a mount, a progress callback. Scrub the <span style="color:#E0A82E;">boot progress</span> tweak to put the playhead anywhere and read the frame off the lanes.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">02 · SEVEN STEPS, NOT SIXTY FPS</div>
+      <div style="font-size:11px;line-height:1.7;">Plymouth will happily run a redraw loop. Ours returns early unless the progress value actually moved, so the track advances in the seven jumps the system reports and the GPU does nothing in between. On a 4s SSD boot you see three of them.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">03 · THE HANDOFF IS THE HARD PART</div>
+      <div style="font-size:11px;line-height:1.7;">Most respins flash a black frame between splash and login. <span style="color:#E0A82E;">--retain-splash</span> holds the last frame on the framebuffer while SDDM starts on the same plate, so the transition is the type changing and nothing else. Verify it on the slowest laptop in the build fleet, not the fastest.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">04 · ESC STILL WORKS</div>
+      <div style="font-size:11px;line-height:1.7;">Pressing ESC drops the splash and shows the systemd log, as it does on stock Kali. The theme does not trap the key, does not re-enter, and does not hide failures behind the mark — if the boot stalls, the person in front of it should be able to see why.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:16px;margin-top:32px;">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// DELIVERABLE 06 · FIRST RUN</div>
+      <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:40px;line-height:1;letter-spacing:-0.035em;color:#F4F0E6;">sddm-refused</div>
+    </div>
+    <div style="font-size:11px;letter-spacing:0.14em;color:#6B6152;text-align:right;line-height:1.7;">THE STATE BATCH 03 DID NOT DRAW · SDDM 0.21 · QT6 QML<br>SWITCH WITH THE <span style="color:#E0A82E;">login state</span> TWEAK</div>
+  </div>
+
+  <div id="sddm-refused" data-screen-label="sddm-refused" style="position:relative;width:1920px;height:1080px;background:#0A0A0A;overflow:hidden;flex:0 0 auto;">
+    <dc-import name="TraceField" uid="sddm2" level="dim" vignette="heavy" surge="{{ false }}" style="position:absolute;inset:0;" hint-size="1920px,1080px"></dc-import>
+
+    <div style="position:absolute;left:112px;top:112px;display:flex;flex-direction:column;gap:14px;">
+      <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:56px;line-height:0.9;letter-spacing:-0.035em;color:#F4F0E6;">CZD PURPLE</div>
+      <div style="width:420px;height:2px;background:#E0A82E;"></div>
+      <div style="font-size:24px;font-weight:600;letter-spacing:0.14em;color:#E0A82E;">A KALI PURPLE RESPIN · KDE PLASMA 6</div>
+    </div>
+
+    <div style="position:absolute;right:112px;top:112px;display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+      <div style="font-size:32px;font-weight:700;letter-spacing:0.14em;color:#F4F0E6;">9:27 AM</div>
+      <div style="font-size:24px;font-weight:500;letter-spacing:0.10em;color:#A99C83;">FRI OCT 02, 2026 · KEYBOARD US</div>
+    </div>
+
+    <div style="position:absolute;left:600px;top:290px;width:720px;display:flex;flex-direction:column;gap:24px;">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div style="font-size:24px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;white-space:nowrap;">// SIGN IN</div>
+        <div style="flex:1 1 0;height:1px;background:#E0A82E;"></div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:24px;font-weight:600;letter-spacing:0.14em;color:#A99C83;">USER</div>
+        <div style="width:720px;height:72px;background:#050505;border:1px solid rgba(224,168,46,0.26);display:flex;align-items:center;padding:0 20px;box-sizing:border-box;">
+          <div style="font-size:30px;font-weight:500;letter-spacing:0.02em;color:#F4F0E6;">czd</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:24px;font-weight:600;letter-spacing:0.14em;color:#A99C83;">PASSWORD</div>
+        <div style="width:720px;height:72px;background:#050505;border:1px solid #E0A82E;outline:1px solid #E0A82E;outline-offset:2px;display:flex;align-items:center;padding:0 20px;gap:2px;box-sizing:border-box;">
+          <div style="font-size:30px;letter-spacing:0.30em;color:#F4F0E6;">••••••</div>
+          <div style="width:2px;height:34px;background:#E0A82E;"></div>
+        </div>
+      </div>
+
+      <sc-if value="{{ loginError }}" hint-placeholder-val="{{ true }}">
+        <div style="width:720px;background:rgba(224,168,46,0.05);border-top:2px solid #E0A82E;border-bottom:2px solid #E0A82E;padding:18px 20px;box-sizing:border-box;display:flex;flex-direction:column;gap:8px;">
+          <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">NO DICE · ATTEMPT 2 OF 5</div>
+          <div style="font-size:24px;font-weight:500;letter-spacing:0.06em;color:#A99C83;line-height:1.5;">Wrong password for czd. Caps lock is off. After 5 the seat locks for 60 seconds.</div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ loginIdle }}" hint-placeholder-val="{{ false }}">
+        <div style="width:720px;display:flex;justify-content:space-between;gap:24px;">
+          <div style="font-size:24px;font-weight:500;letter-spacing:0.10em;color:#A99C83;">ENTER TO SIGN IN</div>
+          <div style="font-size:24px;font-weight:600;letter-spacing:0.14em;color:#6B6152;">CAPS LOCK OFF</div>
+        </div>
+      </sc-if>
+    </div>
+
+    <div style="position:absolute;left:112px;bottom:112px;display:flex;align-items:center;gap:24px;">
+      <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">SESSION ↑</div>
+      <div style="font-size:24px;font-weight:500;letter-spacing:0.10em;color:#A99C83;">PLASMA (WAYLAND)</div>
+    </div>
+
+    <div style="position:absolute;right:112px;bottom:112px;display:flex;align-items:center;gap:32px;">
+      <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">SLEEP</div>
+      <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">RESTART</div>
+      <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">SHUT DOWN</div>
+    </div>
+
+    <sc-if value="{{ showGuides }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;left:600px;top:290px;width:720px;height:500px;border:1px dashed rgba(224,168,46,0.5);"></div>
+      <div style="position:absolute;left:600px;top:254px;font-size:16px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">THE ERROR BLOCK GROWS DOWNWARD · FIELDS DO NOT MOVE</div>
+      <div style="position:absolute;left:76.8px;top:43.2px;width:1766.4px;height:993.6px;border:1px dashed rgba(224,168,46,0.5);"></div>
+    </sc-if>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">01 · NOTHING MOVES ON A MISS</div>
+      <div style="font-size:11px;line-height:1.7;">No shake, no flash, no red. The two fields stay exactly where they were and a block <span style="color:#F4F0E6;">appears below them</span> — the layout grows down into space that was already empty. A person retyping a password should not have to re-find the field.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">02 · GOLD IS THE ERROR COLOUR</div>
+      <div style="font-size:11px;line-height:1.7;">There is no red in this system and a failed login is not an emergency. The block takes the same 0.05 tint and 2px caps as an emphasis row on a schedule board. Status colour is reserved for <span style="color:#8A93A0;">HOLD</span> and <span style="color:#6E7681;">STALE</span>, and neither applies to a typo.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">03 · SAY THE RULE UP FRONT</div>
+      <div style="font-size:11px;line-height:1.7;">The copy names the attempt, the caps-lock state and the lockout before you hit it — same stance as the LUKS prompt in batch 03. <span style="color:#F4F0E6;">"No dice"</span> is the whole apology. Nothing tells you to contact your administrator; on a live USB you are the administrator.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">04 · SESSION AND POWER</div>
+      <div style="font-size:11px;line-height:1.7;">Both corners are gold mono labels with an arrow attached to the label, not icons and not buttons. Their popovers open upward on the inset surface with 1px hairlines between rows — the wayfinding pattern, reused. Wayland is the default; X11 is in the list for the one driver that needs it.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:16px;margin-top:32px;">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// DELIVERABLE 06 · FIRST RUN</div>
+      <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:40px;line-height:1;letter-spacing:-0.035em;color:#F4F0E6;">czd-welcome</div>
+    </div>
+    <div style="font-size:11px;letter-spacing:0.14em;color:#6B6152;text-align:right;line-height:1.7;">FIRST BOOT ONLY · QT6 WIDGET · 1280 × 760<br>/usr/bin/czd-welcome · autostart, self-disabling</div>
+  </div>
+
+  <div id="czd-welcome" data-screen-label="czd-welcome" style="position:relative;width:1920px;height:1080px;background:#0A0A0A;overflow:hidden;flex:0 0 auto;">
+    <dc-import name="TraceField" uid="welc" level="dim" vignette="standard" surge="{{ false }}" style="position:absolute;inset:0;" hint-size="1920px,1080px"></dc-import>
+
+    <div style="position:absolute;left:320px;top:130px;width:1280px;height:870px;background:#0A0A0A;border:1px solid #E0A82E;display:flex;flex-direction:column;">
+      <div style="height:48px;flex:0 0 48px;background:#181307;border-bottom:1px solid rgba(224,168,46,0.26);display:flex;align-items:center;justify-content:space-between;padding:0 20px;">
+        <div style="font-size:24px;font-weight:600;letter-spacing:0.10em;color:#F4F0E6;">czd-welcome</div>
+        <div style="display:flex;align-items:center;gap:20px;">
+          <div style="width:24px;height:1px;background:#E0A82E;"></div>
+          <div style="width:20px;height:20px;border:1px solid #E0A82E;"></div>
+          <div style="position:relative;width:22px;height:22px;">
+            <div style="position:absolute;left:0;top:10px;width:22px;height:2px;background:#E0A82E;transform:rotate(45deg);"></div>
+            <div style="position:absolute;left:0;top:10px;width:22px;height:2px;background:#E0A82E;transform:rotate(-45deg);"></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:1 1 0;display:flex;min-height:0;">
+        <div style="width:300px;flex:0 0 300px;background:#050505;border-right:1px solid rgba(224,168,46,0.26);display:flex;flex-direction:column;">
+          <div style="padding:24px 24px 16px;display:flex;flex-direction:column;align-items:flex-start;gap:12px;">
+            <x-import component-from-global-scope="CharlestonZeroDayDesignSystem_182c31.Brandmark" variant="mark" height="56px" asset-base="assets" style="width:auto;flex:0 0 auto;" hint-size="56px,56px"></x-import>
+          </div>
+          <div style="display:flex;flex-direction:column;">
+            <div style="padding:16px 24px;background:rgba(224,168,46,0.05);border-top:1px solid rgba(224,168,46,0.26);border-bottom:1px solid rgba(224,168,46,0.26);border-left:2px solid #E0A82E;font-size:24px;font-weight:700;letter-spacing:0.10em;color:#F4F0E6;white-space:nowrap;">01 · START</div>
+            <div style="padding:16px 24px;border-bottom:1px solid rgba(224,168,46,0.13);font-size:24px;font-weight:500;letter-spacing:0.10em;color:#A99C83;">02 · THE MENU</div>
+            <div style="padding:16px 24px;border-bottom:1px solid rgba(224,168,46,0.13);font-size:24px;font-weight:500;letter-spacing:0.10em;color:#A99C83;">03 · THE CTF</div>
+            <div style="padding:16px 24px;border-bottom:1px solid rgba(224,168,46,0.13);font-size:24px;font-weight:500;letter-spacing:0.10em;color:#A99C83;">04 · THE EVENT</div>
+            <div style="padding:16px 24px;border-bottom:1px solid rgba(224,168,46,0.13);font-size:24px;font-weight:500;letter-spacing:0.10em;color:#A99C83;">05 · CREDITS</div>
+          </div>
+          <div style="margin-top:auto;padding:24px;border-top:1px solid rgba(224,168,46,0.26);font-size:18px;line-height:1.6;letter-spacing:0.06em;color:#6B6152;">CZD-2026-10-231<br>built on kali-rolling</div>
+        </div>
+
+        <div style="flex:1 1 0;background:#0B0A07;padding:32px 40px;display:flex;flex-direction:column;gap:20px;min-width:0;">
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="font-size:24px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;white-space:nowrap;">// 01 · START HERE</div>
+            <div style="flex:1 1 0;height:1px;background:#E0A82E;"></div>
+          </div>
+
+          <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:48px;line-height:1;letter-spacing:-0.035em;color:#F4F0E6;">So you booted it.</div>
+
+          <div style="font-size:24px;line-height:1.6;color:#A99C83;max-width:840px;">Kali Purple with a conference paint job and a short list of additions. Everything Kali ships is still here and still named the same; what CZD added is below.</div>
+
+          <div style="display:flex;flex-direction:column;border-top:2px solid #E0A82E;border-bottom:2px solid #E0A82E;">
+            <div style="display:flex;gap:24px;padding:14px 0;border-bottom:1px solid rgba(224,168,46,0.13);">
+              <div style="width:180px;flex:0 0 180px;font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">LOGIN</div>
+              <div style="flex:1 1 0;font-size:24px;line-height:1.5;color:#F4F0E6;">czd / czd. Change it before you join any network. Root is disabled; sudo works.</div>
+            </div>
+            <div style="display:flex;gap:24px;padding:14px 0;border-bottom:1px solid rgba(224,168,46,0.13);">
+              <div style="width:180px;flex:0 0 180px;font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">WI-FI</div>
+              <div style="flex:1 1 0;font-size:24px;line-height:1.5;color:#F4F0E6;">CZD-CON is open. No password. Assume it is hostile.</div>
+            </div>
+            <div style="display:flex;gap:24px;padding:14px 0;border-bottom:1px solid rgba(224,168,46,0.13);">
+              <div style="width:180px;flex:0 0 180px;font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">THE MENU</div>
+              <div style="flex:1 1 0;font-size:24px;line-height:1.5;color:#F4F0E6;">Kali's 01–13 are untouched. CZD's defensive set is <span style="color:#E0A82E;">14</span> — Zeek, Suricata, Velociraptor, Arkime.</div>
+            </div>
+            <div style="display:flex;gap:24px;padding:14px 0;">
+              <div style="width:180px;flex:0 0 180px;font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">PERSISTENCE</div>
+              <div style="flex:1 1 0;font-size:24px;line-height:1.5;color:#F4F0E6;">A live USB writes nothing. Pick PERSIST at the boot menu if you want your work on Saturday.</div>
+            </div>
+          </div>
+
+          <div style="margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid rgba(224,168,46,0.26);padding-top:20px;">
+            <div style="display:flex;align-items:center;gap:14px;">
+              <div style="width:22px;height:22px;border:1px solid #E0A82E;"></div>
+              <div style="font-size:24px;font-weight:500;letter-spacing:0.06em;color:#A99C83;">Open this again next boot</div>
+            </div>
+            <div style="display:flex;gap:16px;">
+              <div style="padding:12px 24px;border:1px solid rgba(224,168,46,0.26);font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">THE MENU →</div>
+              <div style="padding:12px 24px;background:#E0A82E;font-size:24px;font-weight:700;letter-spacing:0.14em;color:#0A0A0A;">CLOSE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position:absolute;left:0;bottom:0;width:1920px;height:56px;background:#0B0A07;border-top:1px solid rgba(224,168,46,0.26);display:flex;align-items:center;padding:0 16px;gap:16px;box-sizing:border-box;">
+      <div style="display:flex;align-items:center;gap:10px;padding:0 16px;height:40px;background:rgba(224,168,46,0.05);border:1px solid rgba(224,168,46,0.26);">
+        <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">CZD ▸</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:0 16px;height:40px;background:rgba(224,168,46,0.05);border-bottom:1px solid #E0A82E;">
+        <div style="font-size:24px;font-weight:500;letter-spacing:0.06em;color:#F4F0E6;">czd-welcome</div>
+      </div>
+      <div style="flex:1 1 0;"></div>
+      <div style="display:flex;align-items:center;gap:20px;">
+        <div style="display:flex;align-items:flex-end;gap:3px;height:24px;">
+          <div style="width:4px;height:8px;border:1px solid #E0A82E;"></div>
+          <div style="width:4px;height:15px;border:1px solid #E0A82E;"></div>
+          <div style="width:4px;height:22px;border:1px solid #E0A82E;background:#E0A82E;"></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:3px;height:24px;">
+          <div style="width:10px;height:12px;border:1px solid #E0A82E;"></div>
+          <div style="width:1px;height:16px;background:#E0A82E;"></div>
+          <div style="width:1px;height:22px;background:#E0A82E;"></div>
+        </div>
+        <div style="position:relative;width:22px;height:22px;border:1px solid #E0A82E;">
+          <div style="position:absolute;left:9px;top:5px;width:2px;height:11px;background:#E0A82E;"></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1px;">
+          <div style="width:26px;height:13px;border:1px solid #E0A82E;padding:1px;box-sizing:border-box;"><div style="width:60%;height:100%;background:#E0A82E;"></div></div>
+          <div style="width:2px;height:6px;background:#E0A82E;"></div>
+        </div>
+        <div style="width:1px;height:24px;background:rgba(224,168,46,0.26);"></div>
+        <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#F4F0E6;">9:31 AM</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">01 · IT IS A LIST, NOT A TOUR</div>
+      <div style="font-size:11px;line-height:1.7;">No carousel, no five-step wizard, no "get started" hero. The useful content is four rows of the same time-plus-content pattern the schedule boards use, with the label column carrying a word instead of a clock. You can read the whole thing standing up in about fifteen seconds.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">02 · THE CHECKBOX IS OFF</div>
+      <div style="font-size:11px;line-height:1.7;">Default is <span style="color:#F4F0E6;">do not open again</span>, opt in to keep it. A welcome window that reappears every boot is a bug with a checkbox. Autostart removes its own .desktop file on first close; <span style="color:#E0A82E;">czd-welcome</span> from a terminal brings it back.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">03 · ONE FILLED GOLD THING</div>
+      <div style="font-size:11px;line-height:1.7;">CLOSE is the only filled-gold element on the screen, which makes it the loudest and puts the exit where the eye already is. THE MENU → is a hairline box beside it. Gold-on-<span style="color:#0A0A0A;background:#F4F0E6;padding:0 4px;">#0A0A0A</span> inverted, no radius, no hover lift — the tint arrives, that is all.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">04 · THE PANEL, FOR REAL</div>
+      <div style="font-size:11px;line-height:1.7;">First plate to show the settled call: <span style="color:#F4F0E6;">56px at the bottom</span>, launcher reading CZD ▸, task entries marked by a 1px gold underline rather than a filled pill, and five 32px tray cuts from batch 05. Nothing floats, nothing is translucent, nothing auto-hides.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:16px;margin-top:32px;">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// DELIVERABLE 06 · FIRST RUN</div>
+      <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:40px;line-height:1;letter-spacing:-0.035em;color:#F4F0E6;">osd-and-notifications</div>
+    </div>
+    <div style="font-size:11px;letter-spacing:0.14em;color:#6B6152;text-align:right;line-height:1.7;">PLASMA 6 OSD + NOTIFICATION POPUPS · 480px COLUMN<br>TOGGLE <span style="color:#E0A82E;">do not disturb</span> IN TWEAKS</div>
+  </div>
+
+  <div id="osd-and-notifications" data-screen-label="osd-and-notifications" style="position:relative;width:1920px;height:1080px;background:#0A0A0A;overflow:hidden;flex:0 0 auto;">
+    <dc-import name="TraceField" uid="osd" level="dim" vignette="standard" surge="{{ false }}" style="position:absolute;inset:0;" hint-size="1920px,1080px"></dc-import>
+
+    <div style="position:absolute;left:112px;top:96px;display:flex;flex-direction:column;gap:20px;">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+        <div style="width:64px;height:64px;border:1px solid #E0A82E;display:flex;align-items:center;justify-content:center;">
+          <div style="width:34px;height:26px;border:1px solid #E0A82E;"></div>
+        </div>
+        <div style="font-size:24px;font-weight:500;letter-spacing:0.06em;color:#F4F0E6;">Home</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+        <div style="width:64px;height:64px;border:1px solid #E0A82E;display:flex;align-items:center;justify-content:center;">
+          <div style="width:26px;height:34px;border:1px solid #E0A82E;"></div>
+        </div>
+        <div style="font-size:24px;font-weight:500;letter-spacing:0.06em;color:#F4F0E6;">Captures</div>
+      </div>
+    </div>
+
+    <sc-if value="{{ dndOff }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;right:112px;top:96px;width:480px;display:flex;flex-direction:column;gap:16px;">
+
+        <div style="background:#0B0A07;border-top:2px solid #E0A82E;border-right:1px solid rgba(224,168,46,0.26);border-bottom:1px solid rgba(224,168,46,0.26);border-left:1px solid rgba(224,168,46,0.26);padding:20px;display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;">
+            <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">SURICATA</div>
+            <div style="font-size:24px;font-weight:500;letter-spacing:0.06em;color:#6B6152;">9:41 AM</div>
+          </div>
+          <div style="font-family:Archivo,sans-serif;font-weight:600;font-size:28px;line-height:1.1;letter-spacing:-0.015em;color:#F4F0E6;">12 alerts in the last minute</div>
+          <div style="font-size:24px;line-height:1.5;color:#A99C83;">ET SCAN Nmap -sS · eth0 · from 10.20.4.71</div>
+          <div style="display:flex;gap:24px;padding-top:4px;">
+            <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">OPEN ARKIME</div>
+            <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">MUTE 1H</div>
+          </div>
+        </div>
+
+        <div style="background:#0B0A07;border-top:2px solid #E0A82E;border-right:1px solid rgba(224,168,46,0.26);border-bottom:1px solid rgba(224,168,46,0.26);border-left:1px solid rgba(224,168,46,0.26);padding:20px;display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;">
+            <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">CZD</div>
+            <div style="font-size:24px;font-weight:500;letter-spacing:0.06em;color:#6B6152;">9:30 AM</div>
+          </div>
+          <div style="font-family:Archivo,sans-serif;font-weight:600;font-size:28px;line-height:1.1;letter-spacing:-0.015em;color:#F4F0E6;">Lock lab opens in 30 minutes</div>
+          <div style="font-size:24px;line-height:1.5;color:#A99C83;">Riggleman 204 · picks provided · badge required</div>
+          <div style="display:flex;gap:24px;padding-top:4px;">
+            <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">SCHEDULE →</div>
+          </div>
+        </div>
+
+        <div style="background:#0B0A07;border-top:2px solid #E0A82E;border-right:1px solid rgba(224,168,46,0.26);border-bottom:1px solid rgba(224,168,46,0.26);border-left:1px solid rgba(224,168,46,0.26);padding:20px;display:flex;flex-direction:column;gap:12px;opacity:0.45;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;">
+            <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">SYSTEM</div>
+            <div style="font-size:24px;font-weight:500;letter-spacing:0.06em;color:#6B6152;">9:12 AM</div>
+          </div>
+          <div style="font-family:Archivo,sans-serif;font-weight:600;font-size:28px;line-height:1.1;letter-spacing:-0.015em;color:#F4F0E6;">Updates are held until Monday</div>
+          <div style="font-size:24px;line-height:1.5;color:#A99C83;">The respin pins the kernel for the conference. apt will tell you no.</div>
+        </div>
+
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ dndOn }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;right:112px;top:96px;width:480px;background:#050505;border:1px solid rgba(224,168,46,0.26);padding:20px;display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">DO NOT DISTURB</div>
+        <div style="font-size:24px;line-height:1.5;color:#A99C83;">3 held. Nothing will pop until you turn it off.</div>
+      </div>
+    </sc-if>
+
+    <div style="position:absolute;left:720px;bottom:152px;width:480px;background:#050505;border:1px solid #E0A82E;padding:20px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;">
+        <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">VOLUME</div>
+        <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#F4F0E6;">64</div>
+      </div>
+      <div style="width:440px;height:2px;background:#4A320B;">
+        <div style="width:282px;height:2px;background:#E0A82E;"></div>
+      </div>
+    </div>
+
+    <div style="position:absolute;left:0;bottom:0;width:1920px;height:56px;background:#0B0A07;border-top:1px solid rgba(224,168,46,0.26);display:flex;align-items:center;padding:0 16px;gap:16px;box-sizing:border-box;">
+      <div style="display:flex;align-items:center;gap:10px;padding:0 16px;height:40px;background:rgba(224,168,46,0.05);border:1px solid rgba(224,168,46,0.26);">
+        <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">CZD ▸</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:0 16px;height:40px;background:rgba(224,168,46,0.05);border-bottom:1px solid #E0A82E;">
+        <div style="font-size:24px;font-weight:500;letter-spacing:0.06em;color:#F4F0E6;">Wireshark · eth0</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:0 16px;height:40px;">
+        <div style="font-size:24px;font-weight:500;letter-spacing:0.06em;color:#A99C83;">Konsole</div>
+      </div>
+      <div style="flex:1 1 0;"></div>
+      <div style="display:flex;align-items:center;gap:20px;">
+        <div style="display:flex;align-items:flex-end;gap:3px;height:24px;">
+          <div style="width:4px;height:8px;border:1px solid #E0A82E;"></div>
+          <div style="width:4px;height:15px;border:1px solid #E0A82E;"></div>
+          <div style="width:4px;height:22px;border:1px solid #E0A82E;background:#E0A82E;"></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:3px;height:24px;">
+          <div style="width:10px;height:12px;border:1px solid #E0A82E;"></div>
+          <div style="width:1px;height:16px;background:#E0A82E;"></div>
+          <div style="width:1px;height:22px;background:#E0A82E;"></div>
+        </div>
+        <div style="position:relative;width:22px;height:22px;border:1px solid #E0A82E;">
+          <div style="position:absolute;left:9px;top:5px;width:2px;height:11px;background:#E0A82E;"></div>
+        </div>
+        <sc-if value="{{ dndOn }}" hint-placeholder-val="{{ false }}">
+          <div style="position:relative;width:22px;height:22px;border:1px solid #E0A82E;background:rgba(224,168,46,0.05);">
+            <div style="position:absolute;left:-2px;top:9px;width:26px;height:2px;background:#E0A82E;transform:rotate(-45deg);"></div>
+          </div>
+        </sc-if>
+        <div style="display:flex;align-items:center;gap:1px;">
+          <div style="width:26px;height:13px;border:1px solid #E0A82E;padding:1px;box-sizing:border-box;"><div style="width:60%;height:100%;background:#E0A82E;"></div></div>
+          <div style="width:2px;height:6px;background:#E0A82E;"></div>
+        </div>
+        <div style="width:1px;height:24px;background:rgba(224,168,46,0.26);"></div>
+        <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#F4F0E6;">9:41 AM</div>
+      </div>
+    </div>
+
+    <sc-if value="{{ showGuides }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;right:112px;top:96px;width:480px;height:640px;border:1px dashed rgba(224,168,46,0.5);"></div>
+      <div style="position:absolute;right:112px;top:60px;font-size:16px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">480px COLUMN · 16px GAP · 112px FROM EDGE, CLEAR OF THE PANEL</div>
+      <div style="position:absolute;left:720px;bottom:120px;font-size:16px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">OSD CENTRED ON x960 · 96px ABOVE THE PANEL</div>
+    </sc-if>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">01 · A NOTIFICATION IS A ROW</div>
+      <div style="font-size:11px;line-height:1.7;">Source and time on one mono line, an Archivo headline, a mono detail line, gold mono actions. Same anatomy as a schedule row rotated upright, and the <span style="color:#E0A82E;">2px gold cap</span> on top is the same rule that opens a QR block. No app icon, no avatar, no colour coding by severity.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">02 · THEY DO NOT SLIDE IN</div>
+      <div style="font-size:11px;line-height:1.7;">Plasma's default is a slide-and-fade; CZD sets the popup animation duration to <span style="color:#E0A82E;">0ms</span>. A notification is present on one frame and absent on the next. Ageing past 30s drops the block to the <span style="color:#F4F0E6;">45% past-row opacity</span> — see the third one — then it goes.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">03 · THE OSD IS A LABEL AND A RULE</div>
+      <div style="font-size:11px;line-height:1.7;">Volume, brightness, caps lock and mic mute all use one 480×96 block: a gold mono word, a tabular value, and the 2px track. No dial, no speaker glyph, no big centred number. Mute shows the word <span style="color:#F4F0E6;">MUTED</span> and an empty track — the state is written, not drawn.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">04 · DND IS THE TALK-TRACK DEFAULT</div>
+      <div style="font-size:11px;line-height:1.7;">Suricata on a conference network will shout. The build ships a <span style="color:#E0A82E;">PRESENTING</span> shortcut that flips DND and holds everything; the tray cut takes the 45° strike and the stack collapses to one honest line with a count. Flip <span style="color:#E0A82E;">do not disturb</span> in Tweaks to see it.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:32px;flex-wrap:wrap;border-top:1px solid rgba(224,168,46,0.26);padding-top:20px;">
+    <div style="flex:1 1 400px;font-size:11px;line-height:1.8;">
+      <span style="color:#E0A82E;font-weight:700;letter-spacing:0.14em;">BATCH COMPLETE · </span>The boot animation specified as a timing sheet rather than keyframes, the login state batch 03 skipped, the only new application in the respin, and the interruption layer. With 06 the chain is continuous from power-on to a working desktop that knows how to talk to you — and the panel and menu calls from 04 are now drawn, not just decided.
+    </div>
+    <div style="flex:1 1 400px;font-size:11px;line-height:1.8;">
+      <span style="color:#E0A82E;font-weight:700;letter-spacing:0.14em;">OPEN · </span><span style="color:#F4F0E6;">Two for you:</span> whether czd-welcome should also ship as a desktop launcher for people who close it too fast, and whether CZD-schedule notifications belong on an attendee's machine at all — a conference pushing popups to your laptop is a choice, not a given. <span style="color:#F4F0E6;">Next:</span> batch 07 — the Konsole scheme and the GTK/Kvantum pass, so Wireshark and Burp do not arrive in Adwaita grey. Both dropped off 06 when you picked the first-run set.
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;bootProgress&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 60, &quot;min&quot;: 0, &quot;max&quot;: 100, &quot;step&quot;: 1, &quot;unit&quot;: &quot;%&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Boot&quot; },
+  &quot;loginState&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;refused&quot;, &quot;idle&quot;], &quot;default&quot;: &quot;refused&quot;, &quot;tsType&quot;: &quot;\&quot;refused\&quot; | \&quot;idle\&quot;&quot;, &quot;section&quot;: &quot;Login&quot; },
+  &quot;dnd&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Notifications&quot; },
+  &quot;showGuides&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Overlays&quot; }
+}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = Math.max(0, Math.min(100, this.props.bootProgress ?? 60));
+    const secs = (p / 100) * 11;
+    const state = this.props.loginState ?? "refused";
+    const dnd = this.props.dnd ?? false;
+    return {
+      trackFill: (p / 100 * 1287).toFixed(0) + "px",
+      playheadX: (p / 100 * 1287).toFixed(0) + "px",
+      playheadLabel: secs.toFixed(1) + "s",
+      loginError: state === "refused",
+      loginIdle: state === "idle",
+      dndOn: dnd,
+      dndOff: !dnd,
+      showGuides: this.props.showGuides ?? false
+    };
+  }
+}
+</script>
+</body>
+</html>

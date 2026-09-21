@@ -1,0 +1,20 @@
+#!/bin/sh
+set -e
+# Register the CZD GRUB and Plymouth themes. postrm puts the previous defaults back so
+# `apt purge 'czd-*'` returns a stock Kali Purple boot chain (release gate row 07).
+case "$1" in
+  configure)
+    if command -v plymouth-set-default-theme >/dev/null 2>&1; then
+      prev=$(plymouth-set-default-theme 2>/dev/null || true)
+      if [ -n "$prev" ] && [ "$prev" != "czd-purple" ]; then
+        echo "$prev" > /var/lib/czd-boot-theme.previous-plymouth
+      fi
+      plymouth-set-default-theme -R czd-purple || true
+    fi
+    if command -v update-grub >/dev/null 2>&1 && [ -d /boot/grub ]; then
+      update-grub || true
+    fi
+    ;;
+esac
+#DEBHELPER#
+exit 0

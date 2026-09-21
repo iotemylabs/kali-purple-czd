@@ -1,0 +1,451 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "components/schedule/**",
+              "components/structure/**",
+              "components/wayfinding/**",
+              "ui_kits/program-guide/**",
+              "ui_kits/signage/**",
+              "ui_kits/website/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Archivo|IBM Plex Mono))/i]",
+        "message": "Font not provided by the design system. Available: Archivo, IBM Plex Mono."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Brandmark'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|height|src|assetBase|alt|style|key|ref|className|style|children)$/]",
+        "message": "<Brandmark> doesn't accept that prop. Declared props: variant, height, src, assetBase, alt, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Brandmark'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:lockup|mark|wordmark)$/]",
+        "message": "<Brandmark> variant must be one of 'lockup' | 'mark' | 'wordmark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='EyebrowHeader'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|marker|index|scale|rule|trailing|style|key|ref|className|style|children)$/]",
+        "message": "<EyebrowHeader> doesn't accept that prop. Declared props: label, marker, index, scale, rule, trailing, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='EyebrowHeader'] > JSXAttribute[name.name='scale'] > Literal[value!=/^(?:screen|print|signage)$/]",
+        "message": "<EyebrowHeader> scale must be one of 'screen' | 'print' | 'signage'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='LogoSlot'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|width|height|scale|style|key|ref|className|style|children)$/]",
+        "message": "<LogoSlot> doesn't accept that prop. Declared props: label, width, height, scale, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='LogoSlot'] > JSXAttribute[name.name='scale'] > Literal[value!=/^(?:screen|print|signage)$/]",
+        "message": "<LogoSlot> scale must be one of 'screen' | 'print' | 'signage'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='MapKeyItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:number|place|detail|scale|style|key|ref|className|style|children)$/]",
+        "message": "<MapKeyItem> doesn't accept that prop. Declared props: number, place, detail, scale, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='MapKeyItem'] > JSXAttribute[name.name='scale'] > Literal[value!=/^(?:screen|print|signage)$/]",
+        "message": "<MapKeyItem> scale must be one of 'screen' | 'print' | 'signage'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='QRBlock'] > JSXAttribute > JSXIdentifier[name!=/^(?:eyebrow|primary|secondary|src|scale|style|key|ref|className|style|children)$/]",
+        "message": "<QRBlock> doesn't accept that prop. Declared props: eyebrow, primary, secondary, src, scale, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='QRBlock'] > JSXAttribute[name.name='scale'] > Literal[value!=/^(?:screen|print|signage)$/]",
+        "message": "<QRBlock> scale must be one of 'screen' | 'print' | 'signage'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Rule'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|vertical|style|key|ref|className|style|children)$/]",
+        "message": "<Rule> doesn't accept that prop. Declared props: variant, vertical, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Rule'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:hair|soft|bold)$/]",
+        "message": "<Rule> variant must be one of 'hair' | 'soft' | 'bold'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ScheduleRow'] > JSXAttribute > JSXIdentifier[name!=/^(?:start|end|title|byline|tag|room|variant|scale|state|capTop|capBottom|style|key|ref|className|style|children)$/]",
+        "message": "<ScheduleRow> doesn't accept that prop. Declared props: start, end, title, byline, tag, room, variant, scale, state, capTop, capBottom, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ScheduleRow'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:standard|emphasis|terminal)$/]",
+        "message": "<ScheduleRow> variant must be one of 'standard' | 'emphasis' | 'terminal'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ScheduleRow'] > JSXAttribute[name.name='scale'] > Literal[value!=/^(?:screen|print|signage)$/]",
+        "message": "<ScheduleRow> scale must be one of 'screen' | 'print' | 'signage'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ScheduleRow'] > JSXAttribute[name.name='state'] > Literal[value!=/^(?:now|past)$/]",
+        "message": "<ScheduleRow> state must be one of 'now' | 'past'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SessionTag'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|scale|tone|style|key|ref|className|style|children)$/]",
+        "message": "<SessionTag> doesn't accept that prop. Declared props: label, scale, tone, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SessionTag'] > JSXAttribute[name.name='scale'] > Literal[value!=/^(?:screen|print|signage)$/]",
+        "message": "<SessionTag> scale must be one of 'screen' | 'print' | 'signage'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SessionTag'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:gold|muted|deep)$/]",
+        "message": "<SessionTag> tone must be one of 'gold' | 'muted' | 'deep'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StatusChip'] > JSXAttribute > JSXIdentifier[name!=/^(?:state|label|scale|style|key|ref|className|style|children)$/]",
+        "message": "<StatusChip> doesn't accept that prop. Declared props: state, label, scale, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StatusChip'] > JSXAttribute[name.name='state'] > Literal[value!=/^(?:now|next|hold|stale)$/]",
+        "message": "<StatusChip> state must be one of 'now' | 'next' | 'hold' | 'stale'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StatusChip'] > JSXAttribute[name.name='scale'] > Literal[value!=/^(?:screen|signage)$/]",
+        "message": "<StatusChip> scale must be one of 'screen' | 'signage'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='WayfindingBlock'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|destination|directions|time|arrow|scale|style|key|ref|className|style|children)$/]",
+        "message": "<WayfindingBlock> doesn't accept that prop. Declared props: label, destination, directions, time, arrow, scale, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='WayfindingBlock'] > JSXAttribute[name.name='arrow'] > Literal[value!=/^(?:→|←|↑|↓|)$/]",
+        "message": "<WayfindingBlock> arrow must be one of '→' | '←' | '↑' | '↓' | ''."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='WayfindingBlock'] > JSXAttribute[name.name='scale'] > Literal[value!=/^(?:screen|print|signage)$/]",
+        "message": "<WayfindingBlock> scale must be one of 'screen' | 'print' | 'signage'."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "Brandmark": {
+        "replaces": []
+      },
+      "EyebrowHeader": {
+        "replaces": []
+      },
+      "LogoSlot": {
+        "replaces": []
+      },
+      "MapKeyItem": {
+        "replaces": []
+      },
+      "QRBlock": {
+        "replaces": []
+      },
+      "Rule": {
+        "replaces": []
+      },
+      "ScheduleRow": {
+        "replaces": []
+      },
+      "SessionTag": {
+        "replaces": []
+      },
+      "StatusChip": {
+        "replaces": []
+      },
+      "WayfindingBlock": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--border-fold-tick",
+      "--border-rule",
+      "--border-rule-soft",
+      "--content-max",
+      "--czd-font-display",
+      "--czd-font-mono",
+      "--czd-gold",
+      "--czd-gold-deep",
+      "--czd-gold-mid",
+      "--czd-gold-rgb",
+      "--czd-gold-surge",
+      "--czd-ink-1",
+      "--czd-ink-2",
+      "--czd-ink-3",
+      "--czd-ink-4",
+      "--czd-line",
+      "--czd-line-soft",
+      "--czd-status-hold",
+      "--czd-status-stale",
+      "--czd-surface-base",
+      "--czd-surface-inset",
+      "--czd-surface-raised",
+      "--czd-surface-warm",
+      "--czd-tint",
+      "--dur-instant",
+      "--dur-tick",
+      "--ease",
+      "--fold-tick-h",
+      "--fold-tick-w",
+      "--font-body",
+      "--font-display",
+      "--font-mono",
+      "--leading-display",
+      "--leading-display-loose",
+      "--leading-display-tight",
+      "--leading-mono",
+      "--leading-mono-tight",
+      "--link-color",
+      "--link-color-hover",
+      "--panel-pad",
+      "--print-col-gap",
+      "--print-margin",
+      "--print-page-h",
+      "--print-page-w",
+      "--radius",
+      "--row-gap",
+      "--row-pad-y",
+      "--row-pad-y-print",
+      "--rule-bold",
+      "--rule-dashed",
+      "--rule-section-cap",
+      "--rule-soft",
+      "--rule-standard",
+      "--rule-w-bold",
+      "--rule-w-hair",
+      "--section-gap",
+      "--shadow",
+      "--signage-h",
+      "--signage-overscan",
+      "--signage-w",
+      "--size-body",
+      "--size-body-s",
+      "--size-caption",
+      "--size-display-l",
+      "--size-display-m",
+      "--size-display-s",
+      "--size-display-xl",
+      "--size-eyebrow",
+      "--size-print-body",
+      "--size-print-display",
+      "--size-print-eyebrow",
+      "--size-print-logo-slot",
+      "--size-print-time",
+      "--size-print-title",
+      "--size-signage-body",
+      "--size-signage-caption",
+      "--size-signage-eyebrow",
+      "--size-signage-hero",
+      "--size-signage-subtitle",
+      "--size-signage-title",
+      "--space-0",
+      "--space-1",
+      "--space-10",
+      "--space-2",
+      "--space-3",
+      "--space-4",
+      "--space-5",
+      "--space-6",
+      "--space-7",
+      "--space-8",
+      "--space-9",
+      "--state-hold",
+      "--state-next",
+      "--state-now",
+      "--state-stale",
+      "--surface-card",
+      "--surface-inset",
+      "--surface-page",
+      "--surface-row-emphasis",
+      "--surface-well",
+      "--text-accent",
+      "--text-accent-peak",
+      "--text-body",
+      "--text-display-deep",
+      "--text-heading",
+      "--text-muted",
+      "--text-print-muted",
+      "--time-col-w",
+      "--time-col-w-print",
+      "--time-col-w-signage",
+      "--track-display-l",
+      "--track-display-m",
+      "--track-display-s",
+      "--track-display-xl",
+      "--track-eyebrow",
+      "--track-eyebrow-wide",
+      "--track-logo-slot",
+      "--track-mono",
+      "--track-tag",
+      "--weight-display-bold",
+      "--weight-display-regular",
+      "--weight-display-semibold",
+      "--weight-mono-bold",
+      "--weight-mono-medium",
+      "--weight-mono-regular",
+      "--weight-mono-semibold"
+    ],
+    "tokenKinds": {
+      "--czd-surface-base": "color",
+      "--czd-surface-inset": "color",
+      "--czd-surface-raised": "color",
+      "--czd-surface-warm": "color",
+      "--czd-ink-1": "color",
+      "--czd-ink-2": "color",
+      "--czd-ink-3": "color",
+      "--czd-ink-4": "color",
+      "--czd-gold-surge": "color",
+      "--czd-gold": "color",
+      "--czd-gold-mid": "color",
+      "--czd-gold-deep": "color",
+      "--czd-gold-rgb": "other",
+      "--czd-status-hold": "color",
+      "--czd-status-stale": "color",
+      "--czd-line": "color",
+      "--czd-line-soft": "color",
+      "--czd-tint": "color",
+      "--surface-page": "color",
+      "--surface-inset": "color",
+      "--surface-card": "color",
+      "--surface-well": "color",
+      "--surface-row-emphasis": "color",
+      "--text-heading": "font",
+      "--text-body": "font",
+      "--text-print-muted": "font",
+      "--text-muted": "font",
+      "--text-accent": "font",
+      "--text-accent-peak": "font",
+      "--text-display-deep": "font",
+      "--border-rule": "color",
+      "--border-rule-soft": "color",
+      "--border-fold-tick": "color",
+      "--state-now": "color",
+      "--state-next": "color",
+      "--state-hold": "color",
+      "--state-stale": "color",
+      "--link-color": "color",
+      "--link-color-hover": "color",
+      "--czd-font-display": "font",
+      "--czd-font-mono": "font",
+      "--font-display": "font",
+      "--font-mono": "font",
+      "--font-body": "font",
+      "--weight-display-regular": "font",
+      "--weight-display-semibold": "font",
+      "--weight-display-bold": "font",
+      "--weight-mono-regular": "font",
+      "--weight-mono-medium": "font",
+      "--weight-mono-semibold": "font",
+      "--weight-mono-bold": "font",
+      "--track-display-s": "spacing",
+      "--track-display-m": "spacing",
+      "--track-display-l": "spacing",
+      "--track-display-xl": "spacing",
+      "--track-mono": "spacing",
+      "--track-eyebrow": "spacing",
+      "--track-eyebrow-wide": "spacing",
+      "--track-tag": "spacing",
+      "--track-logo-slot": "spacing",
+      "--leading-display-tight": "font",
+      "--leading-display": "font",
+      "--leading-display-loose": "font",
+      "--leading-mono": "font",
+      "--leading-mono-tight": "font",
+      "--size-signage-hero": "spacing",
+      "--size-signage-title": "spacing",
+      "--size-signage-subtitle": "spacing",
+      "--size-signage-body": "spacing",
+      "--size-signage-eyebrow": "spacing",
+      "--size-signage-caption": "spacing",
+      "--size-display-xl": "spacing",
+      "--size-display-l": "spacing",
+      "--size-display-m": "spacing",
+      "--size-display-s": "spacing",
+      "--size-body": "spacing",
+      "--size-body-s": "spacing",
+      "--size-eyebrow": "spacing",
+      "--size-caption": "spacing",
+      "--size-print-display": "spacing",
+      "--size-print-title": "spacing",
+      "--size-print-body": "spacing",
+      "--size-print-time": "spacing",
+      "--size-print-eyebrow": "spacing",
+      "--size-print-logo-slot": "spacing",
+      "--space-0": "spacing",
+      "--space-1": "spacing",
+      "--space-2": "spacing",
+      "--space-3": "spacing",
+      "--space-4": "spacing",
+      "--space-5": "spacing",
+      "--space-6": "spacing",
+      "--space-7": "spacing",
+      "--space-8": "spacing",
+      "--space-9": "spacing",
+      "--space-10": "spacing",
+      "--row-pad-y": "spacing",
+      "--row-pad-y-print": "spacing",
+      "--row-gap": "spacing",
+      "--time-col-w": "spacing",
+      "--time-col-w-print": "spacing",
+      "--time-col-w-signage": "spacing",
+      "--section-gap": "spacing",
+      "--panel-pad": "spacing",
+      "--signage-w": "spacing",
+      "--signage-h": "spacing",
+      "--signage-overscan": "spacing",
+      "--print-page-w": "spacing",
+      "--print-page-h": "spacing",
+      "--print-margin": "spacing",
+      "--print-col-gap": "spacing",
+      "--content-max": "spacing",
+      "--radius": "radius",
+      "--shadow": "shadow",
+      "--rule-w-hair": "spacing",
+      "--rule-w-bold": "spacing",
+      "--rule-standard": "color",
+      "--rule-soft": "color",
+      "--rule-bold": "color",
+      "--rule-section-cap": "color",
+      "--rule-dashed": "color",
+      "--fold-tick-h": "spacing",
+      "--fold-tick-w": "spacing",
+      "--ease": "other",
+      "--dur-instant": "other",
+      "--dur-tick": "other"
+    },
+    "fontFamilies": [
+      "Archivo",
+      "IBM Plex Mono"
+    ]
+  }
+}

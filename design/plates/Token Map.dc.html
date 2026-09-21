@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/rules.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/base.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/styles.css">
+  <script src="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:#0A0A0A;}
+    a{color:#E0A82E;text-decoration-color:rgba(224,168,46,0.26);}
+    a:hover{color:#FFE9A8;text-decoration-color:#E0A82E;}
+  </style>
+</helmet>
+
+<div style="background:#0A0A0A;color:#A99C83;font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;padding:48px 32px 96px;">
+<div style="max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:48px;">
+
+  <div style="display:flex;flex-direction:column;gap:24px;border-bottom:2px solid #E0A82E;padding-bottom:24px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap;">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// DELIVERABLE 01 · TOKEN MAP</div>
+        <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:56px;line-height:0.9;letter-spacing:-0.035em;color:#F4F0E6;">CZD Purple</div>
+        <div style="font-size:11px;color:#A99C83;">A Kali Purple respin on KDE Plasma 6 · dark only · sRGB</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;text-align:right;">
+        <x-import component-from-global-scope="CharlestonZeroDayDesignSystem_182c31.Brandmark" variant="lockup" height="40px" asset-base="assets" hint-size="120px,40px"></x-import>
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.14em;color:#E0A82E;">CZD-2026-10-231</div>
+        <div style="font-size:9px;letter-spacing:0.14em;color:#6B6152;">TOKEN MAP v1.0.0</div>
+      </div>
+    </div>
+    <sc-if value="{{ frozen }}" hint-placeholder-val="{{ false }}">
+      <div style="display:inline-flex;align-self:flex-start;background:#E0A82E;color:#0A0A0A;font-size:10px;font-weight:700;letter-spacing:0.20em;padding:6px 12px;">FROZEN — DESIGN AGAINST THESE VALUES</div>
+    </sc-if>
+    <sc-if value="{{ awaitingApproval }}" hint-placeholder-val="{{ true }}">
+      <div style="display:inline-flex;align-self:flex-start;border:1px solid #E0A82E;color:#E0A82E;font-size:10px;font-weight:700;letter-spacing:0.20em;padding:6px 12px;">AWAITING APPROVAL — ONE ROUND OF ADJUSTMENT, THEN FROZEN</div>
+    </sc-if>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:16px;">
+    <x-import component-from-global-scope="CharlestonZeroDayDesignSystem_182c31.EyebrowHeader" label="DECISIONS LOCKED" index="00 ·" trailing="FROM YOUR ANSWERS" hint-size="100%,20px"></x-import>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+      <div style="background:#0B0A07;padding:16px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">NAME &amp; WORDMARK</div>
+        <div style="font-family:Archivo,sans-serif;font-weight:600;font-size:18px;color:#F4F0E6;letter-spacing:-0.015em;">CZD PURPLE</div>
+        <div style="font-size:10px;line-height:1.5;color:#A99C83;">Wordmark set uppercase in Archivo 700. Version string <span style="color:#E0A82E;">CZD-2026-10-231</span> appears only in the welcome app, GRUB title bar, and ISO filename — never in the wordmark artwork.</div>
+      </div>
+      <div style="background:#0B0A07;padding:16px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">PURPLE</div>
+        <div style="font-family:Archivo,sans-serif;font-weight:600;font-size:18px;color:#F4F0E6;letter-spacing:-0.015em;">Declined — gold only</div>
+        <div style="font-size:10px;line-height:1.5;color:#A99C83;">No purple hue enters the system. <span style="color:#E0A82E;">accent.purple.*</span> stay in the map as reserved keys aliased to the gold ramp so the build never resolves a null.</div>
+      </div>
+      <div style="background:#0B0A07;padding:16px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">KALI DRAGON</div>
+        <div style="font-family:Archivo,sans-serif;font-weight:600;font-size:18px;color:#F4F0E6;letter-spacing:-0.015em;">Boot, installer, wallpaper</div>
+        <div style="font-size:10px;line-height:1.5;color:#A99C83;">Small mark on wallpaper-default, lower right, ≤64px, single-colour <span style="color:#E0A82E;">trace.gold.dim</span>. Flagged: gold-only means the dragon is recoloured monochrome, not shipped in Kali blue.</div>
+      </div>
+      <div style="background:#0B0A07;padding:16px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">ANSI &amp; STATES</div>
+        <div style="font-family:Archivo,sans-serif;font-weight:600;font-size:18px;color:#F4F0E6;letter-spacing:-0.015em;">Conventional brightness</div>
+        <div style="font-size:10px;line-height:1.5;color:#A99C83;">Log legibility wins over hue discipline. Two new hues only — success and error. Warning reuses brand gold; info reuses the existing signage <span style="color:#E0A82E;">HOLD</span> grey-blue.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <x-import component-from-global-scope="CharlestonZeroDayDesignSystem_182c31.EyebrowHeader" label="SURFACE" index="01 ·" trailing="4 PLANES WITHIN 19 LEVELS" hint-size="100%,20px"></x-import>
+    <div style="display:flex;flex-direction:column;">
+      <div style="display:grid;grid-template-columns:72px 176px 88px 1fr 76px;gap:16px;align-items:center;padding-bottom:8px;font-size:8px;font-weight:700;letter-spacing:0.14em;color:#6B6152;">
+        <div>SWATCH</div><div>TOKEN</div><div>HEX</div><div>ROLE</div><div style="text-align:right;">ON BASE</div>
+      </div>
+      <div style="display:grid;grid-template-columns:72px 176px 88px 1fr 76px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid rgba(224,168,46,0.26);">
+        <div style="height:36px;background:#0A0A0A;border:1px solid rgba(224,168,46,0.26);"></div>
+        <div style="font-size:11px;font-weight:600;color:#F4F0E6;">surface.base</div>
+        <div style="font-size:11px;color:#E0A82E;">#0A0A0A</div>
+        <div style="font-size:10px;line-height:1.5;">Desktop root, window background, Konsole background, GRUB field</div>
+        <div style="font-size:10px;color:#6B6152;text-align:right;">—</div>
+      </div>
+      <div style="display:grid;grid-template-columns:72px 176px 88px 1fr 76px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid rgba(224,168,46,0.13);">
+        <div style="height:36px;background:#0B0A07;border:1px solid rgba(224,168,46,0.26);"></div>
+        <div style="font-size:11px;font-weight:600;color:#F4F0E6;">surface.raised</div>
+        <div style="font-size:11px;color:#E0A82E;">#0B0A07</div>
+        <div style="font-size:10px;line-height:1.5;">Plasma panel, SDDM card, Calamares sidebar, welcome-app panes</div>
+        <div style="font-size:10px;color:#6B6152;text-align:right;">—</div>
+      </div>
+      <div style="display:grid;grid-template-columns:72px 176px 88px 1fr 76px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid rgba(224,168,46,0.13);">
+        <div style="height:36px;background:#181307;border:1px solid rgba(224,168,46,0.26);"></div>
+        <div style="font-size:11px;font-weight:600;color:#F4F0E6;">surface.overlay</div>
+        <div style="font-size:11px;color:#E0A82E;">#181307</div>
+        <div style="font-size:10px;line-height:1.5;">Kickoff launcher, context menus, tooltips, popups <span style="color:#E0A82E;">· EXT</span></div>
+        <div style="font-size:10px;color:#6B6152;text-align:right;">—</div>
+      </div>
+      <div style="display:grid;grid-template-columns:72px 176px 88px 1fr 76px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid rgba(224,168,46,0.13);border-bottom:2px solid #E0A82E;">
+        <div style="height:36px;background:#050505;border:1px solid rgba(224,168,46,0.26);"></div>
+        <div style="font-size:11px;font-weight:600;color:#F4F0E6;">surface.inset</div>
+        <div style="font-size:11px;color:#E0A82E;">#050505</div>
+        <div style="font-size:10px;line-height:1.5;">Input wells, list backgrounds, vignette core on wallpaper-lock</div>
+        <div style="font-size:10px;color:#6B6152;text-align:right;">—</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <x-import component-from-global-scope="CharlestonZeroDayDesignSystem_182c31.EyebrowHeader" label="TRACE" index="02 ·" trailing="THE CIRCUIT + THE ELECTRICITY" hint-size="100%,20px"></x-import>
+    <div style="display:flex;flex-direction:column;">
+      <div style="display:grid;grid-template-columns:72px 176px 88px 1fr 76px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid rgba(224,168,46,0.26);">
+        <div style="height:36px;background:#E0A82E;"></div>
+        <div style="font-size:11px;font-weight:600;color:#F4F0E6;">trace.gold</div>
+        <div style="font-size:11px;color:#E0A82E;">#E0A82E</div>
+        <div style="font-size:10px;line-height:1.5;">Primary trace stroke, brand gold, source of every hairline alpha</div>
+        <div style="font-size:10px;color:#4FC26B;text-align:right;">9.25:1</div>
+      </div>
+      <div style="display:grid;grid-template-columns:72px 176px 88px 1fr 76px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid rgba(224,168,46,0.13);">
+        <div style="height:36px;background:#8A6318;"></div>
+        <div style="font-size:11px;font-weight:600;color:#F4F0E6;">trace.gold.dim</div>
+        <div style="font-size:11px;color:#E0A82E;">#8A6318</div>
+        <div style="font-size:10px;line-height:1.5;">Background trace lattice, deep display type, Kali dragon fill</div>
+        <div style="font-size:10px;color:#E0A82E;text-align:right;">3.67:1</div>
+      </div>
+      <div style="display:grid;grid-template-columns:72px 176px 88px 1fr 76px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid rgba(224,168,46,0.13);">
+        <div style="height:36px;background:#FFE9A8;"></div>
+        <div style="font-size:11px;font-weight:600;color:#F4F0E6;">trace.gold.surge</div>
+        <div style="font-size:11px;color:#E0A82E;">#FFE9A8</div>
+        <div style="font-size:10px;line-height:1.5;">The electricity. Surge head, hover, Plymouth fill leading edge. Rationed.</div>
+        <div style="font-size:10px;color:#4FC26B;text-align:right;">16.5:1</div>
+      </div>
+      <div style="display:grid;grid-template-columns:72px 176px 88px 1fr 76px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid rgba(224,168,46,0.13);border-bottom:2px solid #E0A82E;">
+        <div style="height:36px;background:#4A320B;"></div>
+        <div style="font-size:11px;font-weight:600;color:#F4F0E6;">trace.gold.deep</div>
+        <div style="font-size:11px;color:#E0A82E;">#4A320B</div>
+        <div style="font-size:10px;line-height:1.5;">Far-field circuit density, barely-there fills, wallpaper left third</div>
+        <div style="font-size:10px;color:#6B6152;text-align:right;">1.65:1</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <x-import component-from-global-scope="CharlestonZeroDayDesignSystem_182c31.EyebrowHeader" label="ACCENT · PURPLE" index="03 ·" trailing="DECLINED" hint-size="100%,20px"></x-import>
+    <div style="border:1px dashed #E0A82E;padding:20px;display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
+      <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:10px;">
+        <div style="font-family:Archivo,sans-serif;font-weight:600;font-size:16px;color:#F4F0E6;letter-spacing:-0.015em;">No second hue enters the system</div>
+        <div style="font-size:10px;line-height:1.6;">You chose CZD gold only, so the purple extension is not proposed. The two keys stay in the JSON as reserved aliases — a build that reads <span style="color:#E0A82E;">accent.purple</span> gets gold rather than a missing key. The Kali identity is carried by the dragon silhouette and the CSF category naming, not by colour.</div>
+        <div style="font-size:10px;line-height:1.6;color:#E0A82E;">Consequence to accept: the dragon ships recoloured to gold.dim. Kali's mark is normally purple/blue. If a faithful dragon matters more than palette purity, say so and I will carve out exactly one exception.</div>
+      </div>
+      <div style="flex:0 0 200px;display:flex;flex-direction:column;gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+        <div style="background:#E0A82E;padding:10px 12px;font-size:9px;font-weight:700;letter-spacing:0.14em;color:#0A0A0A;">accent.purple → #E0A82E</div>
+        <div style="background:#8A6318;padding:10px 12px;font-size:9px;font-weight:700;letter-spacing:0.14em;color:#F4F0E6;">accent.purple.dim → #8A6318</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <x-import component-from-global-scope="CharlestonZeroDayDesignSystem_182c31.EyebrowHeader" label="TEXT" index="04 ·" trailing="AA FLOOR 4.5:1 ON SURFACE.BASE" hint-size="100%,20px"></x-import>
+    <div style="display:flex;flex-direction:column;">
+      <div style="display:grid;grid-template-columns:72px 176px 88px 1fr 76px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid rgba(224,168,46,0.26);">
+        <div style="height:36px;background:#0A0A0A;border:1px solid rgba(224,168,46,0.26);color:#F4F0E6;font-size:13px;display:flex;align-items:center;justify-content:center;">Aa</div>
+        <div style="font-size:11px;font-weight:600;color:#F4F0E6;">text.primary</div>
+        <div style="font-size:11px;color:#E0A82E;">#F4F0E6</div>
+        <div style="font-size:10px;line-height:1.5;">Headings, titles, active menu item, field input text</div>
+        <div style="font-size:10px;color:#4FC26B;text-align:right;">17.4:1</div>
+      </div>
+      <div style="display:grid;grid-template-columns:72px 176px 88px 1fr 76px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid rgba(224,168,46,0.13);">
+        <div style="height:36px;background:#0A0A0A;border:1px solid rgba(224,168,46,0.26);color:#A99C83;font-size:13px;display:flex;align-items:center;justify-content:center;">Aa</div>
+        <div style="font-size:11px;font-weight:600;color:#F4F0E6;">text.secondary</div>
+        <div style="font-size:11px;color:#E0A82E;">#A99C83</div>
+        <div style="font-size:10px;line-height:1.5;">Body copy, inactive menu items, captions, slideshow prose</div>
+        <div style="font-size:10px;color:#4FC26B;text-align:right;">7.33:1</div>
+      </div>
+      <div style="display:grid;grid-template-columns:72px 176px 88px 1fr 76px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid rgba(224,168,46,0.13);border-bottom:2px solid #E0A82E;">
+        <div style="height:36px;background:#0A0A0A;border:1px solid rgba(224,168,46,0.26);color:#6B6152;font-size:13px;display:flex;align-items:center;justify-content:center;">Aa</div>
+        <div style="font-size:11px;font-weight:600;color:#F4F0E6;">text.disabled</div>
+        <div style="font-size:11px;color:#E0A82E;">#6B6152</div>
+        <div style="font-size:10px;line-height:1.5;">Disabled controls only. Below AA by design — never carries information</div>
+        <div style="font-size:10px;color:#E5484D;text-align:right;">3.26:1</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <x-import component-from-global-scope="CharlestonZeroDayDesignSystem_182c31.EyebrowHeader" label="STATE" index="05 ·" trailing="2 NEW HUES ONLY" hint-size="100%,20px"></x-import>
+    <div style="display:flex;flex-direction:column;">
+      <div style="display:grid;grid-template-columns:72px 176px 88px 1fr 76px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid rgba(224,168,46,0.26);">
+        <div style="height:36px;background:#4FC26B;"></div>
+        <div style="font-size:11px;font-weight:600;color:#F4F0E6;">state.success</div>
+        <div style="font-size:11px;color:#E0A82E;">#4FC26B</div>
+        <div style="font-size:10px;line-height:1.5;">apt success, verified checksum, ANSI green anchor <span style="color:#E0A82E;">· EXT</span></div>
+        <div style="font-size:10px;color:#4FC26B;text-align:right;">8.73:1</div>
+      </div>
+      <div style="display:grid;grid-template-columns:72px 176px 88px 1fr 76px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid rgba(224,168,46,0.13);">
+        <div style="height:36px;background:#E0A82E;"></div>
+        <div style="font-size:11px;font-weight:600;color:#F4F0E6;">state.warning</div>
+        <div style="font-size:11px;color:#E0A82E;">#E0A82E</div>
+        <div style="font-size:10px;line-height:1.5;">Caution notices, ANSI yellow anchor. Brand gold — no extension needed</div>
+        <div style="font-size:10px;color:#4FC26B;text-align:right;">9.25:1</div>
+      </div>
+      <div style="display:grid;grid-template-columns:72px 176px 88px 1fr 76px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid rgba(224,168,46,0.13);">
+        <div style="height:36px;background:#E5484D;"></div>
+        <div style="font-size:11px;font-weight:600;color:#F4F0E6;">state.error</div>
+        <div style="font-size:11px;color:#E0A82E;">#E5484D</div>
+        <div style="font-size:10px;line-height:1.5;">"Login failed", apt error, ANSI red anchor <span style="color:#E0A82E;">· EXT</span></div>
+        <div style="font-size:10px;color:#4FC26B;text-align:right;">5.06:1</div>
+      </div>
+      <div style="display:grid;grid-template-columns:72px 176px 88px 1fr 76px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid rgba(224,168,46,0.13);border-bottom:2px solid #E0A82E;">
+        <div style="height:36px;background:#8A93A0;"></div>
+        <div style="font-size:11px;font-weight:600;color:#F4F0E6;">state.info</div>
+        <div style="font-size:11px;color:#E0A82E;">#8A93A0</div>
+        <div style="font-size:10px;line-height:1.5;">Neutral notice, ANSI blue anchor. Reuses the signage HOLD grey-blue</div>
+        <div style="font-size:10px;color:#4FC26B;text-align:right;">6.38:1</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <x-import component-from-global-scope="CharlestonZeroDayDesignSystem_182c31.EyebrowHeader" label="SELECTION &amp; FOCUS" index="06 ·" hint-size="100%,20px"></x-import>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+      <div style="background:#0B0A07;padding:16px;display:flex;flex-direction:column;gap:12px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">SELECTION · DEFAULT</div>
+        <div style="background:#8A6318;color:#F4F0E6;padding:8px 12px;font-size:11px;">kali-purple-czd-2026.iso</div>
+        <div style="font-size:10px;line-height:1.6;">selection.bg <span style="color:#E0A82E;">#8A6318</span> · selection.fg <span style="color:#E0A82E;">#F4F0E6</span> · 4.75:1 on the fill. Lists, text selection, file manager.</div>
+      </div>
+      <div style="background:#0B0A07;padding:16px;display:flex;flex-direction:column;gap:12px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">SELECTION · EMPHASIS</div>
+        <div style="background:#E0A82E;color:#0A0A0A;padding:8px 12px;font-size:11px;font-weight:600;">Install CZD Purple</div>
+        <div style="font-size:10px;line-height:1.6;">Solid gold on <span style="color:#E0A82E;">#0A0A0A</span>. The loudest element in the system — one per screen. GRUB highlight, default button, Kickoff current item.</div>
+      </div>
+      <div style="background:#0B0A07;padding:16px;display:flex;flex-direction:column;gap:12px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">FOCUS RING</div>
+        <div style="display:flex;padding:2px;"><div style="outline:1px solid #E0A82E;outline-offset:2px;background:#050505;color:#A99C83;padding:8px 12px;font-size:11px;">password</div></div>
+        <div style="font-size:10px;line-height:1.6;">focus.ring <span style="color:#E0A82E;">#E0A82E</span> · 1px solid · 2px offset. Never removed, never replaced by a glow.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <x-import component-from-global-scope="CharlestonZeroDayDesignSystem_182c31.EyebrowHeader" label="TYPE" index="07 ·" trailing="OFL — SHIPPABLE IN THE ISO" hint-size="100%,20px"></x-import>
+    <div style="display:flex;flex-direction:column;">
+      <div style="display:grid;grid-template-columns:200px 1fr 200px;gap:24px;align-items:baseline;padding:18px 0;border-top:1px solid rgba(224,168,46,0.26);">
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <div style="font-size:11px;font-weight:600;color:#F4F0E6;">font.ui</div>
+          <div style="font-size:9px;color:#6B6152;">fontconfig: sans-serif</div>
+        </div>
+        <div style="font-family:Archivo,sans-serif;font-weight:500;font-size:24px;color:#F4F0E6;letter-spacing:-0.015em;">Archivo — 400 500 600 700</div>
+        <div style="font-size:9px;line-height:1.6;color:#A99C83;">SIL OFL 1.1 · google/fonts<br>Plasma UI, Calamares, welcome app <span style="color:#E0A82E;">· EXT: promoted from display-only to UI body role</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:200px 1fr 200px;gap:24px;align-items:baseline;padding:18px 0;border-top:1px solid rgba(224,168,46,0.13);">
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <div style="font-size:11px;font-weight:600;color:#F4F0E6;">font.mono</div>
+          <div style="font-size:9px;color:#6B6152;">fontconfig: monospace</div>
+        </div>
+        <div style="font-size:20px;color:#F4F0E6;">IBM Plex Mono — 400 500 600 700</div>
+        <div style="font-size:9px;line-height:1.6;color:#A99C83;">SIL OFL 1.1 · google/fonts<br>Konsole, every eyebrow, label, time, URL and structural line</div>
+      </div>
+      <div style="display:grid;grid-template-columns:200px 1fr 200px;gap:24px;align-items:baseline;padding:18px 0;border-top:1px solid rgba(224,168,46,0.13);border-bottom:2px solid #E0A82E;">
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <div style="font-size:11px;font-weight:600;color:#F4F0E6;">font.display</div>
+          <div style="font-size:9px;color:#6B6152;">tracking −0.035em</div>
+        </div>
+        <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:32px;color:#F4F0E6;letter-spacing:-0.035em;line-height:1;">CZD PURPLE</div>
+        <div style="font-size:9px;line-height:1.6;color:#A99C83;">SIL OFL 1.1 · google/fonts<br>Wordmarks, Plymouth, GRUB title, wallpaper headline. No substitution required.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <x-import component-from-global-scope="CharlestonZeroDayDesignSystem_182c31.EyebrowHeader" label="GEOMETRY" index="08 ·" hint-size="100%,20px"></x-import>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+      <div style="background:#0B0A07;padding:16px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">RADIUS</div>
+        <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:28px;color:#F4F0E6;line-height:1;">0 / 0 / 0</div>
+        <div style="font-size:10px;line-height:1.6;">radius.sm · md · lg all zero. CZD has no corner rounding. Plasma widgets that cannot be squared keep the Breeze default rather than gain a CZD radius.</div>
+      </div>
+      <div style="background:#0B0A07;padding:16px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">BORDER.WIDTH</div>
+        <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:28px;color:#F4F0E6;line-height:1;">1px / 2px</div>
+        <div style="font-size:10px;line-height:1.6;">1px separates, 2px caps. Nothing is 3px, dotted, double, or grey. Dashed 1px gold is reserved for unsupplied placeholders.</div>
+      </div>
+      <div style="background:#0B0A07;padding:16px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">HAIRLINE ALPHAS</div>
+        <div style="display:flex;flex-direction:column;gap:6px;padding-top:4px;">
+          <div style="height:2px;background:#E0A82E;"></div>
+          <div style="height:1px;background:rgba(224,168,46,0.26);"></div>
+          <div style="height:1px;background:rgba(224,168,46,0.13);"></div>
+          <div style="height:14px;background:rgba(224,168,46,0.05);"></div>
+        </div>
+        <div style="font-size:10px;line-height:1.6;">2px solid · 0.26 rule · 0.13 soft · 0.05 tint. Always gold, never grey.</div>
+      </div>
+      <div style="background:#0B0A07;padding:16px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">SHADOW · MOTION</div>
+        <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:28px;color:#F4F0E6;line-height:1;">none / 90ms</div>
+        <div style="font-size:10px;line-height:1.6;">No shadow, no blur, no backdrop-filter anywhere. Plasma compositing effects disabled for window shadows. Longest sanctioned transition 90ms linear.</div>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ showExtensionFlags }}" hint-placeholder-val="{{ true }}">
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <x-import component-from-global-scope="CharlestonZeroDayDesignSystem_182c31.EyebrowHeader" label="EXTENSIONS FLAGGED" index="09 ·" trailing="4 — NOTHING IMPROVISED SILENTLY" hint-size="100%,20px"></x-import>
+    <div style="display:flex;flex-direction:column;">
+      <div style="display:grid;grid-template-columns:200px 1fr 1fr;gap:24px;padding-bottom:8px;font-size:8px;font-weight:700;letter-spacing:0.14em;color:#6B6152;">
+        <div>TOKEN</div><div>WHY CZD DOESN'T COVER IT</div><div>WHAT I DID</div>
+      </div>
+      <div style="display:grid;grid-template-columns:200px 1fr 1fr;gap:24px;padding:14px 0;border-top:1px solid rgba(224,168,46,0.26);font-size:10px;line-height:1.6;">
+        <div style="color:#F4F0E6;font-weight:600;">state.success</div>
+        <div>CZD defines one accent hue and two greys. A package manager that cannot say "done" in green is a worse OS.</div>
+        <div style="color:#A99C83;">New hue <span style="color:#4FC26B;">#4FC26B</span> — green pulled warm and desaturated toward the gold field. 8.73:1.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:200px 1fr 1fr;gap:24px;padding:14px 0;border-top:1px solid rgba(224,168,46,0.13);font-size:10px;line-height:1.6;">
+        <div style="color:#F4F0E6;font-weight:600;">state.error</div>
+        <div>Same reason. SDDM "Login failed" and ANSI red need a hue the eye reads as failure in under a second.</div>
+        <div style="color:#A99C83;">New hue <span style="color:#E5484D;">#E5484D</span> — red warm-shifted off pure. 5.06:1.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:200px 1fr 1fr;gap:24px;padding:14px 0;border-top:1px solid rgba(224,168,46,0.13);font-size:10px;line-height:1.6;">
+        <div style="color:#F4F0E6;font-weight:600;">font.ui</div>
+        <div>CZD reserves Archivo for headlines and sets everything else in mono. A whole desktop UI in mono is hostile at 10px.</div>
+        <div style="color:#A99C83;">No new font. Archivo's role widened to UI body; mono keeps every structural label, so the terminal character survives.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:200px 1fr 1fr;gap:24px;padding:14px 0;border-top:1px solid rgba(224,168,46,0.13);border-bottom:2px solid #E0A82E;font-size:10px;line-height:1.6;">
+        <div style="color:#F4F0E6;font-weight:600;">surface.overlay</div>
+        <div>CZD has four surfaces but no named overlay plane; Plasma menus need one distinct from the panel.</div>
+        <div style="color:#A99C83;">No new value. <span style="color:#E0A82E;">#181307</span> (CZD "warm well") reassigned to the overlay role.</div>
+      </div>
+    </div>
+    <div style="font-size:10px;line-height:1.6;color:#E0A82E;padding-top:4px;">Also flagged, not a colour: your sponsor list has four tiers (Title / Elite Partner / Supporting / Community Advocate), not the briefed three. wallpaper-sponsors will be laid out as 1 / 4 / 4 / 4 slots with tier-collapse rules.</div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ showJsonShape }}" hint-placeholder-val="{{ true }}">
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <x-import component-from-global-scope="CharlestonZeroDayDesignSystem_182c31.EyebrowHeader" label="JSON EXPORT" index="10 ·" trailing="CONSUMED BY THE BUILD" hint-size="100%,20px"></x-import>
+    <div style="background:#050505;border:1px solid rgba(224,168,46,0.26);padding:20px;display:flex;flex-direction:column;gap:12px;">
+      <div style="font-size:11px;color:#E0A82E;font-weight:600;">tokens/czd-purple-tokens.json</div>
+      <div style="font-size:10px;line-height:1.8;color:#A99C83;white-space:pre;overflow-x:auto;">{
+  "$meta":     { distro_name, version_string, purple_decision, extensions_flagged[] }
+  "surface":   { base, raised, overlay, inset }
+  "trace":     { gold, gold.dim, gold.surge, gold.deep }
+  "accent":    { purple, purple.dim }            ← reserved aliases, declined
+  "text":      { primary, secondary, disabled }
+  "state":     { success, warning, error, info }
+  "selection": { bg, fg, bg.emphasis, fg.emphasis }
+  "focus":     { ring, ring.width, ring.offset, ring.style }
+  "font":      { ui, mono, display, substitutions, tracking }
+  "radius":    { sm, md, lg }
+  "border":    { width, width.bold, rule, rule.soft, rule.bold, tint, placeholder }
+  "geometry":  { shadow, gradient, spacing_scale[], signage_overscan }
+}</div>
+      <div style="font-size:10px;line-height:1.6;color:#6B6152;border-top:1px solid rgba(224,168,46,0.13);padding-top:12px;">Every colour entry carries <span style="color:#E0A82E;">hex</span>, the source <span style="color:#E0A82E;">czd</span> variable where one exists, a <span style="color:#E0A82E;">use</span> string, and <span style="color:#E0A82E;">contrast_on_base</span> where it carries text. ANSI's 16 colours are not here — they arrive with the Konsole scheme in batch 07.</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <div style="border-top:2px solid #E0A82E;padding-top:20px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+    <div style="font-size:10px;line-height:1.6;max-width:560px;">Next, on approval: <span style="color:#F4F0E6;">wallpaper-default at 1920×1080</span>. That sets the circuit composition, the wordmark position, and the left-third quiet zone every other surface inherits.</div>
+    <div style="font-size:9px;letter-spacing:0.14em;color:#6B6152;text-align:right;">CHARLESTON ZERO DAY · OCT 02–03 2026<br>UNIVERSITY OF CHARLESTON, WV</div>
+  </div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;frozen&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Status&quot; },
+  &quot;showExtensionFlags&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Sections&quot; },
+  &quot;showJsonShape&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Sections&quot; }
+}">
+class Component extends DCLogic {
+  renderVals() {
+    const frozen = this.props.frozen ?? false;
+    return {
+      frozen,
+      awaitingApproval: !frozen,
+      showExtensionFlags: this.props.showExtensionFlags ?? true,
+      showJsonShape: this.props.showJsonShape ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+#!/bin/sh
+# CZD Purple live hook — runs inside the chroot after packages are installed.
+# Keep this small: anything that can live in a package belongs in a package (rule 3).
+set -e
+
+# Live-session credentials are printed on the GRUB row and the welcome window: czd / czd.
+# Kali's live user is "kali"; live-build's user-setup honours these bootappend values instead,
+# so the actual user creation happens at boot from the kernel command line (see build.sh).
+
+# Build string lands in /etc/czd-build via includes.chroot; make it world-readable.
+[ -f /etc/czd-build ] && chmod 0644 /etc/czd-build || true
+
+# Calamares desktop launcher: name it the way the GRUB row does.
+if [ -f /usr/share/applications/calamares.desktop ]; then
+  sed -i 's/^Name=.*/Name=Install CZD Purple/' /usr/share/applications/calamares.desktop || true
+fi

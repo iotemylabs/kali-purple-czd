@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+# czd-plasma-theme — static/ is committed and colour-free; generated/ is written by
+# tokens/generate.py at build time and is never committed (repo rule 1).
+export DH_VERBOSE = 1
+DEST = debian/czd-plasma-theme
+
+%:
+	dh $@
+
+override_dh_auto_install:
+	@test -d generated || { echo "generated/ missing: run python3 tokens/generate.py first" >&2; exit 1; }
+	mkdir -p $(DEST)
+	cp -a generated/. $(DEST)/
+	@if [ -d static ]; then cp -a static/. $(DEST)/; fi
+	find $(DEST) -name .gitkeep -delete
+	find $(DEST) -type d -empty -delete
+
+override_dh_auto_test:
+	@# Rule 2: no hex outside tokens/. generated/ may carry hex; static/ and templates/ may not.
+	@! grep -rnE '#[0-9A-Fa-f]{6}\b' static/ templates/ 2>/dev/null || { echo "hex literal in static/ or templates/: move it to tokens/" >&2; exit 1; }

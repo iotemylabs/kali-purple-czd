@@ -1,0 +1,157 @@
+{
+  "$meta": {
+    "distro_name": "CZD Purple",
+    "version_string": "CZD-2026-10-231",
+    "wordmark_spelling": "CZD PURPLE",
+    "base_distro": "Kali Purple (Kali Linux, defensive/blue-team flavor)",
+    "desktop": "KDE Plasma 6",
+    "theme": "dark-only",
+    "design_system": "Charleston Zero Day Design System (182c31b8)",
+    "color_space": "sRGB",
+    "token_map_version": "1.0.0",
+    "frozen": true,
+    "dragon_decision": "Gold-hued Kali dragon approved on wallpaper-default, bottom-right corner, 64px, fill trace.gold.dim #8A6318. The mark itself is NOT redrawn by design — the build recolors the upstream Kali SVG. Source: /usr/share/icons/hicolor/scalable/apps/kali-menu.svg (package kali-menu) or kali-dragon.svg from kali-themes. Recolor by overriding every fill/stroke to #8A6318; do not outline, plate, or rotate.",
+    "purple_decision": "DECLINED — CZD gold only. accent.purple.* are aliases to the gold ramp so consumers can reference the key without introducing a second hue. Do not add purple without a new approval.",
+    "extensions_flagged": [
+      "state.success",
+      "state.error",
+      "font.ui (Archivo promoted from display-only to UI body role)",
+      "surface.overlay (CZD surface-warm reassigned to the menu/overlay plane)"
+    ]
+  },
+
+  "surface": {
+    "base":    { "hex": "#0A0A0A", "czd": "--czd-surface-base",   "use": "desktop root, GRUB field, window background, terminal background" },
+    "raised":  { "hex": "#0B0A07", "czd": "--czd-surface-raised", "use": "panel, SDDM card, Calamares sidebar, welcome-app panes" },
+    "overlay": { "hex": "#181307", "czd": "--czd-surface-warm",   "use": "Kickoff menu, tooltips, popups, context menus", "extension": "reassigned role, value unchanged" },
+    "inset":   { "hex": "#050505", "czd": "--czd-surface-inset",  "use": "input field wells, list backgrounds, full-bleed vignette core" }
+  },
+
+  "trace": {
+    "gold":       { "hex": "#E0A82E", "czd": "--czd-gold",       "use": "primary trace stroke, brand gold, all hairlines at alpha" },
+    "gold.dim":   { "hex": "#8A6318", "czd": "--czd-gold-mid",   "use": "background trace lattice, deep display type, fold ticks" },
+    "gold.surge": { "hex": "#FFE9A8", "czd": "--czd-gold-surge", "use": "the electricity value — surge head, hover, peak emphasis. Rationed." },
+    "gold.deep":  { "hex": "#4A320B", "czd": "--czd-gold-deep",  "use": "barely-there trace fills, far-field circuit density" }
+  },
+
+  "accent": {
+    "purple":     { "hex": "#E0A82E", "alias_of": "trace.gold",     "status": "declined", "use": "NOT USED. Reserved key. Renders as gold." },
+    "purple.dim": { "hex": "#8A6318", "alias_of": "trace.gold.dim", "status": "declined", "use": "NOT USED. Reserved key. Renders as gold.dim." }
+  },
+
+  "text": {
+    "primary":   { "hex": "#F4F0E6", "czd": "--czd-ink-1", "contrast_on_base": 17.42, "use": "headings, session titles, active labels" },
+    "secondary": { "hex": "#A99C83", "czd": "--czd-ink-2", "contrast_on_base": 7.33,  "use": "body copy, menu items, mono captions" },
+    "disabled":  { "hex": "#6B6152", "czd": "--czd-ink-4", "contrast_on_base": 3.26,  "use": "disabled controls only — never body text" }
+  },
+
+  "state": {
+    "success": { "hex": "#4FC26B", "contrast_on_base": 8.73, "extension": true,  "use": "ok/verified, apt success, ANSI green anchor" },
+    "warning": { "hex": "#E0A82E", "contrast_on_base": 9.25, "extension": false, "use": "caution — brand gold serves as warning; ANSI yellow anchor" },
+    "error":   { "hex": "#E5484D", "contrast_on_base": 5.06, "extension": true,  "use": "login failed, apt error, ANSI red anchor" },
+    "info":    { "hex": "#8A93A0", "czd": "--czd-status-hold", "contrast_on_base": 6.38, "extension": false, "use": "neutral notice, ANSI blue anchor" }
+  },
+
+  "selection": {
+    "bg": { "hex": "#8A6318", "czd": "--czd-gold-mid", "use": "list/text selection fill" },
+    "fg": { "hex": "#F4F0E6", "czd": "--czd-ink-1", "contrast_on_selection_bg": 4.75, "use": "text on selection fill" },
+    "bg.emphasis": { "hex": "#E0A82E", "use": "the single loudest element per screen — current item, NOW chip, default button" },
+    "fg.emphasis": { "hex": "#0A0A0A", "use": "text on emphasis fill" }
+  },
+
+  "focus": {
+    "ring":        { "hex": "#E0A82E", "use": "1px solid outline" },
+    "ring.width":  "1px",
+    "ring.offset": "2px",
+    "ring.style":  "solid"
+  },
+
+  "font": {
+    "ui":      { "family": "Archivo",       "license": "SIL Open Font License 1.1", "source": "google/fonts", "file": "Archivo-Variable.ttf", "weights": "400 500 600 700", "fontconfig_alias": "sans-serif", "use": "Plasma UI, window titles, welcome app, Calamares" },
+    "mono":    { "family": "IBM Plex Mono", "license": "SIL Open Font License 1.1", "source": "google/fonts", "files": ["IBMPlexMono-Regular.ttf", "IBMPlexMono-Medium.ttf", "IBMPlexMono-SemiBold.ttf", "IBMPlexMono-Bold.ttf"], "weights": "400 500 600 700", "fontconfig_alias": "monospace", "use": "Konsole, all eyebrows/labels/times/URLs, structural type" },
+    "display": { "family": "Archivo",       "license": "SIL Open Font License 1.1", "source": "google/fonts", "file": "Archivo-Variable.ttf", "weights": "600 700", "use": "wordmarks, Plymouth, GRUB title, wallpaper headline" },
+    "substitutions": "None required. Both CZD families are OFL Google Fonts releases and are redistributable inside the ISO.",
+    "tracking": { "display_xl": "-0.035em", "display": "-0.015em", "eyebrow": "0.14em", "eyebrow_wide": "0.20em" }
+  },
+
+  "radius": {
+    "sm": "0px",
+    "md": "0px",
+    "lg": "0px",
+    "note": "CZD specifies border-radius: 0 everywhere. Plasma widgets that cannot be squared (Breeze scrollbar caps) are left at theme default rather than given a CZD radius."
+  },
+
+  "border": {
+    "width":      "1px",
+    "width.bold": "2px",
+    "rule":       { "rgba": "rgba(224,168,46,0.26)", "use": "separators" },
+    "rule.soft":  { "rgba": "rgba(224,168,46,0.13)", "use": "panel dividers, row stacks" },
+    "rule.bold":  { "hex": "#E0A82E", "width": "2px", "use": "page caps, section caps, QR blocks" },
+    "tint":       { "rgba": "rgba(224,168,46,0.05)", "use": "hover fill, emphasis rows" },
+    "placeholder": { "style": "1px dashed", "hex": "#E0A82E", "use": "unsupplied logo slots only" }
+  },
+
+  "geometry": {
+    "shadow": "none",
+    "gradient": "none — except the wallpaper vignette and the trace surge falloff, which are luminance-only ramps of a single hue",
+    "spacing_scale": [4, 8, 12, 16, 24, 32, 48, 64, 96, 128],
+    "signage_overscan": "4%",
+    "motion_max_duration": "90ms linear"
+  },
+
+  "event": {
+    "name": "Charleston Zero Day",
+    "year": 2026,
+    "start": "2026-10-02",
+    "end": "2026-10-03",
+    "hashtag": "#CZD2026",
+    "site": "charlestonzeroday.com",
+    "venue": "University of Charleston, 2300 MacCorkle Ave SE",
+    "organizers": "The CZD Board · IoTemy Labs · University of Charleston · KDE Technology",
+    "note": "Respin edit 01 lives here. generate.py derives the display date line (FRI OCT 02 – SAT OCT 03, 2026) from start/end; never hand-write it elsewhere."
+  },
+
+  "ansi": {
+    "$note": "Batch 07 instrument palette. The one sanctioned exception to one hue, scoped to terminals and the Wireshark packet list only. Derived from the gold ramp by OKLCH hue rotation at L≈0.58 (normal) and L≈0.70 (bright), chroma ≤ 0.06. Ratios are on #050505. Extension: this section was on the plate, not in the frozen 1.0.0 map.",
+    "extension": true,
+    "background": { "hex": "#050505", "alias_of": "surface.inset" },
+    "foreground": { "hex": "#F4F0E6", "alias_of": "text.primary" },
+    "cursor":     { "hex": "#E0A82E", "alias_of": "trace.gold" },
+    "00": { "name": "black",          "hex": "#0A0A0A", "use": "base surface, never a foreground" },
+    "01": { "name": "red",            "hex": "#C25E44", "contrast": 4.8, "use": "deletions, closed ports, stderr" },
+    "02": { "name": "green",          "hex": "#8A9C52", "contrast": 6.8, "use": "additions, open ports, executables" },
+    "03": { "name": "yellow",         "hex": "#E0A82E", "contrast": 9.6, "use": "brand gold unchanged; prompts, headers" },
+    "04": { "name": "blue",           "hex": "#6F89A8", "contrast": 5.7, "use": "paths, symlinks, TCP rows" },
+    "05": { "name": "magenta",        "hex": "#A8728C", "contrast": 5.3, "use": "git branch, archives, ARP" },
+    "06": { "name": "cyan",           "hex": "#6E9C97", "contrast": 6.7, "use": "services, ports, DNS, URLs" },
+    "07": { "name": "white",          "hex": "#A99C83", "contrast": 7.6, "use": "body ink, ordinary output" },
+    "08": { "name": "bright_black",   "hex": "#837962", "contrast": 4.7, "use": "comments and timestamps" },
+    "09": { "name": "bright_red",     "hex": "#D4715A", "contrast": 6.1, "use": "alerts, retransmissions, oops" },
+    "10": { "name": "bright_green",   "hex": "#A3B566", "contrast": 9.1, "use": "success, completed jobs" },
+    "11": { "name": "bright_yellow",  "hex": "#FFE9A8", "contrast": 17.0, "use": "surge; selection, search hits" },
+    "12": { "name": "bright_blue",    "hex": "#8AA3C0", "contrast": 7.6, "use": "directories in ls, HTTP rows" },
+    "13": { "name": "bright_magenta", "hex": "#C08CA6", "contrast": 7.3, "use": "dirty git, TLS, media files" },
+    "14": { "name": "bright_cyan",    "hex": "#8AB5B0", "contrast": 9.0, "use": "DNS, hostnames, Zeek uids" },
+    "15": { "name": "bright_white",   "hex": "#F4F0E6", "contrast": 17.9, "use": "foreground; text you must read" }
+  },
+
+  "terminal": {
+    "font_pt": 11,
+    "line_height": 1.45,
+    "padding_px": 24,
+    "cursor": "block, no blink",
+    "bell": "visual, one frame of tint",
+    "opacity": 1.0,
+    "scrollbar": { "width_px": 8, "arrows": false, "thumb": "26% gold on surface.inset" }
+  },
+
+  "shell": {
+    "panel_height_px": 56,
+    "panel_position": "bottom",
+    "titlebar_height_px": 48,
+    "kickoff_width_px": 720,
+    "desktop_icon_cell_px": 160,
+    "desktop_icon_origin": { "x": 64, "y": 64 },
+    "menu_czd_index": 14
+  }
+}

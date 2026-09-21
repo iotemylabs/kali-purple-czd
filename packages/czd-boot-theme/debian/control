@@ -1,0 +1,17 @@
+Source: czd-boot-theme
+Section: misc
+Priority: optional
+Maintainer: IoTemy Labs <brett@iotemylabs.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+Homepage: https://github.com/iotemylabs/kali-purple-czd
+
+Package: czd-boot-theme
+Architecture: all
+Depends: ${misc:Depends}, czd-purple-tokens (= ${binary:Version}), czd-wallpapers (= ${binary:Version}), grub-common, plymouth, plymouth-themes, initramfs-tools
+Description: CZD Purple GRUB and Plymouth themes
+ GRUB 2 bitmap theme (theme.txt, PF2 fonts, 9-slice selection pixmaps) and
+ Plymouth script theme (splash and LUKS prompt) for the CZD Purple respin.
+ Sets itself as the default on install and restores the previous defaults on
+ removal.

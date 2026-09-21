@@ -1,0 +1,19 @@
+# Build products — never committed (repo rule 1: nothing generated is committed)
+/build/
+/out/
+*.iso
+*.iso.sha256
+*.iso.sig
+build.log
+packages/*/generated/
+packages/*/debian/*.debhelper*
+packages/*/debian/*.substvars
+packages/*/debian/files
+packages/*/debian/czd-*/
+packages/*.deb
+packages/*.buildinfo
+packages/*.changes
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

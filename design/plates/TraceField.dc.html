@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/styles.css">
+  <script src="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/_ds_bundle.js"></script>
+</helmet>
+
+<div style="position:absolute;inset:0;overflow:hidden;">
+
+  <svg width="1920" height="1080" viewBox="0 0 1920 1080" style="position:absolute;inset:0;display:block;" aria-hidden="true">
+    <defs>
+      <linearGradient id="{{ gradA }}" gradientUnits="userSpaceOnUse" x1="1160" y1="0" x2="1840" y2="0">
+        <stop offset="{{ surgeA }}" stop-color="#FFE9A8" stop-opacity="0"></stop>
+        <stop offset="{{ surgeB }}" stop-color="#FFE9A8" stop-opacity="1"></stop>
+        <stop offset="{{ surgeC }}" stop-color="#FFE9A8" stop-opacity="0"></stop>
+      </linearGradient>
+      <linearGradient id="{{ gradB }}" gradientUnits="userSpaceOnUse" x1="1020" y1="0" x2="1560" y2="0">
+        <stop offset="{{ surge2A }}" stop-color="#FFE9A8" stop-opacity="0"></stop>
+        <stop offset="{{ surge2B }}" stop-color="#FFE9A8" stop-opacity="0.85"></stop>
+        <stop offset="{{ surge2C }}" stop-color="#FFE9A8" stop-opacity="0"></stop>
+      </linearGradient>
+    </defs>
+
+    <g stroke="#4A320B" stroke-width="1" fill="none">
+      <path d="M 0 180 H 300 l 30 30 H 760"></path>
+      <path d="M 0 420 H 180 l 30 -30 H 520 l 30 30 H 900"></path>
+      <path d="M 0 660 H 420 l 30 30 H 700"></path>
+      <path d="M 0 900 H 240 l 30 -30 H 640"></path>
+      <path d="M 120 0 V 260 l 30 30 V 520"></path>
+      <path d="M 380 1024 V 820 l -30 -30 V 560"></path>
+      <path d="M 560 0 V 140 l 30 30 V 400"></path>
+      <path d="M 0 300 H 90"></path>
+      <path d="M 0 780 H 160 l 30 30 H 340"></path>
+      <path d="M 700 1024 V 960 l 30 -30 H 880"></path>
+      <path d="M 820 0 V 200"></path>
+    </g>
+
+    <g stroke="{{ latticeStroke }}" stroke-width="1.5" fill="none">
+      <path d="M 980 140 H 1400 l 28 28 H 1920"></path>
+      <path d="M 1060 220 H 1520 l 28 -28 H 1920"></path>
+      <path d="M 900 300 H 1180 l 28 28 H 1660 l 28 28 H 1920"></path>
+      <path d="M 1240 380 H 1920"></path>
+      <path d="M 1000 460 H 1320 l 28 28 H 1580 V 620 l 28 28 H 1920"></path>
+      <path d="M 1140 540 H 1460"></path>
+      <path d="M 880 620 H 1120 l 28 -28 H 1360"></path>
+      <path d="M 1300 700 H 1700 l 28 28 H 1920"></path>
+      <path d="M 960 780 H 1240 l 28 28 H 1520"></path>
+      <path d="M 1420 860 H 1920"></path>
+      <path d="M 1080 940 H 1380 l 28 -28 H 1640"></path>
+      <path d="M 1180 0 V 240 l 28 28 V 480"></path>
+      <path d="M 1340 1024 V 780 l -28 -28 V 560"></path>
+      <path d="M 1500 60 V 300"></path>
+      <path d="M 1620 1024 V 900"></path>
+      <path d="M 1760 140 V 420 l 28 28 V 700"></path>
+      <path d="M 1040 0 V 120"></path>
+      <path d="M 1900 300 V 560"></path>
+      <path d="M 1460 940 V 1024"></path>
+    </g>
+
+    <g fill="{{ latticeStroke }}">
+      <circle cx="1400" cy="140" r="4"></circle>
+      <circle cx="1520" cy="220" r="4"></circle>
+      <circle cx="1180" cy="300" r="4"></circle>
+      <circle cx="1660" cy="328" r="4"></circle>
+      <circle cx="1320" cy="460" r="4"></circle>
+      <circle cx="1580" cy="620" r="4"></circle>
+      <circle cx="1120" cy="620" r="4"></circle>
+      <circle cx="1700" cy="700" r="4"></circle>
+      <circle cx="1240" cy="780" r="4"></circle>
+      <circle cx="1380" cy="940" r="4"></circle>
+      <circle cx="1180" cy="240" r="4"></circle>
+      <circle cx="1760" cy="420" r="4"></circle>
+    </g>
+
+    <g stroke="{{ latticeStroke }}" stroke-width="1.5" fill="none">
+      <rect x="1494" y="294" width="12" height="12"></rect>
+      <rect x="1614" y="894" width="12" height="12"></rect>
+      <rect x="1034" y="114" width="12" height="12"></rect>
+      <rect x="1894" y="554" width="12" height="12"></rect>
+      <rect x="1454" y="934" width="12" height="12"></rect>
+    </g>
+
+    <sc-if value="{{ active }}" hint-placeholder-val="{{ true }}">
+      <g stroke="#E0A82E" stroke-width="2" fill="none">
+        <path d="M 1160 360 H 1500 l 28 28 H 1840"></path>
+        <path d="M 1020 1000 H 1300 l 28 -28 H 1560"></path>
+        <path d="M 1720 480 V 720"></path>
+        <path d="M 1240 620 H 1420"></path>
+      </g>
+      <g fill="#E0A82E">
+        <circle cx="1500" cy="360" r="5"></circle>
+        <circle cx="1840" cy="388" r="5"></circle>
+        <circle cx="1720" cy="480" r="5"></circle>
+        <circle cx="1420" cy="620" r="5"></circle>
+        <circle cx="1300" cy="1000" r="5"></circle>
+      </g>
+    </sc-if>
+
+    <sc-if value="{{ surge }}" hint-placeholder-val="{{ true }}">
+      <g fill="none" stroke-width="3" stroke-linecap="butt">
+        <path d="M 1160 360 H 1500 l 28 28 H 1840" stroke="{{ strokeA }}"></path>
+        <path d="M 1020 1000 H 1300 l 28 -28 H 1560" stroke="{{ strokeB }}"></path>
+      </g>
+    </sc-if>
+  </svg>
+
+  <sc-if value="{{ vignetteStandard }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 75% at 66% 46%, rgba(5,5,5,0) 0%, rgba(5,5,5,0.45) 62%, rgba(5,5,5,0.9) 100%);"></div>
+  </sc-if>
+  <sc-if value="{{ vignetteHeavy }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 52% 58% at 50% 46%, rgba(5,5,5,0.35) 0%, rgba(5,5,5,0.78) 55%, rgba(5,5,5,0.97) 100%);"></div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1920, &quot;height&quot;: 1080 },
+  &quot;uid&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;tf&quot;, &quot;tsType&quot;: &quot;string&quot; },
+  &quot;level&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;full&quot;, &quot;dim&quot;], &quot;default&quot;: &quot;full&quot;, &quot;tsType&quot;: &quot;\&quot;full\&quot; | \&quot;dim\&quot;&quot; },
+  &quot;vignette&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;standard&quot;, &quot;heavy&quot;], &quot;default&quot;: &quot;standard&quot;, &quot;tsType&quot;: &quot;\&quot;standard\&quot; | \&quot;heavy\&quot;&quot; },
+  &quot;surge&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot; },
+  &quot;surgePosition&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 55, &quot;min&quot;: 0, &quot;max&quot;: 100, &quot;step&quot;: 1, &quot;unit&quot;: &quot;%&quot;, &quot;tsType&quot;: &quot;number&quot; }
+}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = (this.props.surgePosition ?? 55) / 100;
+    const clamp = (v) => Math.max(0, Math.min(1, v));
+    const span = (center, w) => [clamp(center - w), clamp(center), clamp(center + w)];
+    const [a, b, c] = span(p, 0.14);
+    const [a2, b2, c2] = span(1 - p * 0.85, 0.18);
+    const uid = this.props.uid ?? "tf";
+    const level = this.props.level ?? "full";
+    const gradA = "surge-a-" + uid;
+    const gradB = "surge-b-" + uid;
+    return {
+      gradA, gradB,
+      strokeA: "url(#" + gradA + ")",
+      strokeB: "url(#" + gradB + ")",
+      surgeA: a, surgeB: b, surgeC: c,
+      surge2A: a2, surge2B: b2, surge2C: c2,
+      latticeStroke: level === "dim" ? "#4A320B" : "#8A6318",
+      active: level === "full",
+      surge: (this.props.surge ?? true) && level === "full",
+      vignetteStandard: (this.props.vignette ?? "standard") === "standard",
+      vignetteHeavy: (this.props.vignette ?? "standard") === "heavy"
+    };
+  }
+}
+
+</script>
+</body>
+</html>

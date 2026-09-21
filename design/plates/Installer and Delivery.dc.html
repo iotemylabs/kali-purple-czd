@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="design_doc_mode" content="canvas">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/rules.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/base.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/styles.css">
+  <script src="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:#050505;}
+    a{color:#E0A82E;} a:hover{color:#FFE9A8;}
+  </style>
+</helmet>
+
+<div style="background:#050505;padding:48px;display:flex;flex-direction:column;gap:32px;font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#A99C83;width:2016px;">
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:16px;">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// DELIVERABLE 08 · INSTALLER AND DELIVERY</div>
+      <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:40px;line-height:1;letter-spacing:-0.035em;color:#F4F0E6;">czd-install</div>
+    </div>
+    <div style="font-size:11px;letter-spacing:0.14em;color:#6B6152;text-align:right;line-height:1.7;">4 SURFACES · 1920 × 1080 · sRGB<br>CALAMARES 3.3 · QML SLIDESHOW · CZD-2026-10-231</div>
+  </div>
+
+  <div style="display:flex;gap:32px;flex-wrap:wrap;border-bottom:1px solid rgba(224,168,46,0.26);padding-bottom:20px;">
+    <div style="flex:1 1 460px;font-size:11px;line-height:1.8;">
+      <span style="color:#E0A82E;font-weight:700;letter-spacing:0.14em;">THE CALL · </span>Batches 01–07 themed a running machine. This one covers how it gets onto a disk and how it gets to people: <span style="color:#F4F0E6;">the installer's first screen, the partition screen where a wrong click costs someone their thesis, the progress slideshow, and the sheet that says what is published and how to check it.</span> Calamares is where respins leak hardest — stock Breeze sidebar, a default slideshow selling Debian, a download page with no checksum.
+    </div>
+    <div style="flex:1 1 460px;font-size:11px;line-height:1.8;">
+      <span style="color:#E0A82E;font-weight:700;letter-spacing:0.14em;">THE RULE FOR THIS BATCH · </span>Gold stays the only accent, including on the destructive screen — <span style="color:#F4F0E6;">there is no red panic state anywhere in CZD</span>, so the partition screen earns its weight from 2px rules, the warm well surface and copy that names the consequence. The two grey status hues appear once, on the USB you booted from, to say <span style="color:#8A93A0;">do not install onto this</span>. Everything drawn here consumes <span style="color:#E0A82E;">czd-purple-tokens.json</span>.
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:16px;margin-top:16px;">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// DELIVERABLE 08 · INSTALLER AND DELIVERY</div>
+      <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:40px;line-height:1;letter-spacing:-0.035em;color:#F4F0E6;">calamares-welcome</div>
+    </div>
+    <div style="font-size:11px;letter-spacing:0.14em;color:#6B6152;text-align:right;line-height:1.7;">STEP 01 OF 07 · WINDOW 1400 × 860 ON THE LIVE DESKTOP<br>/etc/calamares/branding/czd-purple/branding.desc</div>
+  </div>
+
+  <div id="calamares-welcome" data-screen-label="calamares-welcome" style="position:relative;width:1920px;height:1080px;background:#0A0A0A;overflow:hidden;flex:0 0 auto;">
+    <dc-import name="TraceField" uid="inst1" level="dim" vignette="heavy" surge="{{ false }}" style="position:absolute;inset:0;" hint-size="1920px,1080px"></dc-import>
+
+    <div style="position:absolute;left:260px;top:110px;width:1400px;height:860px;background:#0A0A0A;border:1px solid #E0A82E;display:flex;flex-direction:column;">
+      <div style="height:48px;flex:0 0 48px;background:#181307;border-bottom:1px solid rgba(224,168,46,0.26);display:flex;align-items:center;justify-content:space-between;padding:0 20px;">
+        <div style="font-size:24px;font-weight:600;letter-spacing:0.10em;color:#F4F0E6;">czd-install — install CZD Purple</div>
+        <div style="display:flex;align-items:center;gap:20px;">
+          <div style="width:24px;height:1px;background:#E0A82E;"></div>
+          <div style="width:20px;height:20px;border:1px solid #E0A82E;"></div>
+          <div style="position:relative;width:22px;height:22px;">
+            <div style="position:absolute;left:0;top:10px;width:22px;height:2px;background:#E0A82E;transform:rotate(45deg);"></div>
+            <div style="position:absolute;left:0;top:10px;width:22px;height:2px;background:#E0A82E;transform:rotate(-45deg);"></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:1 1 0;display:flex;min-height:0;">
+        <div style="width:340px;flex:0 0 340px;background:#050505;border-right:1px solid rgba(224,168,46,0.26);display:flex;flex-direction:column;">
+          <div style="padding:28px 24px 20px;border-bottom:1px solid rgba(224,168,46,0.13);display:flex;flex-direction:column;gap:14px;">
+            <x-import component-from-global-scope="CharlestonZeroDayDesignSystem_182c31.Brandmark" variant="mark" height="52px" asset-base="assets" style="width:auto;flex:0 0 auto;" hint-size="52px,52px"></x-import>
+            <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">CZD PURPLE</div>
+          </div>
+          <div style="display:flex;flex-direction:column;">
+            <div style="padding:16px 24px;background:rgba(224,168,46,0.05);border-bottom:1px solid #E0A82E;display:flex;gap:16px;align-items:baseline;">
+              <div style="font-size:24px;font-weight:700;color:#E0A82E;">01</div>
+              <div style="font-size:24px;font-weight:600;letter-spacing:0.10em;color:#F4F0E6;">WELCOME</div>
+            </div>
+            <div style="padding:16px 24px;border-bottom:1px solid rgba(224,168,46,0.13);display:flex;gap:16px;align-items:baseline;">
+              <div style="font-size:24px;font-weight:700;color:#8A6318;">02</div>
+              <div style="font-size:24px;font-weight:500;letter-spacing:0.10em;color:#A99C83;">LOCATION</div>
+            </div>
+            <div style="padding:16px 24px;border-bottom:1px solid rgba(224,168,46,0.13);display:flex;gap:16px;align-items:baseline;">
+              <div style="font-size:24px;font-weight:700;color:#8A6318;">03</div>
+              <div style="font-size:24px;font-weight:500;letter-spacing:0.10em;color:#A99C83;">KEYBOARD</div>
+            </div>
+            <div style="padding:16px 24px;border-bottom:1px solid rgba(224,168,46,0.13);display:flex;gap:16px;align-items:baseline;">
+              <div style="font-size:24px;font-weight:700;color:#8A6318;">04</div>
+              <div style="font-size:24px;font-weight:500;letter-spacing:0.10em;color:#A99C83;">PARTITIONS</div>
+            </div>
+            <div style="padding:16px 24px;border-bottom:1px solid rgba(224,168,46,0.13);display:flex;gap:16px;align-items:baseline;">
+              <div style="font-size:24px;font-weight:700;color:#8A6318;">05</div>
+              <div style="font-size:24px;font-weight:500;letter-spacing:0.10em;color:#A99C83;">USER</div>
+            </div>
+            <div style="padding:16px 24px;border-bottom:1px solid rgba(224,168,46,0.13);display:flex;gap:16px;align-items:baseline;">
+              <div style="font-size:24px;font-weight:700;color:#8A6318;">06</div>
+              <div style="font-size:24px;font-weight:500;letter-spacing:0.10em;color:#A99C83;">SUMMARY</div>
+            </div>
+            <div style="padding:16px 24px;border-bottom:1px solid rgba(224,168,46,0.13);display:flex;gap:16px;align-items:baseline;">
+              <div style="font-size:24px;font-weight:700;color:#8A6318;">07</div>
+              <div style="font-size:24px;font-weight:500;letter-spacing:0.10em;color:#A99C83;">INSTALL</div>
+            </div>
+          </div>
+          <div style="margin-top:auto;padding:24px;border-top:1px solid rgba(224,168,46,0.13);font-size:18px;line-height:1.6;color:#6B6152;">Nothing is written to a disk before step <span style="color:#E0A82E;">06</span>. Quit at any point and the live session carries on.</div>
+        </div>
+
+        <div style="flex:1 1 0;display:flex;flex-direction:column;min-width:0;">
+          <div style="flex:1 1 0;padding:28px 36px;display:flex;flex-direction:column;gap:16px;min-height:0;">
+            <div style="display:flex;align-items:center;gap:16px;">
+              <div style="font-size:24px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;white-space:nowrap;">// 01 · WELCOME</div>
+              <div style="flex:1 1 0;height:1px;background:#E0A82E;"></div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:48px;line-height:0.94;letter-spacing:-0.035em;color:#F4F0E6;">Put this on a disk</div>
+              <div style="font-size:24px;line-height:1.5;color:#A99C83;max-width:820px;">You are running from the USB stick right now. This installer copies the same system to internal storage, keeps Kali's tool numbering, and adds CZD's theme packages. Nothing is written until step 06.</div>
+            </div>
+
+            <div style="display:flex;gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+              <div style="flex:1 1 0;background:#0B0A07;padding:14px 18px;display:flex;flex-direction:column;gap:8px;">
+                <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">BUILD</div>
+                <div style="font-size:20px;font-weight:500;color:#F4F0E6;">CZD-2026-10-231</div>
+              </div>
+              <div style="flex:1 1 0;background:#0B0A07;padding:14px 18px;display:flex;flex-direction:column;gap:8px;">
+                <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">NEEDS</div>
+                <div style="font-size:20px;font-weight:500;color:#F4F0E6;">28 GB · UEFI · 8 GB RAM</div>
+              </div>
+              <div style="flex:1 1 0;background:#0B0A07;padding:14px 18px;display:flex;flex-direction:column;gap:8px;">
+                <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">SESSION</div>
+                <div style="font-size:20px;font-weight:500;color:#F4F0E6;">live · czd · no password</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:24px;">
+              <div style="flex:1 1 0;display:flex;flex-direction:column;gap:10px;">
+                <div style="font-size:20px;font-weight:600;letter-spacing:0.14em;color:#A99C83;">LANGUAGE</div>
+                <div style="height:56px;background:#050505;border:1px solid rgba(224,168,46,0.26);display:flex;align-items:center;justify-content:space-between;padding:0 20px;">
+                  <div style="font-size:24px;font-weight:500;color:#F4F0E6;">English (United States)</div>
+                  <div style="font-size:24px;font-weight:700;color:#E0A82E;">↓</div>
+                </div>
+              </div>
+              <div style="flex:1 1 0;display:flex;flex-direction:column;gap:10px;">
+                <div style="font-size:20px;font-weight:600;letter-spacing:0.14em;color:#A99C83;">KEYBOARD</div>
+                <div style="height:56px;background:#050505;border:1px solid rgba(224,168,46,0.26);display:flex;align-items:center;justify-content:space-between;padding:0 20px;">
+                  <div style="font-size:24px;font-weight:500;color:#F4F0E6;">US — QWERTY</div>
+                  <div style="font-size:24px;font-weight:700;color:#E0A82E;">↓</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:auto;background:#181307;border-top:2px solid #E0A82E;padding:14px 18px;display:flex;flex-direction:column;gap:8px;">
+              <div style="font-size:20px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">SECURE BOOT · THE IMAGE IS UNSIGNED</div>
+              <div style="font-size:20px;line-height:1.5;color:#A99C83;">No signing shim, so Secure Boot has to be off. Turn it off in firmware now — later costs you one more reboot, not a reinstall.</div>
+            </div>
+          </div>
+
+          <div style="height:88px;flex:0 0 88px;border-top:1px solid rgba(224,168,46,0.26);display:flex;align-items:center;justify-content:space-between;padding:0 40px;">
+            <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">← QUIT TO LIVE SESSION</div>
+            <div style="display:flex;align-items:center;gap:32px;">
+              <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#6B6152;">BACK</div>
+              <div style="background:#E0A82E;padding:12px 28px;font-size:24px;font-weight:700;letter-spacing:0.14em;color:#0A0A0A;">NEXT →</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <sc-if value="{{ showGuides }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;left:260px;top:110px;width:1400px;height:860px;border:1px dashed rgba(224,168,46,0.5);"></div>
+      <div style="position:absolute;left:260px;top:74px;font-size:16px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">1400 × 860 AT x260 y110 · SIDEBAR 340 · ACTION BAR 88</div>
+      <div style="position:absolute;left:76.8px;top:43.2px;width:1766.4px;height:993.6px;border:1px dashed rgba(224,168,46,0.5);"></div>
+    </sc-if>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">01 · THE SIDEBAR IS THE SCHEDULE ROW</div>
+      <div style="font-size:11px;line-height:1.7;">Calamares ships a Breeze list with icons and a progress dot. CZD replaces it with the pattern every other surface already uses — a zero-padded gold numeral beside an uppercase mono label, current step on the <span style="color:#E0A82E;">0.05 tint with a 1px gold border</span>. Same construction as a selected nav item on the site.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">02 · SEVEN STEPS, NOT NINE</div>
+      <div style="font-size:11px;line-height:1.7;">Stock Calamares shows locale and keyboard as their own pages and then asks again in a summary. Locale and keyboard collapse onto the welcome screen because both are already known from the live boot, which removes two clicks and leaves <span style="color:#F4F0E6;">partitions</span> as the only screen that needs thought.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">03 · SAY THE SECURE BOOT THING HERE</div>
+      <div style="font-size:11px;line-height:1.7;">An unsigned image that fails to boot after a 20-minute install is the worst bug report CZD can generate. The warm well surface with 2px gold caps carries it on the first screen, in the same voice the LUKS prompt uses: the fact, the fix, and what it costs you if you skip it.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">04 · ONE FILLED GOLD THING</div>
+      <div style="font-size:11px;line-height:1.7;">NEXT is the only fill on the screen and it is the loudest element in the system, so there is exactly one per step. BACK is a disabled mono label at <span style="color:#F4F0E6;">#6B6152</span> — no ghost outline, no opacity trick — and QUIT keeps its arrow attached to the label, pointing back the way you came.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:16px;margin-top:32px;">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// DELIVERABLE 08 · INSTALLER AND DELIVERY</div>
+      <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:40px;line-height:1;letter-spacing:-0.035em;color:#F4F0E6;">calamares-partitions</div>
+    </div>
+    <div style="font-size:11px;letter-spacing:0.14em;color:#6B6152;text-align:right;line-height:1.7;">STEP 04 OF 07 · THE ONLY DESTRUCTIVE SCREEN IN THE BUILD<br>SWITCH WITH THE <span style="color:#E0A82E;">disk mode</span> TWEAK</div>
+  </div>
+
+  <div id="calamares-partitions" data-screen-label="calamares-partitions" style="position:relative;width:1920px;height:1080px;background:#0A0A0A;overflow:hidden;flex:0 0 auto;">
+    <dc-import name="TraceField" uid="inst2" level="dim" vignette="heavy" surge="{{ false }}" style="position:absolute;inset:0;" hint-size="1920px,1080px"></dc-import>
+
+    <div style="position:absolute;left:260px;top:110px;width:1400px;height:860px;background:#0A0A0A;border:1px solid #E0A82E;display:flex;flex-direction:column;">
+      <div style="height:48px;flex:0 0 48px;background:#181307;border-bottom:1px solid rgba(224,168,46,0.26);display:flex;align-items:center;justify-content:space-between;padding:0 20px;">
+        <div style="font-size:24px;font-weight:600;letter-spacing:0.10em;color:#F4F0E6;">czd-install — partitions</div>
+        <div style="display:flex;align-items:center;gap:20px;">
+          <div style="width:24px;height:1px;background:#E0A82E;"></div>
+          <div style="width:20px;height:20px;border:1px solid #E0A82E;"></div>
+          <div style="position:relative;width:22px;height:22px;">
+            <div style="position:absolute;left:0;top:10px;width:22px;height:2px;background:#E0A82E;transform:rotate(45deg);"></div>
+            <div style="position:absolute;left:0;top:10px;width:22px;height:2px;background:#E0A82E;transform:rotate(-45deg);"></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:1 1 0;display:flex;min-height:0;">
+        <div style="width:340px;flex:0 0 340px;background:#050505;border-right:1px solid rgba(224,168,46,0.26);display:flex;flex-direction:column;">
+          <div style="padding:28px 24px 20px;border-bottom:1px solid rgba(224,168,46,0.13);display:flex;flex-direction:column;gap:14px;">
+            <x-import component-from-global-scope="CharlestonZeroDayDesignSystem_182c31.Brandmark" variant="mark" height="52px" asset-base="assets" style="width:auto;flex:0 0 auto;" hint-size="52px,52px"></x-import>
+            <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">CZD PURPLE</div>
+          </div>
+          <div style="display:flex;flex-direction:column;">
+            <div style="padding:16px 24px;border-bottom:1px solid rgba(224,168,46,0.13);display:flex;gap:16px;align-items:baseline;opacity:0.45;">
+              <div style="font-size:24px;font-weight:700;color:#E0A82E;">01</div>
+              <div style="font-size:24px;font-weight:500;letter-spacing:0.10em;color:#A99C83;">WELCOME</div>
+            </div>
+            <div style="padding:16px 24px;border-bottom:1px solid rgba(224,168,46,0.13);display:flex;gap:16px;align-items:baseline;opacity:0.45;">
+              <div style="font-size:24px;font-weight:700;color:#E0A82E;">02</div>
+              <div style="font-size:24px;font-weight:500;letter-spacing:0.10em;color:#A99C83;">LOCATION</div>
+            </div>
+            <div style="padding:16px 24px;border-bottom:1px solid rgba(224,168,46,0.13);display:flex;gap:16px;align-items:baseline;opacity:0.45;">
+              <div style="font-size:24px;font-weight:700;color:#E0A82E;">03</div>
+              <div style="font-size:24px;font-weight:500;letter-spacing:0.10em;color:#A99C83;">KEYBOARD</div>
+            </div>
+            <div style="padding:16px 24px;background:rgba(224,168,46,0.05);border-bottom:1px solid #E0A82E;display:flex;gap:16px;align-items:baseline;">
+              <div style="font-size:24px;font-weight:700;color:#E0A82E;">04</div>
+              <div style="font-size:24px;font-weight:600;letter-spacing:0.10em;color:#F4F0E6;">PARTITIONS</div>
+            </div>
+            <div style="padding:16px 24px;border-bottom:1px solid rgba(224,168,46,0.13);display:flex;gap:16px;align-items:baseline;">
+              <div style="font-size:24px;font-weight:700;color:#8A6318;">05</div>
+              <div style="font-size:24px;font-weight:500;letter-spacing:0.10em;color:#A99C83;">USER</div>
+            </div>
+            <div style="padding:16px 24px;border-bottom:1px solid rgba(224,168,46,0.13);display:flex;gap:16px;align-items:baseline;">
+              <div style="font-size:24px;font-weight:700;color:#8A6318;">06</div>
+              <div style="font-size:24px;font-weight:500;letter-spacing:0.10em;color:#A99C83;">SUMMARY</div>
+            </div>
+            <div style="padding:16px 24px;border-bottom:1px solid rgba(224,168,46,0.13);display:flex;gap:16px;align-items:baseline;">
+              <div style="font-size:24px;font-weight:700;color:#8A6318;">07</div>
+              <div style="font-size:24px;font-weight:500;letter-spacing:0.10em;color:#A99C83;">INSTALL</div>
+            </div>
+          </div>
+          <div style="margin-top:auto;padding:24px;border-top:1px solid rgba(224,168,46,0.13);font-size:18px;line-height:1.6;color:#6B6152;">Completed steps hold at <span style="color:#F4F0E6;">45%</span> opacity — the same past-row state a schedule board uses for a talk that already happened.</div>
+        </div>
+
+        <div style="flex:1 1 0;display:flex;flex-direction:column;min-width:0;">
+          <div style="flex:1 1 0;padding:20px 32px;display:flex;flex-direction:column;gap:10px;min-height:0;">
+            <div style="display:flex;align-items:center;gap:16px;">
+              <div style="font-size:24px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;white-space:nowrap;">// 04 · PARTITIONS</div>
+              <div style="flex:1 1 0;height:1px;background:#E0A82E;"></div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;border-top:2px solid #E0A82E;border-bottom:2px solid #E0A82E;">
+              <div style="display:flex;gap:20px;align-items:center;padding:9px 16px;background:rgba(224,168,46,0.05);border-bottom:1px solid rgba(224,168,46,0.13);">
+                <div style="width:20px;height:20px;flex:0 0 20px;border:1px solid #E0A82E;background:#E0A82E;"></div>
+                <div style="width:200px;flex:0 0 200px;font-family:Archivo,sans-serif;font-weight:600;font-size:26px;letter-spacing:-0.015em;color:#F4F0E6;">nvme0n1</div>
+                <div style="width:130px;flex:0 0 130px;font-size:22px;font-weight:600;color:#E0A82E;">476 GB</div>
+                <div style="flex:1 1 0;font-size:22px;line-height:1.4;color:#A99C83;">Samsung 980 · Windows 11 + 40 GB recovery</div>
+                <div style="flex:0 0 auto;padding:4px 14px;border:1px solid #E0A82E;background:rgba(224,168,46,0.05);font-size:20px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;white-space:nowrap;">TARGET</div>
+              </div>
+              <div style="display:flex;gap:20px;align-items:center;padding:9px 16px;">
+                <div style="width:20px;height:20px;flex:0 0 20px;border:1px solid #6B6152;"></div>
+                <div style="width:200px;flex:0 0 200px;font-family:Archivo,sans-serif;font-weight:600;font-size:26px;letter-spacing:-0.015em;color:#6B6152;">sda</div>
+                <div style="width:130px;flex:0 0 130px;font-size:22px;font-weight:600;color:#6B6152;">32 GB</div>
+                <div style="flex:1 1 0;font-size:22px;line-height:1.4;color:#6B6152;">SanDisk Ultra · the stick you booted from</div>
+                <div style="flex:0 0 auto;padding:4px 14px;border:1px solid #8A93A0;font-size:20px;font-weight:700;letter-spacing:0.14em;color:#8A93A0;white-space:nowrap;">IN USE</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+              <div style="flex:1 1 0;padding:12px 16px;display:flex;flex-direction:column;gap:4px;background:{{ eraseBg }};border-bottom:{{ eraseCap }};">
+                <div style="font-size:20px;font-weight:700;letter-spacing:0.14em;color:{{ eraseInk }};white-space:nowrap;">ERASE AND ENCRYPT</div>
+                <div style="font-size:20px;line-height:1.4;color:#A99C83;">LUKS2, ext4 inside. The default, and the one CZD tests.</div>
+              </div>
+              <div style="flex:1 1 0;padding:12px 16px;display:flex;flex-direction:column;gap:4px;background:{{ manualBg }};border-bottom:{{ manualCap }};">
+                <div style="font-size:20px;font-weight:700;letter-spacing:0.14em;color:{{ manualInk }};white-space:nowrap;">MANUAL</div>
+                <div style="font-size:20px;line-height:1.4;color:#A99C83;">Your scheme, your mount points. Nothing pre-filled.</div>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;">
+                <div style="font-size:20px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;white-space:nowrap;">AFTER · {{ layoutLabel }}</div>
+                <div style="font-size:20px;font-weight:500;letter-spacing:0.10em;color:#6B6152;white-space:nowrap;">GPT · nvme0n1 · 476 GB</div>
+              </div>
+              <div style="display:flex;gap:1px;height:40px;background:rgba(224,168,46,0.26);border:1px solid rgba(224,168,46,0.26);">
+                <div style="width:26px;flex:0 0 26px;background:#4A320B;"></div>
+                <div style="width:40px;flex:0 0 40px;background:#8A6318;"></div>
+                <div style="flex:1 1 0;background:rgba(224,168,46,0.05);display:flex;align-items:center;padding:0 16px;">
+                  <div style="font-size:22px;font-weight:600;letter-spacing:0.06em;color:#F4F0E6;">{{ rootLabel }}</div>
+                </div>
+                <div style="width:110px;flex:0 0 110px;background:#181307;display:flex;align-items:center;justify-content:center;">
+                  <div style="font-size:20px;font-weight:600;color:#A99C83;">swap 8G</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:24px;font-size:20px;font-weight:500;letter-spacing:0.06em;color:#6B6152;white-space:nowrap;">
+                <div>EFI 512M · fat32</div>
+                <div>/boot 1G · ext4 · unencrypted</div>
+                <div>{{ rootDetail }}</div>
+              </div>
+            </div>
+
+            <sc-if value="{{ erase }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;gap:20px;align-items:center;">
+                <div style="flex:1 1 0;height:56px;background:#050505;border:1px solid #E0A82E;outline:1px solid #E0A82E;outline-offset:2px;display:flex;align-items:center;padding:0 18px;gap:16px;">
+                  <div style="font-size:20px;font-weight:600;letter-spacing:0.14em;color:#A99C83;white-space:nowrap;">PASSPHRASE</div>
+                  <div style="font-size:24px;letter-spacing:0.30em;color:#F4F0E6;">•••••••••••</div>
+                  <div style="width:2px;height:26px;background:#E0A82E;"></div>
+                </div>
+                <div style="flex:1 1 0;height:56px;background:#050505;border:1px solid rgba(224,168,46,0.26);display:flex;align-items:center;padding:0 18px;gap:16px;">
+                  <div style="font-size:20px;font-weight:600;letter-spacing:0.14em;color:#6B6152;white-space:nowrap;">AGAIN</div>
+                  <div style="font-size:24px;letter-spacing:0.30em;color:#F4F0E6;">•••••••••••</div>
+                </div>
+              </div>
+            </sc-if>
+
+            <div style="margin-top:auto;background:#181307;border-top:2px solid #E0A82E;border-bottom:2px solid #E0A82E;padding:12px 16px;display:flex;flex-direction:column;gap:6px;">
+              <div style="font-size:20px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">{{ warnHead }}</div>
+              <div style="font-size:20px;line-height:1.5;color:#A99C83;">{{ warnBody }}</div>
+            </div>
+          </div>
+
+          <div style="height:88px;flex:0 0 88px;border-top:1px solid rgba(224,168,46,0.26);display:flex;align-items:center;justify-content:space-between;padding:0 40px;">
+            <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">← QUIT TO LIVE SESSION</div>
+            <div style="display:flex;align-items:center;gap:32px;">
+              <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">BACK</div>
+              <div style="background:#E0A82E;padding:12px 28px;font-size:24px;font-weight:700;letter-spacing:0.14em;color:#0A0A0A;">NEXT →</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">01 · NO RED, SO SPEND WEIGHT INSTEAD</div>
+      <div style="font-size:11px;line-height:1.7;">The destructive screen gets its severity from structure: the disk table sits between 2px gold rules, and the consequence block is the only <span style="color:#F4F0E6;">#181307</span> warm well on the plate, capped top and bottom. A red banner would be louder and less legible; a plane change and a hard rule read from across a room.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">02 · THE BOOT STICK IS GREYED, NOT HIDDEN</div>
+      <div style="font-size:11px;line-height:1.7;">Hiding sda would be a lie about what is plugged in. It stays listed, unselectable, marked <span style="color:#8A93A0;">IN USE</span> in the one non-gold hue the system keeps for "nothing live here" — the only place in the whole respin where a status hue does real work.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">03 · ENCRYPTED BY DEFAULT</div>
+      <div style="font-size:11px;line-height:1.7;">A laptop full of capture files and client notes leaves the building at 5 PM. Erase-and-encrypt is selected on arrival and the passphrase field is focused; <span style="color:#F4F0E6;">manual</span> stays one click away for people who partition for a living. /boot stays outside the container so GRUB can theme itself.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">04 · THE MAP IS TO SCALE-ISH</div>
+      <div style="font-size:11px;line-height:1.7;">EFI and /boot are drawn at a legible minimum rather than true proportion — 512 MB of 476 GB is a third of a pixel. Each block is a flat token surface with 1px gold dividers and its size in mono underneath, so the bar is a diagram, not a chart pretending at precision.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:16px;margin-top:32px;">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// DELIVERABLE 08 · INSTALLER AND DELIVERY</div>
+      <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:40px;line-height:1;letter-spacing:-0.035em;color:#F4F0E6;">calamares-slideshow</div>
+    </div>
+    <div style="font-size:11px;letter-spacing:0.14em;color:#6B6152;text-align:right;line-height:1.7;">STEP 07 OF 07 · 5 SLIDES · 8s HOLD · CUT, NEVER FADE<br>SWITCH WITH THE <span style="color:#E0A82E;">install state</span> TWEAK</div>
+  </div>
+
+  <div id="calamares-slideshow" data-screen-label="calamares-slideshow" style="position:relative;width:1920px;height:1080px;background:#0A0A0A;overflow:hidden;flex:0 0 auto;">
+    <dc-import name="TraceField" uid="inst3" level="standard" vignette="heavy" surge="{{ complete }}" style="position:absolute;inset:0;" hint-size="1920px,1080px"></dc-import>
+
+    <div style="position:absolute;left:260px;top:110px;width:1400px;height:860px;background:#0A0A0A;border:1px solid #E0A82E;display:flex;flex-direction:column;">
+      <div style="height:48px;flex:0 0 48px;background:#181307;border-bottom:1px solid rgba(224,168,46,0.26);display:flex;align-items:center;justify-content:space-between;padding:0 20px;">
+        <div style="font-size:24px;font-weight:600;letter-spacing:0.10em;color:#F4F0E6;">czd-install — installing</div>
+        <div style="font-size:24px;font-weight:500;letter-spacing:0.10em;color:#6B6152;">{{ titleState }}</div>
+      </div>
+
+      <div style="flex:1 1 0;padding:48px;display:flex;flex-direction:column;gap:32px;min-height:0;">
+        <div style="display:flex;align-items:center;gap:16px;">
+          <div style="font-size:24px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;white-space:nowrap;">// {{ slideEyebrow }}</div>
+          <div style="flex:1 1 0;height:1px;background:#E0A82E;"></div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:20px;max-width:1060px;">
+          <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:72px;line-height:0.92;letter-spacing:-0.035em;color:#F4F0E6;">{{ slideTitle }}</div>
+          <div style="font-size:26px;line-height:1.5;color:#A99C83;">{{ slideBody }}</div>
+        </div>
+
+        <div style="margin-top:auto;display:flex;flex-direction:column;gap:14px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;">
+            <div style="font-size:24px;font-weight:600;letter-spacing:0.06em;color:#F4F0E6;">{{ pkgLine }}</div>
+            <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">{{ pctLine }}</div>
+          </div>
+          <div style="position:relative;height:2px;background:#4A320B;">
+            <div style="position:absolute;left:0;top:0;height:2px;background:#E0A82E;width:{{ progressFill }};"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;">
+            <div style="font-size:20px;font-weight:500;letter-spacing:0.06em;color:#6B6152;">{{ etaLine }}</div>
+            <div style="font-size:20px;font-weight:500;letter-spacing:0.06em;color:#6B6152;">LOG AT /var/log/calamares.log · NOTHING IS HIDDEN</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+          <div style="flex:1 1 0;background:{{ s1bg }};padding:14px 16px;display:flex;flex-direction:column;gap:6px;">
+            <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">01 · 0–8s</div>
+            <div style="font-size:18px;line-height:1.4;color:#A99C83;">What this is</div>
+          </div>
+          <div style="flex:1 1 0;background:{{ s2bg }};padding:14px 16px;display:flex;flex-direction:column;gap:6px;">
+            <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">02 · 8–16s</div>
+            <div style="font-size:18px;line-height:1.4;color:#A99C83;">The menu still numbers 01–13</div>
+          </div>
+          <div style="flex:1 1 0;background:{{ s3bg }};padding:14px 16px;display:flex;flex-direction:column;gap:6px;">
+            <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">03 · 16–24s</div>
+            <div style="font-size:18px;line-height:1.4;color:#A99C83;">Defensive tooling at 14</div>
+          </div>
+          <div style="flex:1 1 0;background:{{ s4bg }};padding:14px 16px;display:flex;flex-direction:column;gap:6px;">
+            <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">04 · 24–32s</div>
+            <div style="font-size:18px;line-height:1.4;color:#A99C83;">Where the conference bits live</div>
+          </div>
+          <div style="flex:1 1 0;background:{{ s5bg }};padding:14px 16px;display:flex;flex-direction:column;gap:6px;">
+            <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">05 · 32–40s</div>
+            <div style="font-size:18px;line-height:1.4;color:#A99C83;">How to file a bug</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:88px;flex:0 0 88px;border-top:1px solid rgba(224,168,46,0.26);display:flex;align-items:center;justify-content:space-between;padding:0 40px;">
+        <div style="font-size:24px;font-weight:500;letter-spacing:0.06em;color:#A99C83;">{{ footNote }}</div>
+        <div style="display:flex;align-items:center;gap:32px;">
+          <sc-if value="{{ complete }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">STAY IN THE LIVE SESSION</div>
+            <div style="background:#E0A82E;padding:12px 28px;font-size:24px;font-weight:700;letter-spacing:0.14em;color:#0A0A0A;">RESTART NOW →</div>
+          </sc-if>
+          <sc-if value="{{ installing }}" hint-placeholder-val="{{ true }}">
+            <div style="font-size:24px;font-weight:700;letter-spacing:0.14em;color:#6B6152;">CANCEL — LEAVES THE DISK HALF WRITTEN</div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">01 · FIVE SLIDES, NO TRANSITION</div>
+      <div style="font-size:11px;line-height:1.7;">Calamares' QML slideshow wants a fade. The CZD one holds a slide for <span style="color:#F4F0E6;">8 seconds</span> and cuts — same rule as a signage board changing content, same rule as the Plymouth script. The whole slideshow is 40 seconds and loops until the install finishes.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">02 · THE SLIDES TEACH, NOT SELL</div>
+      <div style="font-size:11px;line-height:1.7;">Nobody reading an install progress bar needs to be told the distro is powerful. Each slide answers a question a first-time user will ask in the next ten minutes — where the tools are, what moved, who to tell when something breaks. Two sentences, then it stops.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">03 · THE COUNTER IS THE REAL PROGRESS</div>
+      <div style="font-size:11px;line-height:1.7;">Percentages lie during unpack. The package name and count sit above the rule at full ink so you can see it is moving even when the percentage sticks at 60 for four minutes — and the log path is on screen the whole time, not behind a details disclosure.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">04 · DONE IS A STATE, NOT A DIALOG</div>
+      <div style="font-size:11px;line-height:1.7;">No modal, no confetti, no checkmark. The headline swaps, the rule fills, the trace field takes its one <span style="color:#FFE9A8;">surge</span> pass, and the action bar grows the single filled-gold restart. Flip the <span style="color:#E0A82E;">install state</span> tweak to see both frames — they are the same layout with different values.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:16px;margin-top:32px;">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// DELIVERABLE 08 · INSTALLER AND DELIVERY</div>
+      <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:40px;line-height:1;letter-spacing:-0.035em;color:#F4F0E6;">czd-delivery</div>
+    </div>
+    <div style="font-size:11px;letter-spacing:0.14em;color:#6B6152;text-align:right;line-height:1.7;">WHAT GETS PUBLISHED · charlestonzeroday.com/purple<br>ONE ARTIFACT · ONE MANIFEST · ONE WAY TO CHECK IT</div>
+  </div>
+
+  <div id="czd-delivery" data-screen-label="czd-delivery" style="position:relative;width:1920px;height:1080px;background:#0A0A0A;overflow:hidden;flex:0 0 auto;padding:64px 96px;box-sizing:border-box;display:flex;flex-direction:column;gap:28px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:18px;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:24px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// 08 · THE RELEASE SHEET</div>
+        <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:56px;line-height:0.94;letter-spacing:-0.035em;color:#F4F0E6;">kali-purple-czd-2026.iso</div>
+      </div>
+      <div style="text-align:right;font-size:24px;line-height:1.6;color:#A99C83;">4.1 GB · sha256 published beside it<br><span style="color:#E0A82E;">CZD-2026-10-231</span> · cut 2026-09-14</div>
+    </div>
+
+    <div style="flex:1 1 0;display:flex;gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);min-height:0;">
+
+      <div style="flex:1 1 0;background:#0A0A0A;padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0;">
+        <div style="font-size:20px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">THE ARTIFACT</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="font-size:18px;font-weight:600;letter-spacing:0.14em;color:#6B6152;">SHA256</div>
+            <div style="background:#050505;border:1px solid rgba(224,168,46,0.13);padding:12px 14px;font-size:20px;line-height:1.5;color:#F4F0E6;word-break:break-all;">4f2c9a71d0b8e35c6147aa92fe0d3b8471c5e9a2<br>6d3f08bb1e74c59a0f26d8134ba7e5c091df62a8</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="font-size:18px;font-weight:600;letter-spacing:0.14em;color:#6B6152;">SIGNING KEY</div>
+            <div style="font-size:20px;line-height:1.5;color:#A99C83;">ED25519 · <span style="color:#F4F0E6;">3F81 0C4A 9B22 D5E7</span><br>IoTemy Labs. On the site and read out at the opening talk.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;border-top:1px solid rgba(224,168,46,0.13);padding-top:12px;">
+            <div style="font-size:18px;font-weight:600;letter-spacing:0.14em;color:#6B6152;">MIRRORS</div>
+            <div style="font-size:20px;line-height:1.6;color:#A99C83;">01 · github.com/iotemylabs/czd-purple/releases<br>02 · campus mirror <span style="color:#E0A82E;font-weight:700;">TBC</span> · charlestonzeroday.com links out</div>
+          </div>
+        </div>
+        <div style="margin-top:auto;border:1px dashed #E0A82E;height:104px;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;">
+          <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;line-height:1.6;">DOWNLOAD QR<br>ARTWORK PENDING</div>
+        </div>
+      </div>
+
+      <div style="flex:1.25 1 0;background:#0A0A0A;padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;">
+          <div style="font-size:20px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">WHAT CZD ADDS</div>
+          <div style="font-size:18px;font-weight:500;letter-spacing:0.10em;color:#6B6152;">8 PACKAGES · 41 MB</div>
+        </div>
+        <div style="display:flex;flex-direction:column;border-top:2px solid #E0A82E;">
+          <div style="display:flex;gap:16px;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(224,168,46,0.13);">
+            <div style="flex:1 1 0;font-size:20px;font-weight:600;color:#F4F0E6;min-width:0;">czd-purple-tokens</div>
+            <div style="width:90px;flex:0 0 90px;font-size:20px;color:#E0A82E;text-align:right;">1.0.0</div>
+            <div style="width:170px;flex:0 0 170px;font-size:18px;color:#6B6152;text-align:right;">the one source</div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(224,168,46,0.13);">
+            <div style="flex:1 1 0;font-size:20px;font-weight:600;color:#F4F0E6;min-width:0;">czd-plasma-theme</div>
+            <div style="width:90px;flex:0 0 90px;font-size:20px;color:#E0A82E;text-align:right;">1.0.0</div>
+            <div style="width:170px;flex:0 0 170px;font-size:18px;color:#6B6152;text-align:right;">aurorae · kvantum</div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(224,168,46,0.13);">
+            <div style="flex:1 1 0;font-size:20px;font-weight:600;color:#F4F0E6;min-width:0;">czd-icon-theme</div>
+            <div style="width:90px;flex:0 0 90px;font-size:20px;color:#E0A82E;text-align:right;">1.0.0</div>
+            <div style="width:170px;flex:0 0 170px;font-size:18px;color:#6B6152;text-align:right;">33 glyphs</div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(224,168,46,0.13);">
+            <div style="flex:1 1 0;font-size:20px;font-weight:600;color:#F4F0E6;min-width:0;">czd-boot-theme</div>
+            <div style="width:90px;flex:0 0 90px;font-size:20px;color:#E0A82E;text-align:right;">1.0.0</div>
+            <div style="width:170px;flex:0 0 170px;font-size:18px;color:#6B6152;text-align:right;">grub · plymouth</div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(224,168,46,0.13);">
+            <div style="flex:1 1 0;font-size:20px;font-weight:600;color:#F4F0E6;min-width:0;">czd-sddm-theme</div>
+            <div style="width:90px;flex:0 0 90px;font-size:20px;color:#E0A82E;text-align:right;">1.0.0</div>
+            <div style="width:170px;flex:0 0 170px;font-size:18px;color:#6B6152;text-align:right;">qt6 qml</div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(224,168,46,0.13);">
+            <div style="flex:1 1 0;font-size:20px;font-weight:600;color:#F4F0E6;min-width:0;">czd-terminal-profiles</div>
+            <div style="width:90px;flex:0 0 90px;font-size:20px;color:#E0A82E;text-align:right;">1.0.0</div>
+            <div style="width:170px;flex:0 0 170px;font-size:18px;color:#6B6152;text-align:right;">16 slots · 6 files</div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(224,168,46,0.13);">
+            <div style="flex:1 1 0;font-size:20px;font-weight:600;color:#F4F0E6;min-width:0;">czd-wallpapers</div>
+            <div style="width:90px;flex:0 0 90px;font-size:20px;color:#E0A82E;text-align:right;">1.0.0</div>
+            <div style="width:170px;flex:0 0 170px;font-size:18px;color:#6B6152;text-align:right;">4 plates · 33 MB</div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:baseline;padding:8px 0;border-bottom:2px solid #E0A82E;">
+            <div style="flex:1 1 0;font-size:20px;font-weight:600;color:#F4F0E6;min-width:0;">czd-welcome</div>
+            <div style="width:90px;flex:0 0 90px;font-size:20px;color:#E0A82E;text-align:right;">1.0.0</div>
+            <div style="width:170px;flex:0 0 170px;font-size:18px;color:#6B6152;text-align:right;">first boot only</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="font-size:20px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">WHAT IT DOES NOT TOUCH</div>
+          <div style="font-size:20px;line-height:1.5;color:#A99C83;">No tool added, removed or renumbered — pull the eight packages and you are on stock Kali Purple.</div>
+        </div>
+      </div>
+
+      <div style="flex:1 1 0;background:#0A0A0A;padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0;">
+        <div style="font-size:20px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">CHECK IT BEFORE YOU BOOT IT</div>
+        <div style="background:#050505;border:1px solid rgba(224,168,46,0.26);padding:14px;display:flex;flex-direction:column;gap:6px;font-size:20px;line-height:1.4;">
+          <div><span style="color:#E0A82E;">$</span> <span style="color:#F4F0E6;">sha256sum -c *.iso.sha256</span></div>
+          <div style="color:#4FC26B;">kali-purple-czd-2026.iso: OK</div>
+          <div><span style="color:#E0A82E;">$</span> <span style="color:#F4F0E6;">gpg --verify *.iso.sig</span></div>
+          <div style="color:#4FC26B;">Good signature — IoTemy Labs</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;border-top:1px solid rgba(224,168,46,0.13);padding-top:12px;">
+          <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">AT THE CONFERENCE</div>
+          <div style="font-size:20px;line-height:1.5;color:#A99C83;">Pre-written sticks sit at the registration desk both days, carrying the dateless default wallpaper.</div>
+        </div>
+        <div style="margin-top:auto;display:flex;flex-direction:column;gap:6px;border-top:1px solid rgba(224,168,46,0.13);padding-top:12px;">
+          <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">BUGS</div>
+          <div style="font-size:20px;line-height:1.5;color:#A99C83;">Theme bugs to CZD, tool bugs upstream to Kali — quote the build string either way.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);flex:0 0 auto;">
+      <div style="flex:1 1 0;background:#0B0A07;padding:18px 22px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">CADENCE</div>
+        <div style="font-size:18px;line-height:1.6;color:#A99C83;">One image a year, cut four weeks before the doors open.</div>
+      </div>
+      <div style="flex:1 1 0;background:#0B0A07;padding:18px 22px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">AFTER OCTOBER</div>
+        <div style="font-size:18px;line-height:1.6;color:#A99C83;">The dated wallpaper stops being default. Nothing else changes.</div>
+      </div>
+      <div style="flex:1 1 0;background:#0B0A07;padding:18px 22px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">SUPPORT</div>
+        <div style="font-size:18px;line-height:1.6;color:#A99C83;">Best effort, by the people who made it, in the hallway track.</div>
+      </div>
+      <div style="flex:1 1 0;background:#0B0A07;padding:18px 22px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">LICENCE</div>
+        <div style="font-size:18px;line-height:1.6;color:#A99C83;">Themes GPL-3.0. Fonts OFL. The logo stays CZD's.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">01 · THE CHECKSUM IS THE HERO</div>
+      <div style="font-size:11px;line-height:1.7;">A security conference publishing an unverifiable ISO is the joke that writes itself. The hash sits at full ink in the first column at 20px, the key fingerprint under it, and the verify commands are printed rather than linked — the page works for someone reading it on a phone at the registration desk.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">02 · EIGHT PACKAGES, NAMED AND VERSIONED</div>
+      <div style="font-size:11px;line-height:1.7;">The manifest is the whole argument of the project: this is a theme, delivered as packages, that can be removed. Every deliverable from batches 01–07 maps to a line here, and the token package sits at the top because the other seven generate from it.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">03 · GREEN, ONCE, WHERE IT IS QUOTED</div>
+      <div style="font-size:11px;line-height:1.7;">The <span style="color:#4FC26B;">#4FC26B</span> success line appears because <span style="color:#F4F0E6;">sha256sum</span> printed it, not because CZD chose it — the same rule that lets the terminal palette exist. Outside quoted tool output, this sheet is gold on near-black like everything else.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">04 · A SHEET, NOT A LANDING PAGE</div>
+      <div style="font-size:11px;line-height:1.7;">This plate is the source for the website's download section and for the printed sleeve on the desk sticks — three columns of facts on one flat surface, no hero, no screenshot carousel, no "get started" button. The site already has this grid; it takes the content unchanged.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:32px;flex-wrap:wrap;border-top:1px solid rgba(224,168,46,0.26);padding-top:20px;">
+    <div style="flex:1 1 400px;font-size:11px;line-height:1.8;">
+      <span style="color:#E0A82E;font-weight:700;letter-spacing:0.14em;">BATCH COMPLETE · </span>The installer's first screen, the destructive screen and how it earns its weight without red, the slideshow as five held slides with the done-state on the same layout, and the release sheet that names the artifact, the eight packages and the way to verify them. With 08 the chain runs firmware → install → disk → desktop → download page.
+    </div>
+    <div style="flex:1 1 400px;font-size:11px;line-height:1.8;">
+      <span style="color:#E0A82E;font-weight:700;letter-spacing:0.14em;">SETTLED · </span>The campus mirror stays <span style="color:#E0A82E;">TBC</span> until it exists. Desk sticks carry the <span style="color:#F4F0E6;">dateless default</span> wallpaper, so a stick handed out on Saturday is not stale on Monday. No printed sleeve this year — a checksum sticker does the job. The image publishes as a <span style="color:#F4F0E6;">GitHub release</span>, live bootable and installable, with the site linking to it rather than hosting it.
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;diskMode&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;erase-and-encrypt&quot;, &quot;manual&quot;], &quot;default&quot;: &quot;erase-and-encrypt&quot;, &quot;tsType&quot;: &quot;\&quot;erase-and-encrypt\&quot; | \&quot;manual\&quot;&quot;, &quot;section&quot;: &quot;Partitioning&quot; },
+  &quot;installState&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;installing&quot;, &quot;complete&quot;], &quot;default&quot;: &quot;installing&quot;, &quot;tsType&quot;: &quot;\&quot;installing\&quot; | \&quot;complete\&quot;&quot;, &quot;section&quot;: &quot;Slideshow&quot; },
+  &quot;showGuides&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Overlays&quot; }
+}">
+class Component extends DCLogic {
+  renderVals() {
+    const erase = (this.props.diskMode ?? "erase-and-encrypt") === "erase-and-encrypt";
+    const complete = (this.props.installState ?? "installing") === "complete";
+    const tint = "rgba(224,168,46,0.05)";
+    return {
+      showGuides: this.props.showGuides ?? false,
+      erase,
+      eraseBg: erase ? tint : "#0B0A07",
+      manualBg: erase ? "#0B0A07" : tint,
+      eraseInk: erase ? "#E0A82E" : "#6B6152",
+      manualInk: erase ? "#6B6152" : "#E0A82E",
+      eraseCap: erase ? "1px solid #E0A82E" : "1px solid transparent",
+      manualCap: erase ? "1px solid transparent" : "1px solid #E0A82E",
+      layoutLabel: erase ? "ERASE AND ENCRYPT" : "MANUAL",
+      rootLabel: erase ? "czd-root · LUKS2 → ext4 · 466 GB" : "/ · ext4 · 466 GB",
+      rootDetail: erase ? "czd-root 466G · luks2" : "/ 466G · ext4",
+      warnHead: erase ? "THIS ERASES nvme0n1 COMPLETELY" : "MANUAL MODE · CZD CHECKS NOTHING FOR YOU",
+      warnBody: erase
+        ? "Windows 11 and the recovery partition go with it. No undo, no recovery key, nobody to call. Write the passphrase down somewhere physical before you type it twice."
+        : "Mount points, flags and bootloader location are yours. CZD requires only an EFI partition and an unencrypted /boot; a wrong flag here fails at first boot, not now.",
+      complete,
+      installing: !complete,
+      titleState: complete ? "FINISHED · 11 MIN 42 S" : "STEP 07 OF 07",
+      slideEyebrow: complete ? "INSTALL COMPLETE" : "SLIDE 03 OF 05 · 16–24s",
+      slideTitle: complete ? "Done. Take the stick out." : "Defensive tooling opens at 14",
+      slideBody: complete
+        ? "The disk is written and the bootloader is in place. Remove the USB before you restart, or the firmware will hand you this installer again."
+        : "Kali's menu keeps its numbering, 01 through 13, exactly where your hands expect it. CZD's additions — the SOC tooling, the CTF bits, the conference schedule — start at 14 and nothing above them moved.",
+      pkgLine: complete ? "2,206 of 2,206 unpacked · bootloader written" : "unpacking 1,418 of 2,206 · wireshark-qt",
+      pctLine: complete ? "100%" : "64%",
+      progressFill: complete ? "100%" : "64%",
+      etaLine: complete ? "TOTAL 11 MIN 42 S · CZD-2026-10-231" : "ETA 6 MIN · SLOWER ON USB 2.0, AND THAT IS NOT A HANG",
+      footNote: complete ? "Restart, then sign in as the user you made at step 05." : "Safe to walk away. Nothing here needs a click until it finishes.",
+      s1bg: "#0B0A07",
+      s2bg: "#0B0A07",
+      s3bg: complete ? "#0B0A07" : tint,
+      s4bg: "#0B0A07",
+      s5bg: "#0B0A07"
+    };
+  }
+}
+</script>
+</body>
+</html>

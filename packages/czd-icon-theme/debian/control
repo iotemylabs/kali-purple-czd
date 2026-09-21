@@ -1,0 +1,16 @@
+Source: czd-icon-theme
+Section: misc
+Priority: optional
+Maintainer: IoTemy Labs <brett@iotemylabs.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+Homepage: https://github.com/iotemylabs/kali-purple-czd
+
+Package: czd-icon-theme
+Architecture: all
+Depends: ${misc:Depends}, czd-purple-tokens (= ${binary:Version}), breeze-icon-theme
+Description: CZD Purple icon theme (33 glyphs, gold, 1px stroke)
+ The freedesktop icon theme for the CZD Purple respin: 33 glyphs on a 24-unit
+ grid with a 14-unit live area, 1px gold stroke, inheriting breeze-dark for
+ everything it does not define.

@@ -1,0 +1,17 @@
+Source: czd-plasma-theme
+Section: kde
+Priority: optional
+Maintainer: IoTemy Labs <brett@iotemylabs.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+Homepage: https://github.com/iotemylabs/kali-purple-czd
+
+Package: czd-plasma-theme
+Architecture: all
+Depends: ${misc:Depends}, czd-purple-tokens (= ${binary:Version}), plasma-desktop, plasma-workspace
+Recommends: qt6-style-kvantum
+Description: CZD Purple KDE Plasma 6 theme (decoration, style, colours, Kvantum)
+ Aurorae window decoration, Plasma desktop style, Qt colour scheme, global
+ theme and Kvantum theme for the Charleston Zero Day respin of Kali Purple.
+ Gold on near-black, zero radius, zero shadow.

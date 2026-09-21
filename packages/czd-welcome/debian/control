@@ -1,0 +1,16 @@
+Source: czd-welcome
+Section: misc
+Priority: optional
+Maintainer: IoTemy Labs <brett@iotemylabs.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+Homepage: https://github.com/iotemylabs/kali-purple-czd
+
+Package: czd-welcome
+Architecture: all
+Depends: ${misc:Depends}, czd-purple-tokens (= ${binary:Version}), python3, python3-pyqt6
+Description: CZD Purple first-boot welcome window
+ A 1280x760 Qt6 window shown once on first login: build string, schedule,
+ credentials and where things are. Self-disabling; never shown again after it
+ is closed.

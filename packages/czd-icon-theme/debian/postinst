@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+case "$1" in
+  configure)
+    if command -v gtk-update-icon-cache >/dev/null 2>&1 && [ -d /usr/share/icons/czd-purple ]; then
+      gtk-update-icon-cache -q -t -f /usr/share/icons/czd-purple || true
+    fi
+    ;;
+esac
+#DEBHELPER#
+exit 0

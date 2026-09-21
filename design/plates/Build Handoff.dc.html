@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="design_doc_mode" content="canvas">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/rules.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/tokens/base.css">
+  <link rel="stylesheet" href="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/styles.css">
+  <script src="_ds/charleston-zero-day-design-system-182c31b8-06eb-4e82-9dc5-e45d1fe26786/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:#050505;}
+    a{color:#E0A82E;} a:hover{color:#FFE9A8;}
+  </style>
+</helmet>
+
+<div style="background:#050505;padding:48px;display:flex;flex-direction:column;gap:32px;font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#A99C83;width:2016px;">
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:16px;">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// DELIVERABLE 09 · BUILD HANDOFF</div>
+      <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:40px;line-height:1;letter-spacing:-0.035em;color:#F4F0E6;">czd-handoff</div>
+    </div>
+    <div style="font-size:11px;letter-spacing:0.14em;color:#6B6152;text-align:right;line-height:1.7;">4 SURFACES · 1920 × 1080 · sRGB<br>READER: AN IOTEMY LABS ENGINEER WHO HAS NOT SEEN THIS BEFORE</div>
+  </div>
+
+  <div style="display:flex;gap:32px;flex-wrap:wrap;border-bottom:1px solid rgba(224,168,46,0.26);padding-bottom:20px;">
+    <div style="flex:1 1 460px;font-size:11px;line-height:1.8;">
+      <span style="color:#E0A82E;font-weight:700;letter-spacing:0.14em;">THE CALL · </span>Batches 01–08 specified a respin. This one is how somebody else builds it: <span style="color:#F4F0E6;">the repo, the build run on a laptop, the yearly respin checklist, and the test matrix that gates a release.</span> Written for an engineer who is fluent in Linux and has never touched this project — every command is literal, every path is real, and nothing says "configure as appropriate".
+    </div>
+    <div style="flex:1 1 460px;font-size:11px;line-height:1.8;">
+      <span style="color:#E0A82E;font-weight:700;letter-spacing:0.14em;">SETTLED FROM 08 · </span>The image publishes as a <span style="color:#F4F0E6;">GitHub release</span> — live bootable and installable, the site links out rather than hosting. Build is <span style="color:#F4F0E6;">live-build on a laptop, by hand</span>: no CI, no runner minutes, no secrets in a pipeline, and one person can cut an image on a train. The campus mirror stays <span style="color:#E0A82E;">TBC</span>; desk sticks carry the dateless default wallpaper.
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:16px;margin-top:16px;">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// DELIVERABLE 09 · BUILD HANDOFF</div>
+      <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:40px;line-height:1;letter-spacing:-0.035em;color:#F4F0E6;">czd-repo</div>
+    </div>
+    <div style="font-size:11px;letter-spacing:0.14em;color:#6B6152;text-align:right;line-height:1.7;">github.com/iotemylabs/czd-purple · MAIN + TAGS<br>ONE REPO · NO SUBMODULES · NO GENERATED FILES COMMITTED</div>
+  </div>
+
+  <div id="czd-repo" data-screen-label="czd-repo" style="position:relative;width:1920px;height:1080px;background:#0A0A0A;overflow:hidden;flex:0 0 auto;padding:64px 96px;box-sizing:border-box;display:flex;flex-direction:column;gap:24px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:16px;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:24px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// 01 · THE REPOSITORY</div>
+        <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:48px;line-height:0.94;letter-spacing:-0.035em;color:#F4F0E6;">Everything is in one place</div>
+      </div>
+      <div style="text-align:right;font-size:22px;line-height:1.6;color:#A99C83;white-space:nowrap;">Clone it, run one script, get an ISO.<br><span style="color:#E0A82E;">git clone github.com/iotemylabs/czd-purple</span></div>
+    </div>
+
+    <div style="flex:1 1 0;display:flex;gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);min-height:0;">
+      <div style="flex:1.35 1 0;background:#050505;padding:24px 28px;display:flex;flex-direction:column;gap:14px;min-width:0;">
+        <div style="font-size:20px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">TREE</div>
+        <div style="font-size:20px;line-height:1.55;color:#A99C83;white-space:pre;">czd-purple/
+<span style="color:#E0A82E;">build.sh</span>              one entry point
+<span style="color:#E0A82E;">tokens/</span>
+  czd-purple-tokens.json  the source
+  generate.py           → six toolkit files
+<span style="color:#E0A82E;">packages/</span>
+  czd-purple-tokens/
+  czd-plasma-theme/
+  czd-icon-theme/
+  czd-boot-theme/
+  czd-sddm-theme/
+  czd-terminal-profiles/
+  czd-wallpapers/
+  czd-welcome/
+<span style="color:#E0A82E;">live-build/</span>
+  auto/config           → the invocation
+  config/package-lists/
+  config/includes.chroot/
+<span style="color:#E0A82E;">installer/</span>
+  branding/czd-purple/  → calamares
+<span style="color:#E0A82E;">design/</span>               batches 01–09
+<span style="color:#E0A82E;">RELEASING.md</span>          the checklist</div>
+      </div>
+
+      <div style="flex:1 1 0;background:#0A0A0A;padding:24px 28px;display:flex;flex-direction:column;gap:14px;min-width:0;">
+        <div style="font-size:20px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">RULES THAT KEEP IT HONEST</div>
+        <div style="display:flex;flex-direction:column;border-top:2px solid #E0A82E;">
+          <div style="padding:12px 0;border-bottom:1px solid rgba(224,168,46,0.13);display:flex;flex-direction:column;gap:5px;">
+            <div style="font-size:22px;font-weight:600;color:#F4F0E6;">Nothing generated is committed</div>
+            <div style="font-size:20px;line-height:1.45;">The six toolkit files, the wallpapers and the flattened boot plates are build products. Edit the token JSON, rerun, diff.</div>
+          </div>
+          <div style="padding:12px 0;border-bottom:1px solid rgba(224,168,46,0.13);display:flex;flex-direction:column;gap:5px;">
+            <div style="font-size:22px;font-weight:600;color:#F4F0E6;">One colour lives in one file</div>
+            <div style="font-size:20px;line-height:1.45;">A hex outside tokens/ is a bug. <span style="color:#E0A82E;">grep -rn "#E0A82E" packages/</span> should return nothing.</div>
+          </div>
+          <div style="padding:12px 0;border-bottom:1px solid rgba(224,168,46,0.13);display:flex;flex-direction:column;gap:5px;">
+            <div style="font-size:22px;font-weight:600;color:#F4F0E6;">Eight packages, no more</div>
+            <div style="font-size:20px;line-height:1.45;">A ninth package means a new surface, which means a design batch first. Tools are never added here.</div>
+          </div>
+          <div style="padding:12px 0;display:flex;flex-direction:column;gap:5px;">
+            <div style="font-size:22px;font-weight:600;color:#F4F0E6;">Tags are the build string</div>
+            <div style="font-size:20px;line-height:1.45;">Tag <span style="color:#E0A82E;">czd-2026-10-231</span> and the same string appears in czd-welcome, on every wallpaper and in the ISO name.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:0.7 1 0;background:#0A0A0A;padding:24px 28px;display:flex;flex-direction:column;gap:14px;min-width:0;">
+        <div style="font-size:20px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">THE GITHUB RELEASE</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:20px;line-height:1.45;">
+          <div style="color:#F4F0E6;font-weight:600;">Four assets, every time</div>
+          <div>kali-purple-czd-2026.iso</div>
+          <div>· .sha256</div>
+          <div>· .sig</div>
+          <div>RELEASE-NOTES.md</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid rgba(224,168,46,0.13);padding-top:14px;font-size:20px;line-height:1.45;">
+          <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">RELEASE BODY</div>
+          <div>What changed, the checksum in full, the Secure Boot line, and the sentence that it is live bootable and installable.</div>
+        </div>
+        <div style="margin-top:auto;background:#181307;border-top:2px solid #E0A82E;padding:14px 16px;display:flex;flex-direction:column;gap:6px;">
+          <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">DRAFT UNTIL THE MATRIX IS GREEN</div>
+          <div style="font-size:20px;line-height:1.45;">The release is a draft until plate 04 signs off. Publishing early is how an untested ISO gets onto a hundred laptops.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">01 · ONE REPO, ONE SCRIPT</div>
+      <div style="font-size:11px;line-height:1.7;">Splitting themes, live-build config and installer branding across three repos is how a volunteer project loses an image. Everything a build needs is in one clone, and the only entry point is <span style="color:#E0A82E;">build.sh</span> — if a step is not in that script, it does not happen at release time.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">02 · THE DESIGN SHIPS WITH THE CODE</div>
+      <div style="font-size:11px;line-height:1.7;">Batches 01–09 live in <span style="color:#E0A82E;">design/</span> next to the packages they specify. An engineer changing the panel height can read why it is 56px without asking anyone, and a reviewer can tell intent from accident.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">03 · THE GREP IS THE TEST</div>
+      <div style="font-size:11px;line-height:1.7;">Token drift is the failure mode of every theme project: a hex gets pasted into a QML file, the gold changes, and one surface stays last year's colour. A hex anywhere outside <span style="color:#F4F0E6;">tokens/</span> fails the release checklist, and it is one grep to prove.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">04 · A TAG IS A PROMISE</div>
+      <div style="font-size:11px;line-height:1.7;">The build string is not decoration — it is what a bug report quotes. It comes from the git tag, is written into the welcome app and the wallpapers at build time, and cannot be set by hand. Two ISOs with the same string are the same ISO.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:16px;margin-top:32px;">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// DELIVERABLE 09 · BUILD HANDOFF</div>
+      <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:40px;line-height:1;letter-spacing:-0.035em;color:#F4F0E6;">czd-build</div>
+    </div>
+    <div style="font-size:11px;letter-spacing:0.14em;color:#6B6152;text-align:right;line-height:1.7;">live-build ON A LAPTOP · DEBIAN OR KALI HOST · 40 GB FREE<br>ONE RUN, START TO ISO: 55–80 MINUTES</div>
+  </div>
+
+  <div id="czd-build" data-screen-label="czd-build" style="position:relative;width:1920px;height:1080px;background:#0A0A0A;overflow:hidden;flex:0 0 auto;padding:64px 96px;box-sizing:border-box;display:flex;flex-direction:column;gap:22px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:16px;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:24px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// 02 · THE BUILD RUN</div>
+        <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:48px;line-height:0.94;letter-spacing:-0.035em;color:#F4F0E6;">Six commands, in order</div>
+      </div>
+      <div style="text-align:right;font-size:22px;line-height:1.6;color:#A99C83;white-space:nowrap;">Run as root on a wired connection.<br><span style="color:#E0A82E;">Do not build on the machine you are presenting from.</span></div>
+    </div>
+
+    <div style="flex:1 1 0;display:flex;flex-direction:column;border-top:2px solid #E0A82E;border-bottom:2px solid #E0A82E;min-height:0;">
+      <div style="flex:1 1 0;display:flex;gap:24px;align-items:center;padding:0 4px;border-bottom:1px solid rgba(224,168,46,0.13);min-height:0;">
+        <div style="width:54px;flex:0 0 54px;font-size:26px;font-weight:700;color:#E0A82E;">01</div>
+        <div style="width:840px;flex:0 0 840px;font-size:22px;color:#F4F0E6;white-space:nowrap;">apt install live-build debootstrap squashfs-tools xorriso</div>
+        <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">Host prerequisites. Kali or Debian 13, amd64, nothing else tested.</div>
+        <div style="width:150px;flex:0 0 150px;font-size:20px;font-weight:600;color:#E0A82E;text-align:right;white-space:nowrap;">2 min</div>
+      </div>
+      <div style="flex:1 1 0;display:flex;gap:24px;align-items:center;padding:0 4px;border-bottom:1px solid rgba(224,168,46,0.13);min-height:0;">
+        <div style="width:54px;flex:0 0 54px;font-size:26px;font-weight:700;color:#E0A82E;">02</div>
+        <div style="width:840px;flex:0 0 840px;font-size:22px;color:#F4F0E6;white-space:nowrap;">git clone github.com/iotemylabs/czd-purple &amp;&amp; cd czd-purple</div>
+        <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">Check out the tag you intend to ship, not main.</div>
+        <div style="width:150px;flex:0 0 150px;font-size:20px;font-weight:600;color:#E0A82E;text-align:right;white-space:nowrap;">1 min</div>
+      </div>
+      <div style="flex:1 1 0;display:flex;gap:24px;align-items:center;padding:0 4px;border-bottom:1px solid rgba(224,168,46,0.13);min-height:0;">
+        <div style="width:54px;flex:0 0 54px;font-size:26px;font-weight:700;color:#E0A82E;">03</div>
+        <div style="width:840px;flex:0 0 840px;font-size:22px;color:#F4F0E6;white-space:nowrap;">python3 tokens/generate.py</div>
+        <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">Token JSON → six toolkit files, four wallpapers, two boot plates.</div>
+        <div style="width:150px;flex:0 0 150px;font-size:20px;font-weight:600;color:#E0A82E;text-align:right;white-space:nowrap;">20 sec</div>
+      </div>
+      <div style="flex:1 1 0;display:flex;gap:24px;align-items:center;padding:0 4px;border-bottom:1px solid rgba(224,168,46,0.13);min-height:0;">
+        <div style="width:54px;flex:0 0 54px;font-size:26px;font-weight:700;color:#E0A82E;">04</div>
+        <div style="width:840px;flex:0 0 840px;font-size:22px;color:#F4F0E6;white-space:nowrap;">./build.sh --tag {{ tagLabel }}</div>
+        <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">Builds the eight .deb packages, then runs live-build. Logs to build.log.</div>
+        <div style="width:150px;flex:0 0 150px;font-size:20px;font-weight:600;color:#E0A82E;text-align:right;white-space:nowrap;">45–70 min</div>
+      </div>
+      <div style="flex:1 1 0;display:flex;gap:24px;align-items:center;padding:0 4px;border-bottom:1px solid rgba(224,168,46,0.13);min-height:0;">
+        <div style="width:54px;flex:0 0 54px;font-size:26px;font-weight:700;color:#E0A82E;">05</div>
+        <div style="width:840px;flex:0 0 840px;font-size:22px;color:#F4F0E6;white-space:nowrap;">sha256sum *.iso &gt; *.iso.sha256 &amp;&amp; gpg --detach-sign *.iso</div>
+        <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">IoTemy Labs' key, on an offline stick. Never in the repo.</div>
+        <div style="width:150px;flex:0 0 150px;font-size:20px;font-weight:600;color:#E0A82E;text-align:right;white-space:nowrap;">3 min</div>
+      </div>
+      <div style="flex:1 1 0;display:flex;gap:24px;align-items:center;padding:0 4px;min-height:0;">
+        <div style="width:54px;flex:0 0 54px;font-size:26px;font-weight:700;color:#E0A82E;">06</div>
+        <div style="width:840px;flex:0 0 840px;font-size:22px;color:#F4F0E6;white-space:nowrap;">gh release create {{ tagLabel }} --draft *.iso *.sha256 *.sig</div>
+        <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">Draft. It publishes only after the test matrix signs off.</div>
+        <div style="width:150px;flex:0 0 150px;font-size:20px;font-weight:600;color:#E0A82E;text-align:right;white-space:nowrap;">10 min</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);flex:0 0 auto;">
+      <div style="flex:1 1 0;background:#0B0A07;padding:16px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">WHEN IT FAILS</div>
+        <div style="font-size:20px;line-height:1.5;">Nine times in ten it is a mirror timeout in debootstrap. Rerun step 04; the cache survives.</div>
+      </div>
+      <div style="flex:1 1 0;background:#0B0A07;padding:16px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">CLEAN REBUILD</div>
+        <div style="font-size:20px;line-height:1.5;"><span style="color:#E0A82E;">./build.sh --clean</span> before a release cut. Anything less is a stale chroot.</div>
+      </div>
+      <div style="flex:1 1 0;background:#0B0A07;padding:16px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">NO CI, ON PURPOSE</div>
+        <div style="font-size:20px;line-height:1.5;">A 4 GB artifact and a signing key in a hosted runner buys nothing a laptop does not.</div>
+      </div>
+      <div style="flex:1 1 0;background:#0B0A07;padding:16px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">WHO CAN RUN IT</div>
+        <div style="font-size:20px;line-height:1.5;">Anyone on the board with the repo and 40 GB free. The key holder is the only bottleneck.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">01 · LITERAL COMMANDS, REAL TIMES</div>
+      <div style="font-size:11px;line-height:1.7;">Every line is paste-able and every duration is measured on a 2021 laptop over wired ethernet, because "this takes a while" and "this takes 70 minutes" lead to different decisions about when you start. The long step is step 04 and it is unattended.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">02 · THE GENERATOR IS STEP 03, NOT A HABIT</div>
+      <div style="font-size:11px;line-height:1.7;">Because generated files are never committed, the build cannot use a stale wallpaper or last year's gold — <span style="color:#E0A82E;">generate.py</span> runs before packaging every time, and its output lands in the working tree where a diff will show you what moved.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">03 · THE KEY NEVER TOUCHES THE REPO</div>
+      <div style="font-size:11px;line-height:1.7;">Signing is a separate step on an offline stick, which is also why there is no CI: a hosted runner would need the key to produce a signed image, and a security conference handing its release key to a cloud runner is a talk, not a practice.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">04 · DRAFT IS THE DEFAULT STATE</div>
+      <div style="font-size:11px;line-height:1.7;">Step 06 creates a draft release, so the download link cannot exist before the matrix is green. Making publication a deliberate, separate act is the whole safety mechanism — it is the one place this process is slower than it could be, deliberately.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:16px;margin-top:32px;">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// DELIVERABLE 09 · BUILD HANDOFF</div>
+      <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:40px;line-height:1;letter-spacing:-0.035em;color:#F4F0E6;">czd-respin</div>
+    </div>
+    <div style="font-size:11px;letter-spacing:0.14em;color:#6B6152;text-align:right;line-height:1.7;">NEXT YEAR, BY SOMEBODY ELSE · TARGET {{ yearLabel }}<br>SWITCH WITH THE <span style="color:#E0A82E;">respin year</span> TWEAK</div>
+  </div>
+
+  <div id="czd-respin" data-screen-label="czd-respin" style="position:relative;width:1920px;height:1080px;background:#0A0A0A;overflow:hidden;flex:0 0 auto;padding:64px 96px;box-sizing:border-box;display:flex;flex-direction:column;gap:24px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:16px;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:24px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// 03 · THE YEARLY RESPIN</div>
+        <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:48px;line-height:0.94;letter-spacing:-0.035em;color:#F4F0E6;">Nine edits and a build</div>
+      </div>
+      <div style="text-align:right;font-size:22px;line-height:1.6;color:#A99C83;white-space:nowrap;">Start four weeks before doors open.<br><span style="color:#E0A82E;">Half a day of edits, then one build run.</span></div>
+    </div>
+
+    <div style="flex:1 1 0;display:flex;gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);min-height:0;">
+      <div style="flex:1.35 1 0;background:#0A0A0A;padding:24px 28px;display:flex;flex-direction:column;gap:14px;min-width:0;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;">
+          <div style="font-size:20px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;white-space:nowrap;">CHANGES EVERY YEAR</div>
+          <div style="font-size:18px;font-weight:500;letter-spacing:0.10em;color:#6B6152;white-space:nowrap;">9 EDITS · ~4 HOURS</div>
+        </div>
+        <div style="display:flex;flex-direction:column;border-top:2px solid #E0A82E;">
+          <div style="display:flex;gap:20px;align-items:baseline;padding:11px 0;border-bottom:1px solid rgba(224,168,46,0.13);">
+            <div style="width:40px;flex:0 0 40px;font-size:20px;font-weight:700;color:#E0A82E;">01</div>
+            <div style="width:330px;flex:0 0 330px;font-size:21px;font-weight:600;color:#F4F0E6;">Dates and build string</div>
+            <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">tokens/czd-purple-tokens.json → <span style="color:#E0A82E;">{{ buildLabel }}</span></div>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline;padding:11px 0;border-bottom:1px solid rgba(224,168,46,0.13);">
+            <div style="width:40px;flex:0 0 40px;font-size:20px;font-weight:700;color:#E0A82E;">02</div>
+            <div style="width:330px;flex:0 0 330px;font-size:21px;font-weight:600;color:#F4F0E6;">Event wallpaper date block</div>
+            <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">Regenerates from the token dates. Nothing to redraw.</div>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline;padding:11px 0;border-bottom:1px solid rgba(224,168,46,0.13);">
+            <div style="width:40px;flex:0 0 40px;font-size:20px;font-weight:700;color:#E0A82E;">03</div>
+            <div style="width:330px;flex:0 0 330px;font-size:21px;font-weight:600;color:#F4F0E6;">Welcome app schedule</div>
+            <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">One JSON of sessions. Wrong until the programme is final.</div>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline;padding:11px 0;border-bottom:1px solid rgba(224,168,46,0.13);">
+            <div style="width:40px;flex:0 0 40px;font-size:20px;font-weight:700;color:#E0A82E;">04</div>
+            <div style="width:330px;flex:0 0 330px;font-size:21px;font-weight:600;color:#F4F0E6;">Kali base, rebased</div>
+            <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">New Kali Purple release. Check the menu still numbers 01–13.</div>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline;padding:11px 0;border-bottom:1px solid rgba(224,168,46,0.13);">
+            <div style="width:40px;flex:0 0 40px;font-size:20px;font-weight:700;color:#E0A82E;">05</div>
+            <div style="width:330px;flex:0 0 330px;font-size:21px;font-weight:600;color:#F4F0E6;">Plasma version drift</div>
+            <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">Aurorae and Kvantum break on majors. Budget a day.</div>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline;padding:11px 0;border-bottom:1px solid rgba(224,168,46,0.13);">
+            <div style="width:40px;flex:0 0 40px;font-size:20px;font-weight:700;color:#E0A82E;">06</div>
+            <div style="width:330px;flex:0 0 330px;font-size:21px;font-weight:600;color:#F4F0E6;">Defensive tooling list</div>
+            <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">Menu 14 and up. Add what the SOC track actually uses.</div>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline;padding:11px 0;border-bottom:1px solid rgba(224,168,46,0.13);">
+            <div style="width:40px;flex:0 0 40px;font-size:20px;font-weight:700;color:#E0A82E;">07</div>
+            <div style="width:330px;flex:0 0 330px;font-size:21px;font-weight:600;color:#F4F0E6;">Slideshow slide 04</div>
+            <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">The conference-bits slide. One sentence, new venue detail.</div>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline;padding:11px 0;border-bottom:1px solid rgba(224,168,46,0.13);">
+            <div style="width:40px;flex:0 0 40px;font-size:20px;font-weight:700;color:#E0A82E;">08</div>
+            <div style="width:330px;flex:0 0 330px;font-size:21px;font-weight:600;color:#F4F0E6;">Release notes and mirrors</div>
+            <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">Campus mirror is <span style="color:#E0A82E;">TBC</span> until somebody hosts it.</div>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline;padding:11px 0;">
+            <div style="width:40px;flex:0 0 40px;font-size:20px;font-weight:700;color:#E0A82E;">09</div>
+            <div style="width:330px;flex:0 0 330px;font-size:21px;font-weight:600;color:#F4F0E6;">Signing key holder</div>
+            <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;"><span style="color:#F4F0E6;">IoTemy Labs</span> holds it. Name the person and a backup in RELEASING.md.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:1 1 0;background:#050505;padding:24px 28px;display:flex;flex-direction:column;gap:14px;min-width:0;">
+        <div style="font-size:20px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">NEVER CHANGES</div>
+        <div style="font-size:20px;line-height:1.5;">Touch any of these and it stops being CZD. Bring it to the board, not to a commit.</div>
+        <div style="display:flex;flex-direction:column;border-top:2px solid #E0A82E;">
+          <div style="padding:11px 0;border-bottom:1px solid rgba(224,168,46,0.13);font-size:21px;color:#F4F0E6;">Gold on near-black · one accent hue</div>
+          <div style="padding:11px 0;border-bottom:1px solid rgba(224,168,46,0.13);font-size:21px;color:#F4F0E6;">Archivo and IBM Plex Mono, nothing else</div>
+          <div style="padding:11px 0;border-bottom:1px solid rgba(224,168,46,0.13);font-size:21px;color:#F4F0E6;">Zero radius, zero shadow, zero gradient</div>
+          <div style="padding:11px 0;border-bottom:1px solid rgba(224,168,46,0.13);font-size:21px;color:#F4F0E6;">Kali's tool numbering 01–13, untouched</div>
+          <div style="padding:11px 0;border-bottom:1px solid rgba(224,168,46,0.13);font-size:21px;color:#F4F0E6;">Panel at the bottom, 56px</div>
+          <div style="padding:11px 0;font-size:21px;color:#F4F0E6;">Eight packages, all removable</div>
+        </div>
+        <div style="margin-top:auto;background:#181307;border-top:2px solid #E0A82E;padding:14px 16px;display:flex;flex-direction:column;gap:6px;">
+          <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">IF YOU ONLY HAVE AN HOUR</div>
+          <div style="font-size:20px;line-height:1.45;">Do edits 01 and 02, rebuild, reverify the boot chain. A dateless image with last year's schedule is worse than one with new dates and no programme.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">01 · A LIST, NOT A PHILOSOPHY</div>
+      <div style="font-size:11px;line-height:1.7;">Next year's builder is a volunteer with a deadline, so the respin is nine numbered edits with file paths — not an invitation to rethink the system. Two of the nine are genuinely hard (Kali rebase, Plasma drift); the other seven are text.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">02 · THE NEVER-CHANGES COLUMN IS THE BRAND</div>
+      <div style="font-size:11px;line-height:1.7;">Every item in it was a decision somebody argued for across batches 01–08. Writing them down as immovable is cheaper than re-litigating the gold every October, and it gives a new engineer permission to say no on the board's behalf.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">03 · THE DATES ARE DATA</div>
+      <div style="font-size:11px;line-height:1.7;">Because the event wallpaper and the welcome app read dates out of the token JSON, edit 01 does most of edit 02's work. Flip the <span style="color:#E0A82E;">respin year</span> tweak to see the strings this plate would carry next October — that is the whole diff for a date change.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">04 · AN HOUR IS A REAL SCENARIO</div>
+      <div style="font-size:11px;line-height:1.7;">Conferences run late and volunteers get pulled. The fallback path names what to do with one hour and what to accept losing, so the failure mode is a thin respin rather than last year's ISO handed out with the wrong dates on the wallpaper.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:16px;margin-top:32px;">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// DELIVERABLE 09 · BUILD HANDOFF</div>
+      <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:40px;line-height:1;letter-spacing:-0.035em;color:#F4F0E6;">czd-verify</div>
+    </div>
+    <div style="font-size:11px;letter-spacing:0.14em;color:#6B6152;text-align:right;line-height:1.7;">THE RELEASE GATE · LIVE BOOT AND INSTALL, BOTH TESTED<br>SWITCH WITH THE <span style="color:#E0A82E;">matrix state</span> TWEAK</div>
+  </div>
+
+  <div id="czd-verify" data-screen-label="czd-verify" style="position:relative;width:1920px;height:1080px;background:#0A0A0A;overflow:hidden;flex:0 0 auto;padding:64px 96px;box-sizing:border-box;display:flex;flex-direction:column;gap:22px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;border-bottom:2px solid #E0A82E;padding-bottom:16px;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:24px;font-weight:700;letter-spacing:0.20em;color:#E0A82E;">// 04 · BEFORE IT PUBLISHES</div>
+        <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:48px;line-height:0.94;letter-spacing:-0.035em;color:#F4F0E6;">{{ verifyHeadline }}</div>
+      </div>
+      <div style="text-align:right;font-size:22px;line-height:1.6;color:#A99C83;white-space:nowrap;">{{ verifySub }}<br><span style="color:#E0A82E;">{{ verifyMeta }}</span></div>
+    </div>
+
+    <div style="flex:1 1 0;display:flex;flex-direction:column;border-top:2px solid #E0A82E;border-bottom:2px solid #E0A82E;min-height:0;">
+      <div style="flex:0 0 auto;display:flex;gap:20px;align-items:baseline;padding:10px 4px;border-bottom:1px solid rgba(224,168,46,0.26);font-size:18px;font-weight:700;letter-spacing:0.14em;color:#A99C83;">
+        <div style="width:250px;flex:0 0 250px;">SURFACE</div>
+        <div style="flex:1 1 0;min-width:0;">THE CHECK</div>
+        <div style="width:420px;flex:0 0 420px;">PASSES WHEN</div>
+        <div style="width:150px;flex:0 0 150px;text-align:right;">STATE</div>
+      </div>
+      <div style="flex:1 1 0;display:flex;gap:20px;align-items:center;padding:0 4px;border-bottom:1px solid rgba(224,168,46,0.13);min-height:0;">
+        <div style="width:250px;flex:0 0 250px;font-family:Archivo,sans-serif;font-weight:600;font-size:23px;letter-spacing:-0.015em;color:#F4F0E6;">Live boot</div>
+        <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">USB on four machines: UEFI, legacy BIOS, AMD laptop, NVIDIA desktop.</div>
+        <div style="width:420px;flex:0 0 420px;font-size:20px;line-height:1.4;">Desktop reaches the panel with no black frame.</div>
+        <div style="width:150px;flex:0 0 150px;display:flex;justify-content:flex-end;"><div style="padding:3px 12px;border:1px solid {{ chipLine }};background:{{ chipFill }};font-size:19px;font-weight:700;letter-spacing:0.14em;color:{{ chipInk }};white-space:nowrap;">{{ chipLabel }}</div></div>
+      </div>
+      <div style="flex:1 1 0;display:flex;gap:20px;align-items:center;padding:0 4px;border-bottom:1px solid rgba(224,168,46,0.13);min-height:0;">
+        <div style="width:250px;flex:0 0 250px;font-family:Archivo,sans-serif;font-weight:600;font-size:23px;letter-spacing:-0.015em;color:#F4F0E6;">Install to disk</div>
+        <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">Erase-and-encrypt on a spare NVMe, then manual mode once.</div>
+        <div style="width:420px;flex:0 0 420px;font-size:20px;line-height:1.4;">Reboots into LUKS prompt, then the installed desktop.</div>
+        <div style="width:150px;flex:0 0 150px;display:flex;justify-content:flex-end;"><div style="padding:3px 12px;border:1px solid {{ chipLine }};background:{{ chipFill }};font-size:19px;font-weight:700;letter-spacing:0.14em;color:{{ chipInk }};white-space:nowrap;">{{ chipLabel }}</div></div>
+      </div>
+      <div style="flex:1 1 0;display:flex;gap:20px;align-items:center;padding:0 4px;border-bottom:1px solid rgba(224,168,46,0.13);min-height:0;">
+        <div style="width:250px;flex:0 0 250px;font-family:Archivo,sans-serif;font-weight:600;font-size:23px;letter-spacing:-0.015em;color:#F4F0E6;">Boot chain</div>
+        <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">GRUB, Plymouth, LUKS prompt, SDDM — all four plates, in order.</div>
+        <div style="width:420px;flex:0 0 420px;font-size:20px;line-height:1.4;">One plate throughout, no upstream logo, no flash.</div>
+        <div style="width:150px;flex:0 0 150px;display:flex;justify-content:flex-end;"><div style="padding:3px 12px;border:1px solid {{ chipLine }};background:{{ chipFill }};font-size:19px;font-weight:700;letter-spacing:0.14em;color:{{ chipInk }};white-space:nowrap;">{{ chipLabel }}</div></div>
+      </div>
+      <div style="flex:1 1 0;display:flex;gap:20px;align-items:center;padding:0 4px;border-bottom:1px solid rgba(224,168,46,0.13);min-height:0;">
+        <div style="width:250px;flex:0 0 250px;font-family:Archivo,sans-serif;font-weight:600;font-size:23px;letter-spacing:-0.015em;color:#F4F0E6;">Menu numbering</div>
+        <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">Open Kickoff, read 01 through 13, then CZD's entries at 14.</div>
+        <div style="width:420px;flex:0 0 420px;font-size:20px;line-height:1.4;">Nothing of Kali's moved or was renamed.</div>
+        <div style="width:150px;flex:0 0 150px;display:flex;justify-content:flex-end;"><div style="padding:3px 12px;border:1px solid {{ chipLine }};background:{{ chipFill }};font-size:19px;font-weight:700;letter-spacing:0.14em;color:{{ chipInk }};white-space:nowrap;">{{ chipLabel }}</div></div>
+      </div>
+      <div style="flex:1 1 0;display:flex;gap:20px;align-items:center;padding:0 4px;border-bottom:1px solid rgba(224,168,46,0.13);min-height:0;">
+        <div style="width:250px;flex:0 0 250px;font-family:Archivo,sans-serif;font-weight:600;font-size:23px;letter-spacing:-0.015em;color:#F4F0E6;">Toolkit sweep</div>
+        <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">Konsole, Dolphin, Wireshark, Burp, a raw xterm, side by side.</div>
+        <div style="width:420px;flex:0 0 420px;font-size:20px;line-height:1.4;">Scrollbars match; no Breeze blue, no Metal grey.</div>
+        <div style="width:150px;flex:0 0 150px;display:flex;justify-content:flex-end;"><div style="padding:3px 12px;border:1px solid {{ chipLine }};background:{{ chipFill }};font-size:19px;font-weight:700;letter-spacing:0.14em;color:{{ chipInk }};white-space:nowrap;">{{ chipLabel }}</div></div>
+      </div>
+      <div style="flex:1 1 0;display:flex;gap:20px;align-items:center;padding:0 4px;border-bottom:1px solid rgba(224,168,46,0.13);min-height:0;">
+        <div style="width:250px;flex:0 0 250px;font-family:Archivo,sans-serif;font-weight:600;font-size:23px;letter-spacing:-0.015em;color:#F4F0E6;">Token drift</div>
+        <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;"><span style="color:#E0A82E;">grep -rn "#" packages/ --include=*.qml --include=*.css</span></div>
+        <div style="width:420px;flex:0 0 420px;font-size:20px;line-height:1.4;">Returns nothing. Every hex came from tokens/.</div>
+        <div style="width:150px;flex:0 0 150px;display:flex;justify-content:flex-end;"><div style="padding:3px 12px;border:1px solid {{ chipLine }};background:{{ chipFill }};font-size:19px;font-weight:700;letter-spacing:0.14em;color:{{ chipInk }};white-space:nowrap;">{{ chipLabel }}</div></div>
+      </div>
+      <div style="flex:1 1 0;display:flex;gap:20px;align-items:center;padding:0 4px;border-bottom:1px solid rgba(224,168,46,0.13);min-height:0;">
+        <div style="width:250px;flex:0 0 250px;font-family:Archivo,sans-serif;font-weight:600;font-size:23px;letter-spacing:-0.015em;color:#F4F0E6;">Removability</div>
+        <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;"><span style="color:#E0A82E;">apt purge 'czd-*'</span> on the installed system, then reboot.</div>
+        <div style="width:420px;flex:0 0 420px;font-size:20px;line-height:1.4;">Boots to stock Kali Purple. No orphaned theme.</div>
+        <div style="width:150px;flex:0 0 150px;display:flex;justify-content:flex-end;"><div style="padding:3px 12px;border:1px solid {{ chipLine }};background:{{ chipFill }};font-size:19px;font-weight:700;letter-spacing:0.14em;color:{{ chipInk }};white-space:nowrap;">{{ chipLabel }}</div></div>
+      </div>
+      <div style="flex:1 1 0;display:flex;gap:20px;align-items:center;padding:0 4px;min-height:0;">
+        <div style="width:250px;flex:0 0 250px;font-family:Archivo,sans-serif;font-weight:600;font-size:23px;letter-spacing:-0.015em;color:#F4F0E6;">Checksum and sig</div>
+        <div style="flex:1 1 0;font-size:20px;line-height:1.4;min-width:0;">Verify the published assets from a second machine, cold.</div>
+        <div style="width:420px;flex:0 0 420px;font-size:20px;line-height:1.4;"><span style="color:#4FC26B;">OK</span> and <span style="color:#4FC26B;">Good signature</span>, against the published key.</div>
+        <div style="width:150px;flex:0 0 150px;display:flex;justify-content:flex-end;"><div style="padding:3px 12px;border:1px solid {{ chipLine }};background:{{ chipFill }};font-size:19px;font-weight:700;letter-spacing:0.14em;color:{{ chipInk }};white-space:nowrap;">{{ chipLabel }}</div></div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);flex:0 0 auto;">
+      <div style="flex:2 1 0;background:{{ gateFill }};padding:16px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">{{ gateHead }}</div>
+        <div style="font-size:20px;line-height:1.5;">{{ gateBody }}</div>
+      </div>
+      <div style="flex:1 1 0;background:#0B0A07;padding:16px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">HOW LONG</div>
+        <div style="font-size:20px;line-height:1.5;">Two people, one afternoon. The install test is the long pole at 40 minutes.</div>
+      </div>
+      <div style="flex:1 1 0;background:#0B0A07;padding:16px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-size:18px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">WHO SIGNS OFF</div>
+        <div style="font-size:20px;line-height:1.5;">IoTemy Labs, on the offline stick. One named person and a backup — not a committee.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(224,168,46,0.13);border:1px solid rgba(224,168,46,0.13);">
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">01 · EIGHT CHECKS, ONE PER BATCH</div>
+      <div style="font-size:11px;line-height:1.7;">Each row traces to a deliverable, so a failure points at a design decision and not a vibe. The <span style="color:#F4F0E6;">passes when</span> column is written so two different people testing on two different laptops reach the same verdict.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">02 · BOTH PATHS GET TESTED</div>
+      <div style="font-size:11px;line-height:1.7;">The image has to work as a live stick people boot at a workshop and as an installed system somebody runs all year. Testing only the live path is how the LUKS prompt and the installed panel ship broken — so row 02 is an actual install, on real hardware, every release.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">03 · REMOVABILITY IS A RELEASE CHECK</div>
+      <div style="font-size:11px;line-height:1.7;">The project's claim is that this is eight removable packages on stock Kali. If <span style="color:#E0A82E;">apt purge 'czd-*'</span> leaves a broken desktop, the claim is false and the whole boundary from batch 07 collapses. Cheap to verify, so it is verified every time.</div>
+    </div>
+    <div style="background:#0B0A07;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;color:#E0A82E;">04 · PENDING IS GREY, NOT GOLD</div>
+      <div style="font-size:11px;line-height:1.7;">An untested row wears <span style="color:#8A93A0;">PENDING</span> in the same hue a signage board uses for nothing-live; a passing row goes gold-tinted. Flip the <span style="color:#E0A82E;">matrix state</span> tweak for the signed-off frame — same table, one value changed, and the gate cell is the only thing that reads differently.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:32px;flex-wrap:wrap;border-top:1px solid rgba(224,168,46,0.26);padding-top:20px;">
+    <div style="flex:1 1 400px;font-size:11px;line-height:1.8;">
+      <span style="color:#E0A82E;font-weight:700;letter-spacing:0.14em;">BATCH COMPLETE · </span>The repo an engineer clones, the six commands that turn it into a signed ISO, the nine edits that make next year's image, and the eight-row gate that decides whether it publishes. Written for somebody who has never seen the project, on the assumption that person is the one who ships it.
+    </div>
+    <div style="flex:1 1 400px;font-size:11px;line-height:1.8;">
+      <span style="color:#E0A82E;font-weight:700;letter-spacing:0.14em;">SETTLED · </span>The release key belongs to <span style="color:#F4F0E6;">IoTemy Labs</span> and lives on an offline stick, never in the repo. <span style="color:#E0A82E;">OPEN:</span> RELEASING.md still needs the individual and a backup who physically hold it, and <span style="color:#E0A82E;">design/</span> has to ship the batch plates either as-is or as exported PNGs.
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;respinYear&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;2026&quot;, &quot;2027&quot;], &quot;default&quot;: &quot;2026&quot;, &quot;tsType&quot;: &quot;\&quot;2026\&quot; | \&quot;2027\&quot;&quot;, &quot;section&quot;: &quot;Respin&quot; },
+  &quot;matrixState&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;pre-flight&quot;, &quot;signed-off&quot;], &quot;default&quot;: &quot;pre-flight&quot;, &quot;tsType&quot;: &quot;\&quot;pre-flight\&quot; | \&quot;signed-off\&quot;&quot;, &quot;section&quot;: &quot;Verify&quot; }
+}">
+class Component extends DCLogic {
+  renderVals() {
+    const next = (this.props.respinYear ?? "2026") === "2027";
+    const signed = (this.props.matrixState ?? "pre-flight") === "signed-off";
+    return {
+      tagLabel: next ? "czd-2027-10-232" : "czd-2026-10-231",
+      buildLabel: next ? "CZD-2027-10-232" : "CZD-2026-10-231",
+      yearLabel: next ? "OCT 2027" : "OCT 2026",
+      verifyHeadline: signed ? "Eight rows green. Publish it." : "Eight rows, then publish",
+      verifySub: signed ? "Signed off on the build above." : "Nothing publishes on a pending row.",
+      verifyMeta: signed ? "SIGNED OFF · 2026-09-18 · RELEASE LIVE" : "DRAFT RELEASE · GATE NOT CLEARED",
+      chipLabel: signed ? "PASS" : "PENDING",
+      chipInk: signed ? "#E0A82E" : "#8A93A0",
+      chipLine: signed ? "#E0A82E" : "#8A93A0",
+      chipFill: signed ? "rgba(224,168,46,0.05)" : "transparent",
+      gateHead: signed ? "THE GATE IS CLEARED" : "THE GATE",
+      gateBody: signed
+        ? "All eight rows pass on this build. The draft goes public, the site link goes live, and the desk sticks get written from this exact ISO."
+        : "One pending row keeps the release a draft. No link, no desk sticks, no announcement — an untested ISO on a hundred laptops is the only unrecoverable mistake here.",
+      gateFill: signed ? "rgba(224,168,46,0.05)" : "#181307"
+    };
+  }
+}
+</script>
+</body>
+</html>

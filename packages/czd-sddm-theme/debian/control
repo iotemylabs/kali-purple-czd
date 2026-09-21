@@ -1,0 +1,16 @@
+Source: czd-sddm-theme
+Section: kde
+Priority: optional
+Maintainer: IoTemy Labs <brett@iotemylabs.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+Homepage: https://github.com/iotemylabs/kali-purple-czd
+
+Package: czd-sddm-theme
+Architecture: all
+Depends: ${misc:Depends}, czd-purple-tokens (= ${binary:Version}), czd-wallpapers (= ${binary:Version}), sddm, qml6-module-qtquick-controls, qml6-module-qtquick-layouts
+Description: CZD Purple SDDM login theme (Qt6 QML)
+ The SDDM 0.21 Qt6 QML login theme for the CZD Purple respin. The form lands
+ in the 720x460 reserve cut into the lock wallpaper; no avatar, no user list,
+ no blur.

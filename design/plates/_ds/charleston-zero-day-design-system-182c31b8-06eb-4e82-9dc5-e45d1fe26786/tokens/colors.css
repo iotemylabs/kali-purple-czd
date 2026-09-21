@@ -1,0 +1,78 @@
+/* CZD color. Dark is canonical. Never introduce a hue outside this file. */
+:root{
+  /* --- base ramp: surfaces --- */
+  --czd-surface-base:#0A0A0A;
+  --czd-surface-inset:#050505;
+  --czd-surface-raised:#0B0A07;
+  --czd-surface-warm:#181307;
+
+  /* --- base ramp: ink --- */
+  --czd-ink-1:#F4F0E6;
+  --czd-ink-2:#A99C83;
+  --czd-ink-3:#8A8071;
+  --czd-ink-4:#6B6152;
+
+  /* --- base ramp: gold --- */
+  --czd-gold-surge:#FFE9A8;
+  --czd-gold:#E0A82E;
+  --czd-gold-mid:#8A6318;
+  --czd-gold-deep:#4A320B;
+  --czd-gold-rgb:224,168,46; /* @kind other */
+
+  /* --- base ramp: status (signage only) --- */
+  --czd-status-hold:#8A93A0;
+  --czd-status-stale:#6E7681;
+
+  /* --- hairlines: always gold at low alpha, never gray --- */
+  --czd-line:rgba(224,168,46,0.26);
+  --czd-line-soft:rgba(224,168,46,0.13);
+  --czd-tint:rgba(224,168,46,0.05);
+
+  /* --- semantic aliases: use these in components --- */
+  --surface-page:var(--czd-surface-base);
+  --surface-inset:var(--czd-surface-inset);
+  --surface-card:var(--czd-surface-raised);
+  --surface-well:var(--czd-surface-warm);
+  --surface-row-emphasis:var(--czd-tint);
+
+  --text-heading:var(--czd-ink-1);
+  --text-body:var(--czd-ink-2);
+  --text-print-muted:var(--czd-ink-3);
+  --text-muted:var(--czd-ink-4);
+  --text-accent:var(--czd-gold);
+  --text-accent-peak:var(--czd-gold-surge);
+  --text-display-deep:var(--czd-gold-mid);
+
+  --border-rule:var(--czd-line);
+  --border-rule-soft:var(--czd-line-soft);
+  --border-fold-tick:var(--czd-gold-mid);
+
+  --state-now:var(--czd-gold);
+  --state-next:var(--czd-ink-2);
+  --state-hold:var(--czd-status-hold);
+  --state-stale:var(--czd-status-stale);
+
+  --link-color:var(--czd-gold);
+  --link-color-hover:var(--czd-gold-surge);
+}
+
+/* Paper mode — print inversion only. Same ramp, darkened.
+   Apply to a printed artifact root: <div class="czd-paper"> */
+.czd-paper{
+  --czd-surface-base:#FFFFFF;
+  --czd-surface-inset:#FAF8F3;
+  --czd-surface-raised:#FFFFFF;
+  --czd-surface-warm:#F6F1E4;
+  --czd-ink-1:#13110C;
+  --czd-ink-2:#4E4736;
+  --czd-ink-3:#7C7461;
+  --czd-ink-4:#7C7461;
+  --czd-gold-surge:#A87F23;
+  --czd-gold:#82611B;
+  --czd-gold-mid:#554011;
+  --czd-gold-deep:#554011;
+  --czd-gold-rgb:130,97,27; /* @kind other */
+  --czd-line:rgba(130,97,27,0.40);
+  --czd-line-soft:rgba(130,97,27,0.22);
+  --czd-tint:rgba(130,97,27,0.07);
+}

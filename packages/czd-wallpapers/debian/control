@@ -1,0 +1,16 @@
+Source: czd-wallpapers
+Section: misc
+Priority: optional
+Maintainer: IoTemy Labs <brett@iotemylabs.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+Homepage: https://github.com/iotemylabs/kali-purple-czd
+
+Package: czd-wallpapers
+Architecture: all
+Depends: ${misc:Depends}, czd-purple-tokens (= ${binary:Version})
+Description: CZD Purple wallpapers (default, event, sponsors, lock)
+ Four 1920x1080 plates sharing one trace-field component: wallpaper-default,
+ wallpaper-event, wallpaper-sponsors and wallpaper-lock, plus the flattened
+ boot plates. Registered as a Plasma wallpaper package.
