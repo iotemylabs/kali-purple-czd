@@ -874,8 +874,42 @@ def gen_boot_pixmaps(t: Tokens, out: Out):
     out.write_bytes("czd-boot-theme", P + "clear.png", png_solid(1, 1, clear))
 
 
+WALLPAPERS = {
+    # name: (plasma package id, description)
+    "default":  ("czd-purple-default",  "CZD Purple. Dateless; the desk-stick wallpaper."),
+    "event":    ("czd-purple-event",    "CZD Purple, conference week. Carries the event dates from the token file."),
+    "sponsors": ("czd-purple-sponsors", "CZD Purple with the sponsor row."),
+    "lock":     ("czd-purple-lock",     "CZD Purple lock plate. Reserves 720 × 460 at x600 y310 for the SDDM form."),
+}
+
+
+def gen_wallpapers(t: Tokens, out: Out):
+    """Plasma wallpaper packages for the four plates (batch 02). The images come from the
+    trace-field renderer (stage 4); until it lands, each is a flat base-surface plate so every
+    consumer (desktop, lock screen, SDDM, boot plates) has a real file at the right path."""
+    base = (*t.rgb("surface.base"), 255)
+    for key, (pid, desc) in WALLPAPERS.items():
+        root = f"usr/share/wallpapers/{pid}/"
+        meta = json.dumps({
+            "KPlugin": {
+                "Authors": [{"Email": "brett@iotemylabs.com", "Name": "Charleston Zero Day"}],
+                "Description": desc,
+                "Id": pid,
+                "License": "MIT",
+                "Name": f"CZD Purple ({key})",
+                "Version": t["build.tag"],
+            },
+        }, indent=4) + "\n"
+        out.write("czd-wallpapers", root + "metadata.json", meta)
+        img = PACKAGES / "czd-wallpapers" / "rendered" / f"wallpaper-{key}.png"
+        if img.exists():
+            out.copy("czd-wallpapers", root + "contents/images/1920x1080.png", img)
+        else:
+            out.write_bytes("czd-wallpapers", root + "contents/images/1920x1080.png", png_solid(1920, 1080, base))
+
+
 GENERATORS = [gen_tokens_package, gen_konsole, gen_gtk, gen_xresources, gen_vim, gen_kvantum,
-              gen_kde_colors, gen_kdeglobals, gen_wireshark, gen_boot_pixmaps]
+              gen_kde_colors, gen_kdeglobals, gen_wireshark, gen_boot_pixmaps, gen_wallpapers]
 
 
 # ----------------------------------------------------------------------------
