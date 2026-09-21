@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CZD Purple Aurorae button "minimize": 1px stroke in a 24px box, colour by state. Template. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="24" viewBox="0 0 192 24">
+  <g id="active-center" transform="translate(0 0)" fill="none" stroke="{{ trace.gold }}" stroke-width="1" shape-rendering="crispEdges">
+    <rect x="0" y="0" width="24" height="24" fill="none" stroke="none"/>
+    <line x1="5.5" y1="12.5" x2="18.5" y2="12.5"/>
+  </g>
+  <g id="hover-center" transform="translate(24 0)" fill="none" stroke="{{ trace.gold.surge }}" stroke-width="1" shape-rendering="crispEdges">
+    <rect x="0" y="0" width="24" height="24" fill="none" stroke="none"/>
+    <line x1="5.5" y1="12.5" x2="18.5" y2="12.5"/>
+  </g>
+  <g id="pressed-center" transform="translate(48 0)" fill="none" stroke="{{ trace.gold }}" stroke-width="1" shape-rendering="crispEdges">
+    <rect x="0" y="0" width="24" height="24" fill="none" stroke="none"/>
+    <line x1="5.5" y1="12.5" x2="18.5" y2="12.5"/>
+  </g>
+  <g id="deactivated-center" transform="translate(72 0)" fill="none" stroke="{{ text.disabled }}" stroke-width="1" shape-rendering="crispEdges">
+    <rect x="0" y="0" width="24" height="24" fill="none" stroke="none"/>
+    <line x1="5.5" y1="12.5" x2="18.5" y2="12.5"/>
+  </g>
+  <g id="inactive-center" transform="translate(96 0)" fill="none" stroke="{{ text.disabled }}" stroke-width="1" shape-rendering="crispEdges">
+    <rect x="0" y="0" width="24" height="24" fill="none" stroke="none"/>
+    <line x1="5.5" y1="12.5" x2="18.5" y2="12.5"/>
+  </g>
+  <g id="hover-inactive-center" transform="translate(120 0)" fill="none" stroke="{{ trace.gold }}" stroke-width="1" shape-rendering="crispEdges">
+    <rect x="0" y="0" width="24" height="24" fill="none" stroke="none"/>
+    <line x1="5.5" y1="12.5" x2="18.5" y2="12.5"/>
+  </g>
+  <g id="pressed-inactive-center" transform="translate(144 0)" fill="none" stroke="{{ text.disabled }}" stroke-width="1" shape-rendering="crispEdges">
+    <rect x="0" y="0" width="24" height="24" fill="none" stroke="none"/>
+    <line x1="5.5" y1="12.5" x2="18.5" y2="12.5"/>
+  </g>
+  <g id="deactivated-inactive-center" transform="translate(168 0)" fill="none" stroke="{{ text.disabled }}" stroke-width="1" shape-rendering="crispEdges">
+    <rect x="0" y="0" width="24" height="24" fill="none" stroke="none"/>
+    <line x1="5.5" y1="12.5" x2="18.5" y2="12.5"/>
+  </g>
+</svg>

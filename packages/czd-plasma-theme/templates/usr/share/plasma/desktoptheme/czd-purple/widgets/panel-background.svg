@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CZD Purple panel (batch 04): surface.raised, one 1px gold 26% hairline along the top,
+     nothing else. No float, no rounding, no translucency, no shadow.
+     Rendered from tokens by tokens/generate.py; this file is a template. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <!-- 9-slice: 8px corners, stretched edges. The hairline lives in the top row only. -->
+  <rect id="topleft"     x="0"  y="0"  width="8"  height="8"  fill="{{ surface.raised }}"/>
+  <rect id="top"         x="8"  y="0"  width="48" height="8"  fill="{{ surface.raised }}"/>
+  <rect id="topright"    x="56" y="0"  width="8"  height="8"  fill="{{ surface.raised }}"/>
+  <rect id="left"        x="0"  y="8"  width="8"  height="48" fill="{{ surface.raised }}"/>
+  <rect id="center"      x="8"  y="8"  width="48" height="48" fill="{{ surface.raised }}"/>
+  <rect id="right"       x="56" y="8"  width="8"  height="48" fill="{{ surface.raised }}"/>
+  <rect id="bottomleft"  x="0"  y="56" width="8"  height="8"  fill="{{ surface.raised }}"/>
+  <rect id="bottom"      x="8"  y="56" width="48" height="8"  fill="{{ surface.raised }}"/>
+  <rect id="bottomright" x="56" y="56" width="8"  height="8"  fill="{{ surface.raised }}"/>
+  <!-- the rule: drawn over the three top slices so it spans the full width -->
+  <rect id="hairline-topleft"  x="0"  y="0" width="8"  height="1" fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="hairline-top"      x="8"  y="0" width="48" height="1" fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="hairline-topright" x="56" y="0" width="8"  height="1" fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <!-- content margins: 3px under the hairline, 8px at the sides, 2px at the foot -->
+  <rect id="hint-top-margin"    x="0" y="0" width="1" height="3" fill="none"/>
+  <rect id="hint-left-margin"   x="0" y="0" width="8" height="1" fill="none"/>
+  <rect id="hint-right-margin"  x="0" y="0" width="8" height="1" fill="none"/>
+  <rect id="hint-bottom-margin" x="0" y="0" width="1" height="2" fill="none"/>
+  <rect id="hint-stretch-borders" x="0" y="0" width="1" height="1" fill="none"/>
+  <!-- opaque shape: the panel is a rectangle -->
+  <rect id="mask-topleft"     x="0"  y="0"  width="8"  height="8"  fill="black"/>
+  <rect id="mask-top"         x="8"  y="0"  width="48" height="8"  fill="black"/>
+  <rect id="mask-topright"    x="56" y="0"  width="8"  height="8"  fill="black"/>
+  <rect id="mask-left"        x="0"  y="8"  width="8"  height="48" fill="black"/>
+  <rect id="mask-center"      x="8"  y="8"  width="48" height="48" fill="black"/>
+  <rect id="mask-right"       x="56" y="8"  width="8"  height="48" fill="black"/>
+  <rect id="mask-bottomleft"  x="0"  y="56" width="8"  height="8"  fill="black"/>
+  <rect id="mask-bottom"      x="8"  y="56" width="48" height="8"  fill="black"/>
+  <rect id="mask-bottomright" x="56" y="56" width="8"  height="8"  fill="black"/>
+</svg>

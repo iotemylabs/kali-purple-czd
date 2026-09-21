@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CZD Purple Aurorae decoration (batch 04, plasma-window). Active: 48px surface.raised titlebar,
+     1px gold 26% frame. Inactive: surface.inset titlebar, 13% frame. No shadow: the frame alpha and
+     the titlebar value do the stacking. Template rendered by tokens/generate.py. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="99" viewBox="0 0 100 99">
+  <!-- decoration: 1px frame, 48px title strip -->
+  <rect id="decoration-topleft"     x="0"   y="0"      width="1"  height="48" fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="decoration-top"         x="1"   y="0"      width="98" height="48" fill="{{ surface.raised }}"/>
+  <rect id="decoration-top-rule"    x="1"   y="0"      width="98" height="1"   fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="decoration-topright"    x="99"  y="0"      width="1"  height="48" fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="decoration-left"        x="0"   y="48"    width="1"  height="50"  fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="decoration-center"      x="1"   y="48"    width="98" height="50"  fill="{{ surface.raised }}" fill-opacity="0"/>
+  <rect id="decoration-right"       x="99"  y="48"    width="1"  height="50"  fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="decoration-bottomleft"  x="0"   y="98" width="1"  height="1"   fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="decoration-bottom"      x="1"   y="98" width="98" height="1"   fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="decoration-bottomright" x="99"  y="98" width="1"  height="1"   fill="{{ trace.gold }}" fill-opacity="0.26"/>
+
+  <!-- decoration-inactive: 1px frame, 48px title strip -->
+  <rect id="decoration-inactive-topleft"     x="0"   y="0"      width="1"  height="48" fill="{{ trace.gold }}" fill-opacity="0.13"/>
+  <rect id="decoration-inactive-top"         x="1"   y="0"      width="98" height="48" fill="{{ surface.inset }}"/>
+  <rect id="decoration-inactive-top-rule"    x="1"   y="0"      width="98" height="1"   fill="{{ trace.gold }}" fill-opacity="0.13"/>
+  <rect id="decoration-inactive-topright"    x="99"  y="0"      width="1"  height="48" fill="{{ trace.gold }}" fill-opacity="0.13"/>
+  <rect id="decoration-inactive-left"        x="0"   y="48"    width="1"  height="50"  fill="{{ trace.gold }}" fill-opacity="0.13"/>
+  <rect id="decoration-inactive-center"      x="1"   y="48"    width="98" height="50"  fill="{{ surface.inset }}" fill-opacity="0"/>
+  <rect id="decoration-inactive-right"       x="99"  y="48"    width="1"  height="50"  fill="{{ trace.gold }}" fill-opacity="0.13"/>
+  <rect id="decoration-inactive-bottomleft"  x="0"   y="98" width="1"  height="1"   fill="{{ trace.gold }}" fill-opacity="0.13"/>
+  <rect id="decoration-inactive-bottom"      x="1"   y="98" width="98" height="1"   fill="{{ trace.gold }}" fill-opacity="0.13"/>
+  <rect id="decoration-inactive-bottomright" x="99"  y="98" width="1"  height="1"   fill="{{ trace.gold }}" fill-opacity="0.13"/>
+
+  <!-- window content is drawn over the center, not under the frame -->
+  <rect id="hint-compose-over-border" x="0" y="0" width="1" height="1" fill="none"/>
+</svg>

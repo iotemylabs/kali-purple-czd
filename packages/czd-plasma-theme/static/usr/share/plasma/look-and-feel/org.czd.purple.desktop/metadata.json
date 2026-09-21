@@ -1,0 +1,18 @@
+{
+    "KPackageStructure": "Plasma/LookAndFeel",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "brett@iotemylabs.com",
+                "Name": "Charleston Zero Day · IoTemy Labs"
+            }
+        ],
+        "Category": "",
+        "Description": "CZD Purple (dark). The only theme shipped. Light is a print inversion, not a setting.",
+        "Id": "org.czd.purple.desktop",
+        "License": "MIT",
+        "Name": "CZD Purple",
+        "Website": "https://charlestonzeroday.com"
+    },
+    "X-Plasma-MainScript": "defaults"
+}

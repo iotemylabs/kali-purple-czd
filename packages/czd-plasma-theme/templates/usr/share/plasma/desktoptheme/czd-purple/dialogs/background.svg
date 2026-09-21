@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CZD Purple popup plane (batch 04, plasma-kickoff): surface.overlay — the warm well — with a
+     1px gold 26% hairline on every side. Against the base-surface desktop it reads as a plane
+     change without a shadow or a blur. Template rendered by tokens/generate.py. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <rect id="topleft"     x="0"  y="0"  width="8"  height="8"  fill="{{ surface.overlay }}"/>
+  <rect id="top"         x="8"  y="0"  width="32" height="8"  fill="{{ surface.overlay }}"/>
+  <rect id="topright"    x="40" y="0"  width="8"  height="8"  fill="{{ surface.overlay }}"/>
+  <rect id="left"        x="0"  y="8"  width="8"  height="32" fill="{{ surface.overlay }}"/>
+  <rect id="center"      x="8"  y="8"  width="32" height="32" fill="{{ surface.overlay }}"/>
+  <rect id="right"       x="40" y="8"  width="8"  height="32" fill="{{ surface.overlay }}"/>
+  <rect id="bottomleft"  x="0"  y="40" width="8"  height="8"  fill="{{ surface.overlay }}"/>
+  <rect id="bottom"      x="8"  y="40" width="32" height="8"  fill="{{ surface.overlay }}"/>
+  <rect id="bottomright" x="40" y="40" width="8"  height="8"  fill="{{ surface.overlay }}"/>
+  <!-- hairline frame, drawn into the edge slices -->
+  <rect id="edge-topleft-h"     x="0"  y="0"  width="8"  height="1" fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="edge-top-h"         x="8"  y="0"  width="32" height="1" fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="edge-topright-h"    x="40" y="0"  width="8"  height="1" fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="edge-bottomleft-h"  x="0"  y="47" width="8"  height="1" fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="edge-bottom-h"      x="8"  y="47" width="32" height="1" fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="edge-bottomright-h" x="40" y="47" width="8"  height="1" fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="edge-topleft-v"     x="0"  y="0"  width="1"  height="8" fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="edge-left-v"        x="0"  y="8"  width="1"  height="32" fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="edge-bottomleft-v"  x="0"  y="40" width="1"  height="8" fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="edge-topright-v"    x="47" y="0"  width="1"  height="8" fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="edge-right-v"       x="47" y="8"  width="1"  height="32" fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <rect id="edge-bottomright-v" x="47" y="40" width="1"  height="8" fill="{{ trace.gold }}" fill-opacity="0.26"/>
+  <!-- content margins: 8px inside the hairline, all round -->
+  <rect id="hint-top-margin"    x="0" y="0" width="1" height="8" fill="none"/>
+  <rect id="hint-left-margin"   x="0" y="0" width="8" height="1" fill="none"/>
+  <rect id="hint-right-margin"  x="0" y="0" width="8" height="1" fill="none"/>
+  <rect id="hint-bottom-margin" x="0" y="0" width="1" height="8" fill="none"/>
+  <rect id="hint-stretch-borders" x="0" y="0" width="1" height="1" fill="none"/>
+  <rect id="mask-topleft"     x="0"  y="0"  width="8"  height="8"  fill="black"/>
+  <rect id="mask-top"         x="8"  y="0"  width="32" height="8"  fill="black"/>
+  <rect id="mask-topright"    x="40" y="0"  width="8"  height="8"  fill="black"/>
+  <rect id="mask-left"        x="0"  y="8"  width="8"  height="32" fill="black"/>
+  <rect id="mask-center"      x="8"  y="8"  width="32" height="32" fill="black"/>
+  <rect id="mask-right"       x="40" y="8"  width="8"  height="32" fill="black"/>
+  <rect id="mask-bottomleft"  x="0"  y="40" width="8"  height="8"  fill="black"/>
+  <rect id="mask-bottom"      x="8"  y="40" width="32" height="8"  fill="black"/>
+  <rect id="mask-bottomright" x="40" y="40" width="8"  height="8"  fill="black"/>
+</svg>

@@ -12,6 +12,9 @@ override_dh_auto_install:
 	mkdir -p $(DEST)
 	cp -a generated/. $(DEST)/
 	@if [ -d static ]; then cp -a static/. $(DEST)/; fi
+	# Archivo (variable) ships from the design bundle; IBM Plex Mono comes from fonts-ibm-plex.
+	mkdir -p $(DEST)/usr/share/fonts/truetype/czd
+	cp ../../design/plates/_ds/*/assets/fonts/Archivo-Variable.ttf $(DEST)/usr/share/fonts/truetype/czd/
 	find $(DEST) -name .gitkeep -delete
 	find $(DEST) -type d -empty -delete
 

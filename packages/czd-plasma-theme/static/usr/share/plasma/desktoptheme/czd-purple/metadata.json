@@ -1,0 +1,22 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "brett@iotemylabs.com",
+                "Name": "Charleston Zero Day · IoTemy Labs"
+            }
+        ],
+        "Category": "",
+        "Description": "CZD Purple Plasma style: panel and popups as gold-hairlined surfaces. No blur, no shadow, no radius.",
+        "EnabledByDefault": true,
+        "Id": "czd-purple",
+        "License": "MIT",
+        "Name": "CZD Purple",
+        "Version": "1.0.0",
+        "Website": "https://charlestonzeroday.com"
+    },
+    "X-Plasma-API": "5.0",
+    "Settings": {
+        "FallbackTheme": "breeze-dark"
+    }
+}

@@ -1,0 +1,11 @@
+[Daemon]
+Autolock=false
+LockGrace=0
+Timeout=0
+
+[Greeter]
+Theme=org.czd.purple.desktop
+
+[Greeter][Wallpaper][org.kde.image][General]
+Image=file:///usr/share/wallpapers/czd-purple-lock/
+FillMode=2

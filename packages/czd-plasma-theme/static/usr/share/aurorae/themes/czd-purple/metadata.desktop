@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=CZD Purple
+Comment=48px titlebar, 1px gold hairline frame, three 1px-stroke glyphs. No shadow, no blur, no radius.
+X-KDE-PluginInfo-Author=Charleston Zero Day
+X-KDE-PluginInfo-Email=brett@iotemylabs.com
+X-KDE-PluginInfo-Name=czd-purple
+X-KDE-PluginInfo-Version=1.0.0
+X-KDE-PluginInfo-Website=https://charlestonzeroday.com
+X-KDE-PluginInfo-License=MIT
+X-KDE-PluginInfo-EnabledByDefault=true
+
+[Engine]
+Type=aurorae
+ThemeName=czd-purple

@@ -1,0 +1,16 @@
+[SddmGreeterTheme]
+Name=CZD Purple
+Description=Charleston Zero Day login. The form lands in the reserve cut into the lock wallpaper.
+Author=Charleston Zero Day · IoTemy Labs
+Copyright=2026 Charleston Zero Day Board
+License=MIT
+Type=sddm-theme
+Version=1.0.0
+Website=https://charlestonzeroday.com
+Screenshot=preview.png
+MainScript=Main.qml
+ConfigFile=theme.conf
+TranslationsDirectory=translations
+Theme-Id=czd-purple
+Theme-API=2.0
+QtVersion=6

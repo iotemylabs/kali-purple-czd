@@ -1,0 +1,39 @@
+[General]
+ActiveTextColor={{ text.primary | rgb }}
+InactiveTextColor={{ text.disabled | rgb }}
+UseTextShadow=false
+ActiveTextShadowColor={{ surface.base | rgb }}
+InactiveTextShadowColor={{ surface.base | rgb }}
+TextShadowOffsetX=0
+TextShadowOffsetY=0
+TitleAlignment=Left
+TitleVerticalAlignment=Center
+Animation=0
+Shadow=false
+DecorationPosition=0
+
+[Layout]
+BorderLeft=1
+BorderRight=1
+BorderBottom=1
+BorderTop=0
+TitleEdgeTop=0
+TitleEdgeBottom=0
+TitleEdgeLeft=16
+TitleEdgeRight=12
+TitleEdgeTopMaximized=0
+TitleEdgeBottomMaximized=0
+TitleEdgeLeftMaximized=16
+TitleEdgeRightMaximized=12
+TitleBorderLeft=0
+TitleBorderRight=8
+TitleHeight={{ shell.titlebar_height_px }}
+ButtonWidth=24
+ButtonHeight=24
+ButtonSpacing=8
+ButtonMarginTop=0
+ExplicitButtonSpacer=8
+PaddingTop=0
+PaddingBottom=0
+PaddingLeft=0
+PaddingRight=0

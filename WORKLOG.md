@@ -97,6 +97,27 @@ Verified on `czd-build` (2026-09-21):
   XDG tree and Wireshark's global `profiles/` dir) and hand-rolled `fc-cache` calls (dropped;
   fontconfig's dpkg trigger does it).
 
+## 2026-09-21 · Stage 3a — Plasma theme package
+
+- `czd-plasma-theme` now carries: look-and-feel package `org.czd.purple.desktop` (defaults +
+  first-start panel layout: bottom, 56px, opaque, kickoff / pager / text task manager / tray /
+  mono clock), Plasma desktop theme `czd-purple` (panel, popup, dialog, tooltip SVG templates on
+  the raised and overlay surfaces with 26% gold hairlines, falls back to breeze-dark), Aurorae
+  decoration `czd-purple` (48px title strip, 1px frame at 26% active / 13% inactive, three
+  1px-stroke glyphs in 24px boxes, no shadow), the KDE colour scheme, and the XDG override tree
+  `/etc/xdg/xdg-czd-purple/` (generated kdeglobals with fonts and all colour sections; static
+  kwinrc with every animation effect off, plasmarc, ksplashrc none, kscreenlockerrc, kcminputrc,
+  klaunchrc).
+- `czd-purple-tokens` ships Archivo (from the design bundle at build time) and a fontconfig alias
+  file making Archivo `sans-serif` and IBM Plex Mono `monospace`.
+- `czd-icon-theme` has its `index.theme` inheriting breeze-dark; glyphs are still to draw.
+- Aurorae SVG geometry is drawn at literal pixel sizes so nothing is scaled and the hairline stays
+  1px. Mask elements use the `black` keyword, not a hex, so the drift grep stays clean.
+- VM fix: the Kali cloud kernel has no DRM drivers, so SDDM started but never got a display.
+  Installed `linux-image-amd64`; `create-czd-build-vm.sh` now does that in cloud-init and runs
+  the KDE install as a systemd unit. SDDM autologin for `czd` is enabled on the VM so a Plasma
+  session exists to screenshot over SSH with `spectacle -b`.
+
 ### Next
 
 - Stage 3: package contents. Plasma (global theme, Aurorae SVG templates, kdeglobals, panel
