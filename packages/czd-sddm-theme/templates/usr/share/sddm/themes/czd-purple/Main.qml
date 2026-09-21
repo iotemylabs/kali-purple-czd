@@ -143,8 +143,10 @@ Rectangle {
         }
 
         // --- bottom-right power row -------------------------------------------
+        // wallpaper-lock paints the build string and the hostile-network line in the bottom-right
+        // corner; the power row sits one line block above them so nothing overlaps.
         Row {
-            x: 1920 - 112 - width; y: 1080 - 112 - height
+            x: 1920 - 112 - width; y: 1080 - 112 - 24 - 34 - 24 - 40 - height
             spacing: 16
             CzdAction { text: "SUSPEND"; enabled: sddm.canSuspend; onActivated: sddm.suspend() }
             Text { text: "·"; color: gold; font { family: fontMono; pixelSize: 24; weight: Font.Bold } }
