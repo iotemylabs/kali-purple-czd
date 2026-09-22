@@ -229,6 +229,12 @@ Screenshots taken over SSH with `spectacle -b` inside the autologin session.
   use `trace.gold.deep` for the empty step. Nothing in the tray can turn red.
 - Verified on `czd-build`: a contact sheet of all 39 files matches the inventory plate; Dolphin's
   places, toolbar and the tray resolve the CZD cuts on the running session.
+- Pitfall recorded: deleting `~/.cache/icon-cache.kcache` and `~/.cache/plasma_theme*` inside a
+  running session left plasmashell with a black desktop and Dolphin with an empty view until the
+  session was restarted (`systemctl restart sddm` with autologin). Do not clear those caches
+  live; restart the session after installing an icon theme.
+- Dolphin in situ: PCAP, SH and JSON plates render; a `.key` file lands on Breeze's generic icon
+  because its detected MIME type depends on content, not extension.
 - Gaps: the plate promises hand-cut 16 and 22 grids for all 33 (66 files); only the folder cuts
   were supplied, so the rest scale from 24 and go slightly soft at 16. Aurorae still carries its
   own copies of minimize/maximize/close (Aurorae cannot pull from an icon theme); they are the
