@@ -1,0 +1,46 @@
+#!/bin/sh
+# CZD Purple live-config component: the live login is czd / czd, printed on the GRUB row and in
+# the welcome window (batch 03, settled). live-config hardcodes the password in 0030-user-setup,
+# so this runs right after it and sets ours. It also puts the live user in the capture groups.
+
+set -e
+
+Cmdline ()
+{
+	for _PARAMETER in ${LIVE_CONFIG_CMDLINE}
+	do
+		case "${_PARAMETER}" in
+			live-config.username=*|username=*)
+				LIVE_USERNAME="${_PARAMETER#*username=}"
+				;;
+		esac
+	done
+}
+
+Init ()
+{
+	if component_was_executed "czd-user"
+	then
+		exit 0
+	fi
+	echo -n " czd-user"
+}
+
+Config ()
+{
+	_USER="${LIVE_USERNAME:-czd}"
+	if grep -q "^${_USER}:" /etc/passwd
+	then
+		echo "${_USER}:czd" | chpasswd
+		for _GROUP in wireshark kismet dialout plugdev netdev
+		do
+			getent group "${_GROUP}" >/dev/null 2>&1 && usermod -a -G "${_GROUP}" "${_USER}" || true
+		done
+	fi
+	mkdir -p /var/lib/live/config
+	touch /var/lib/live/config/czd-user
+}
+
+Cmdline
+Init
+Config

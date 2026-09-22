@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Install CZD Purple (from the boot menu)
+Comment=Starts Calamares when the INSTALL row was chosen at boot (czd.install=1 on the kernel line). Does nothing otherwise.
+Exec=sh -c 'grep -qw "czd.install=1" /proc/cmdline || exit 0; if command -v calamares-install-debian >/dev/null 2>&1; then exec calamares-install-debian; else exec pkexec calamares; fi'
+Icon=czd-mark
+Terminal=false
+OnlyShowIn=KDE;
+X-KDE-autostart-phase=2
+X-GNOME-Autostart-Delay=5

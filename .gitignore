@@ -19,3 +19,4 @@ __pycache__/
 Thumbs.db
 packages/czd-wallpapers/rendered/
 /installer/generated/
+/live-build/generated/

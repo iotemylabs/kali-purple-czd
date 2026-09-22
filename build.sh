@@ -89,6 +89,23 @@ else
 fi
 # Overlay: our kali-config/ on top of theirs. variant-czd is ours; common/ additions merge in.
 cp -a "$ROOT/live-build/kali-config/." "$LBC_DIR/kali-config/"
+# Token-rendered bootloader files (isolinux colours) from live-build/generated.
+[[ -d "$ROOT/live-build/generated/kali-config" ]] && cp -a "$ROOT/live-build/generated/kali-config/." "$LBC_DIR/kali-config/"
+# The live GRUB menu wears the same theme as the installed one: stage the built theme (PF2 fonts,
+# 9-slice pixmaps, background plate) out of the czd-boot-theme .deb into the bootloader overlay.
+VAR="$LBC_DIR/kali-config/variant-$VARIANT"
+rm -rf "$ROOT/build/boot-theme" && mkdir -p "$ROOT/build/boot-theme"
+dpkg-deb -x "$OUT"/czd-boot-theme_*.deb "$ROOT/build/boot-theme"
+mkdir -p "$VAR/bootloaders/grub-pc/theme" "$VAR/includes.binary/isolinux"
+cp -a "$ROOT/build/boot-theme/usr/share/grub/themes/czd-purple/." "$VAR/bootloaders/grub-pc/theme/"
+cp -f "$ROOT/build/boot-theme/usr/share/grub/themes/czd-purple/background.png" "$VAR/bootloaders/grub-pc/splash.png"
+# isolinux wants a 640 × 480 splash; scale the GRUB plate.
+python3 - "$ROOT/build/boot-theme/usr/share/grub/themes/czd-purple/background.png" "$VAR/includes.binary/isolinux/splash.png" <<'PYEOF'
+import sys
+from PIL import Image
+Image.open(sys.argv[1]).convert("RGB").resize((640, 480), Image.LANCZOS).save(sys.argv[2], "PNG")
+PYEOF
+chmod +x "$VAR/includes.chroot/usr/lib/live/config/"* 2>/dev/null || true
 # The eight .debs ride in as local packages for the chroot.
 mkdir -p "$LBC_DIR/kali-config/variant-$VARIANT/packages.chroot"
 cp -f "$OUT"/*.deb "$LBC_DIR/kali-config/variant-$VARIANT/packages.chroot/"

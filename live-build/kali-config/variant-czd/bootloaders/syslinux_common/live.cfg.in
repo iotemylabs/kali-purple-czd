@@ -1,0 +1,18 @@
+label live-czd
+        menu label ^LIVE      CZD Purple live · nothing written to disk · login czd / czd
+        menu default
+        linux @LINUX@
+        initrd @INITRD@
+        append @APPEND_LIVE@ username=czd hostname=czd-purple
+
+label live-czd-persist
+        menu label ^PERSIST   Live with encrypted persistence · label czd-persistence
+        linux @LINUX@
+        initrd @INITRD@
+        append @APPEND_LIVE@ username=czd hostname=czd-purple persistence persistent=cryptsetup persistence-encryption=luks persistence-label=czd-persistence
+
+label live-czd-install
+        menu label ^INSTALL   Install CZD Purple · Calamares · erases the target disk
+        linux @LINUX@
+        initrd @INITRD@
+        append @APPEND_LIVE@ username=czd hostname=czd-purple czd.install=1

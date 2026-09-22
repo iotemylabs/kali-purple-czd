@@ -154,7 +154,9 @@ class Out:
 
     @staticmethod
     def base(pkg: str) -> Path:
-        return (ROOT / "installer" if pkg == "installer" else PACKAGES / pkg) / "generated"
+        if pkg in ("installer", "live-build"):
+            return ROOT / pkg / "generated"
+        return PACKAGES / pkg / "generated"
 
     def write(self, pkg: str, rel: str, content: str, mode: int = 0o644):
         p = self.base(pkg) / rel
@@ -208,6 +210,10 @@ def render_templates(tokens: Tokens, out: Out):
         assets = ROOT / "design" / "plates" / "assets"
         out.copy("installer", "branding/czd-purple/czd-mark.png", assets / "czd-mark-gold.png")
         out.copy("installer", "branding/czd-purple/czd-lockup.png", assets / "czd-lockup-gold.png")
+    # Bootloader menus that need colours (isolinux) render the same way, into live-build/generated.
+    lb = ROOT / "live-build" / "templates"
+    if lb.is_dir():
+        render_tree(tokens, out, lb, "live-build")
 
 
 # ----------------------------------------------------------------------------
@@ -1010,7 +1016,8 @@ def main(argv=None):
     a = ap.parse_args(argv)
 
     if a.clean:
-        for g in list(PACKAGES.glob("*/generated")) + list(PACKAGES.glob("czd-wallpapers/rendered")) + list((ROOT / "installer").glob("generated")):
+        for g in (list(PACKAGES.glob("*/generated")) + list(PACKAGES.glob("czd-wallpapers/rendered"))
+                  + list((ROOT / "installer").glob("generated")) + list((ROOT / "live-build").glob("generated"))):
             shutil.rmtree(g)
             print(f"removed {g.relative_to(ROOT)}")
         return 0
