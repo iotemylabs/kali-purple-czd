@@ -949,8 +949,54 @@ def gen_launcher_icon(t: Tokens, out: Out):
             canvas.save(p, "PNG", optimize=True)
 
 
+def gen_icons(t: Tokens, out: Out):
+    """The 33-glyph icon theme (batch 05) from packages/czd-icon-theme/glyphs.json. 24-unit box,
+    1px stroke on the half-pixel; the hand-cut 16 and 22 grids where the plate supplied them.
+    Every freedesktop name in 'names' gets its own SVG so apps resolve it without an alias file."""
+    spec = json.loads((PACKAGES / "czd-icon-theme" / "glyphs.json").read_text(encoding="utf-8"))
+    root = "usr/share/icons/czd-purple/"
+    default_stroke = t.hex(spec["stroke"])
+
+    def svg(size: int, paths: list[str], fills: list, stroke: str, strike: bool) -> str:
+        parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" viewBox="0 0 {size} {size}">']
+        if paths:
+            parts.append(f'  <path fill="none" stroke="{stroke}" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" d="{" ".join(paths)}"/>')
+        for x, y, w, h, tok in fills:
+            parts.append(f'  <rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{t.hex(tok)}"/>')
+        if strike:
+            parts.append(f'  <path fill="none" stroke="{stroke}" stroke-width="1" d="M3 21 L21 3"/>')
+        parts.append("</svg>\n")
+        return "\n".join(parts)
+
+    count = 0
+    for context, glyphs in spec["contexts"].items():
+        for g in glyphs:
+            stroke = t.hex(g.get("stroke", spec["stroke"]))
+            fills = g.get("fills", [])
+            strike = bool(g.get("strike"))
+            body24 = svg(24, g.get("paths", []), fills, stroke, strike)
+            for name in g["names"]:
+                out.write("czd-icon-theme", f"{root}scalable/{context}/{name}.svg", body24)
+                count += 1
+                for size, cut in g.get("cuts", {}).items():
+                    out.write("czd-icon-theme", f"{root}{size}x{size}/{context}/{name}.svg", svg(int(size), cut, [], stroke, False))
+    # mimetype plates: a 1px gold box with a mono 700 label
+    for label, names in spec["mimetypes"].items():
+        if label.startswith("$"):
+            continue
+        fs = 7 if len(label) <= 3 else 6
+        body = (f'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">\n'
+                f'  <rect x="1.5" y="4.5" width="21" height="15" fill="none" stroke="{default_stroke}" stroke-width="1"/>\n'
+                f'  <text x="12" y="14.4" text-anchor="middle" font-family="{t["font.mono.family"]}, monospace" font-weight="700" '
+                f'font-size="{fs}" letter-spacing="0.3" fill="{default_stroke}">{label}</text>\n</svg>\n')
+        for name in names:
+            out.write("czd-icon-theme", f"{root}scalable/mimetypes/{name}.svg", body)
+            count += 1
+    print(f"# icons: {count} svg files", file=sys.stderr)
+
+
 GENERATORS = [gen_tokens_package, gen_konsole, gen_gtk, gen_xresources, gen_vim, gen_kvantum,
-              gen_kde_colors, gen_kdeglobals, gen_wireshark, gen_boot_pixmaps, gen_wallpapers, gen_launcher_icon]
+              gen_kde_colors, gen_kdeglobals, gen_wireshark, gen_boot_pixmaps, gen_wallpapers, gen_launcher_icon, gen_icons]
 
 
 # ----------------------------------------------------------------------------
