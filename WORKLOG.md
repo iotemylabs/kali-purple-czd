@@ -286,6 +286,22 @@ Screenshots taken over SSH with `spectacle -b` inside the autologin session.
   squid-deb-proxy and routes the mirror through it. The ISO HTTP share on 8000 made `lb config`
   fail with wget status 8. The share now runs on 8080. Rebuild with the review fixes is running.
 
+## 2026-09-22 · First boot tests of the ISO (QEMU on the build host)
+
+- `scripts/iso-boot-test.sh [uefi|bios] [marks]` boots `out/*.iso` headless under QEMU with
+  OVMF and screendumps at second marks. Keep it at 2 GB: a 3 GB guest next to the Plasma
+  session took the 8 GB build VM down (SSH banner timeouts; it had to be reset from Proxmox).
+- UEFI boot of build 2: the CZD GRUB menu came up with the plate, rows and selection, but every
+  label in Unifont. Cause: the live `config.cfg` only `loadfont`s `unicode.pf2`; GRUB matches
+  theme fonts by name against loaded fonts (`update-grub` handles this on installed systems).
+  Fixed: `config.cfg` loads the four PF2s from `theme/`.
+- Plymouth showed Kali's dragon. Cause: `kali-themes.postinst` writes `/etc/plymouth/plymouthd.conf`
+  after `czd-boot-theme`'s postinst ran, and the live initramfs is generated after that.
+  Fixed: `zz-czd-boot-chain.hook.chroot` (sorts after Kali's `kali-hacks.chroot`) sets
+  `czd-purple` and runs `update-initramfs -u -k all` last.
+- Build 3 started with both fixes. Brett reported "boot failed" on the Proxmox `czd-test` VM
+  with build 2; the same ISO boots under OVMF here, so the console text is still needed.
+
 ### Next
 
 - Stage 5: first ISO build on `czd-build` (`sudo ./build.sh --tag czd-2026-10-231`), then boot
