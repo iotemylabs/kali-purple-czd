@@ -122,7 +122,7 @@ ISO_VERSION="czd-${TAG#czd-}"
 
 # ---------------------------------------------------------------- 4. collect ---
 log "4/4 collect"
-iso=$(ls -1 "$LBC_DIR"/images/*.iso 2>/dev/null | head -1)
+iso=$(ls -1 "$LBC_DIR"/output/*.iso "$LBC_DIR"/images/*.iso 2>/dev/null | head -1)   # Kali's build.sh writes output/
 [[ -n "$iso" ]] || { echo "no ISO produced — see build.log and $LBC_DIR/build.log" >&2; exit 1; }
 year=$(python3 -c "import json;print(json.load(open('tokens/czd-purple-tokens.json',encoding='utf-8'))['event']['year'])")
 final="$OUT/kali-purple-czd-${year}.iso"
