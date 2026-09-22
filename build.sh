@@ -118,7 +118,7 @@ mkdir -p "$LBC_DIR/kali-config/variant-$VARIANT/includes.chroot/etc"
 echo "$TAG" > "$LBC_DIR/kali-config/variant-$VARIANT/includes.chroot/etc/czd-build"
 
 ISO_VERSION="czd-${TAG#czd-}"
-(cd "$LBC_DIR" && ./build.sh --verbose --variant "$VARIANT" --branch "$BRANCH" --version "$ISO_VERSION")
+(cd "$LBC_DIR" && ./build.sh --variant "$VARIANT" --branch "$BRANCH" --version "$ISO_VERSION")
 
 # ---------------------------------------------------------------- 4. collect ---
 log "4/4 collect"
