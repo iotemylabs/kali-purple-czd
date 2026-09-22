@@ -216,9 +216,26 @@ Screenshots taken over SSH with `spectacle -b` inside the autologin session.
   patch or acceptance. Locale and keyboard stay separate steps; the plate's own sidebar lists
   seven steps that way, so that is consistent.
 
+## 2026-09-22 · Stage 3d — icon theme
+
+- The Icon Theme plate carries every glyph's SVG geometry inline, so the 33 cuts were
+  transcribed, not redrawn: `packages/czd-icon-theme/glyphs.json` holds the paths, the filled
+  squares (as token names) and the freedesktop icon names each glyph answers to. The generator
+  writes one SVG per name into `scalable/<context>/`, plus the two hand-cut folder sizes the
+  plate supplied (16 and 22). 122 files; `index.theme` still inherits breeze-dark.
+- Mimetype "icons" are plates: a 1px gold box with a mono 700 label (PCAP, JSON, SH, KEY) mapped
+  to the real MIME names, so Dolphin shows the extension as type, as the plate argues.
+- Down and muted states use `text.disabled` plus the 45° strike; level glyphs (wireless, volume)
+  use `trace.gold.deep` for the empty step. Nothing in the tray can turn red.
+- Verified on `czd-build`: a contact sheet of all 39 files matches the inventory plate; Dolphin's
+  places, toolbar and the tray resolve the CZD cuts on the running session.
+- Gaps: the plate promises hand-cut 16 and 22 grids for all 33 (66 files); only the folder cuts
+  were supplied, so the rest scale from 24 and go slightly soft at 16. Aurorae still carries its
+  own copies of minimize/maximize/close (Aurorae cannot pull from an icon theme); they are the
+  same geometry.
+
 ### Next
 
-- Icon theme: the 33 glyphs from batch 05 as SVG templates (currently inherits breeze-dark).
 - Stage 5: first ISO build on `czd-build` (`sudo ./build.sh --tag czd-2026-10-231`), then boot
   the ISO as a second Proxmox VM: live boot, GRUB and Plymouth plates, SDDM, Calamares end to
   end, removability check.
