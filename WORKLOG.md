@@ -240,9 +240,30 @@ Screenshots taken over SSH with `spectacle -b` inside the autologin session.
   own copies of minimize/maximize/close (Aurorae cannot pull from an icon theme); they are the
   same geometry.
 
+## 2026-09-22 · Live boot menus and the first ISO build
+
+- live-build overlays copy per file over its defaults (`cp -af config/bootloaders/grub-pc/*`),
+  and `@LINUX_LIVE@` is only expanded if present, so `grub.cfg` now writes the rows from the
+  grub-menu plate explicitly on `@KERNEL_LIVE@ / @APPEND_LIVE@ / @INITRD_LIVE@`: LIVE, PERSIST
+  (LUKS, label `czd-persistence`), INSTALL (adds `czd.install=1`), ADVANCED submenu (failsafe,
+  forensic, plain persistence, verify, Kali's debian-installer, memtest), FIRMWARE. Titles carry
+  the token column as leading text because GRUB rows are one line.
+- The live GRUB theme is the installed one: `build.sh` unpacks the built `czd-boot-theme` .deb
+  and stages the theme dir (PF2 fonts, 9-slice, plate) and `splash.png` into the overlay, and
+  scales a 640 × 480 isolinux splash. `config.cfg` sets 1080p, an 8 s menu timeout and drops
+  Kali's boot beep.
+- BIOS: `syslinux_common/live.cfg.in`, `menu.cfg`, `advanced.cfg`; the isolinux `stdmenu.cfg`
+  is a token template (syslinux wants AARRGGBB) rendered into `live-build/generated`.
+- live-config hardcodes the live password in `0030-user-setup`; a CZD component
+  `0035-czd-user` (in `includes.chroot`) sets `czd / czd` and the capture groups right after it.
+  `username=czd hostname=czd-purple` ride on every kernel line.
+- INSTALL row: an autostart entry checks `/proc/cmdline` for `czd.install=1` and launches
+  Calamares through Debian's pkexec wrapper; otherwise it exits.
+- Kali's `build.sh` has no `--verbose`; removed. First full build started on `czd-build` as
+  `czd-iso-build.service` (`iso-build.out` and `build.log` in the repo dir on the VM).
+
 ### Next
 
 - Stage 5: first ISO build on `czd-build` (`sudo ./build.sh --tag czd-2026-10-231`), then boot
   the ISO as a second Proxmox VM: live boot, GRUB and Plymouth plates, SDDM, Calamares end to
   end, removability check.
-- Live-build bootloader menu entries (LIVE / PERSIST / INSTALL rows) in the czd variant.
