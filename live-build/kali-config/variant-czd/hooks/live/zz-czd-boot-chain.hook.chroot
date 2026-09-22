@@ -1,0 +1,19 @@
+#!/bin/sh
+# CZD Purple — last chroot hook (sorts after Kali's kali-hacks.chroot, which runs after every
+# package is installed). Kali's theme packages install after czd-boot-theme in the chroot and
+# reassert their Plymouth default; the live initramfs is generated after that, so the splash
+# came up as Kali's dragon on the first image. This puts the boot chain back to CZD and
+# regenerates the initramfs once, at the very end.
+set -e
+
+if command -v plymouth-set-default-theme >/dev/null 2>&1 && [ -d /usr/share/plymouth/themes/czd-purple ]; then
+  plymouth-set-default-theme czd-purple
+  echo "czd: plymouth default theme -> $(plymouth-set-default-theme)"
+fi
+
+# GRUB on the installed system: our grub.d fragment sorts last already; nothing to do here.
+
+# One initramfs regeneration with the CZD Plymouth theme and the CZD fonts hook in place.
+if command -v update-initramfs >/dev/null 2>&1; then
+  update-initramfs -u -k all
+fi
