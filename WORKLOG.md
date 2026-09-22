@@ -282,6 +282,10 @@ Screenshots taken over SSH with `spectacle -b` inside the autologin session.
      Plasma 6.7's `displayedText` is 0 number / 1 name / 2 nothing (not what the enum order
      suggests). Now 0, with four desktops from the XDG `kwinrc`.
 
+- Pitfall: Kali's `build.sh` probes localhost:8000 and, finding anything there, assumes a
+  squid-deb-proxy and routes the mirror through it. The ISO HTTP share on 8000 made `lb config`
+  fail with wget status 8. The share now runs on 8080. Rebuild with the review fixes is running.
+
 ### Next
 
 - Stage 5: first ISO build on `czd-build` (`sudo ./build.sh --tag czd-2026-10-231`), then boot
