@@ -942,6 +942,24 @@ def gen_launcher_icon(t: Tokens, out: Out):
     except ImportError:
         out.copy("czd-icon-theme", "usr/share/icons/czd-purple/64x64/apps/czd-mark.png", src)
         return
+    # The panel launcher: Kali's own menu icon (a plate with the dragon knocked out), recoloured
+    # to a gold plate with the dragon in surface.base. Same source, same rule as the wallpaper
+    # dragon: never redrawn, only recoloured. Built only on a Kali host, where the source exists.
+    kali_menu = next((p for p in (Path("/usr/share/icons/hicolor/scalable/apps/kali-panel-menu-large.svg"),
+                                  Path("/usr/share/icons/hicolor/scalable/apps/kali-menu.svg")) if p.exists()), None)
+    if kali_menu:
+        gold, base = t.hex("trace.gold"), t.hex("surface.base")
+        svg = kali_menu.read_text(encoding="utf-8", errors="replace")
+        svg = re.sub(r"<(path|circle|ellipse|polygon|rect)\b[^>]*opacity[:=]\s*\"?0?\.\d+[^>]*/>", "", svg)  # highlight sheen
+        svg = re.sub(r'fill="url\(#[^)]+\)"', f'fill="{gold}"', svg)          # the plate (attribute form)
+        svg = re.sub(r"fill:url\(#[^)]+\)", f"fill:{gold}", svg)              # the plate (style form)
+        svg = re.sub(r'fill="#(fff|ffffff|FFF|FFFFFF)"', f'fill="{base}"', svg)   # the dragon
+        svg = re.sub(r"fill:#(fff|ffffff|FFF|FFFFFF)\b", f"fill:{base}", svg)
+        for name in ("czd-launcher", "kali-panel-menu-large", "kali-panel-menu", "start-here-kali",
+                     "start-here-kde", "start-here", "start-here-kde-symbolic", "kali-menu"):
+            out.write("czd-icon-theme", f"usr/share/icons/czd-purple/scalable/apps/{name}.svg", svg)
+    else:
+        print("# launcher icon: kali-menu.svg not on this host; Kickoff falls back to the mark", file=sys.stderr)
     mark = Image.open(src).convert("RGBA")
     for size in (64, 128):
         canvas = Image.new("RGBA", (size, size), (0, 0, 0, 0))

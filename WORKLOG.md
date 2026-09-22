@@ -262,6 +262,26 @@ Screenshots taken over SSH with `spectacle -b` inside the autologin session.
 - Kali's `build.sh` has no `--verbose`; removed. First full build started on `czd-build` as
   `czd-iso-build.service` (`iso-build.out` and `build.log` in the repo dir on the VM).
 
+## 2026-09-22 · First ISO built; VNC review fixes
+
+- `czd-iso-build` finished: live-build succeeded first time (55 min). `build.sh` looked for the
+  ISO in `images/`; Kali's script writes `output/`. Fixed. Output: `out/kali-purple-czd-2026.iso`,
+  8.7 GB (the release sheet assumed 4.1 GB: `kali-linux-default` plus the five Purple tool menus
+  plus KDE; a package-list decision for the board). Served to Proxmox with `python3 -m http.server`
+  from `out/`; `boot-czd-iso-vm.sh` (outside the repo) creates the `czd-test` VM.
+- Root-owned files: the ISO build runs as root and leaves `out/`, `build/` and the generated
+  trees root-owned; `chown -R` before running the generator as the user again.
+- Brett's VNC review of the build VM, three fixes:
+  1. Dragon cut off: the console was not 16:9 and `FillMode=2` (crop) lost the right edge.
+     Wallpaper and lock screen now use `FillMode=1` (fit) with a `surface.base` letterbox colour.
+  2. Launcher button was Kali's blue/white dragon. Kali's shell `updates/kali-panel-customizations.js`
+     forces the Kickoff icon to `kali-panel-menu-large`, so the icon theme now provides that name
+     (and `czd-launcher`, `start-here-*`) as Kali's own SVG recoloured: gold plate, dragon in
+     `surface.base`. Same recolour-not-redraw rule as the wallpaper dragon.
+  3. The "text buttons" beside the launcher were the virtual-desktop pager showing names.
+     Plasma 6.7's `displayedText` is 0 number / 1 name / 2 nothing (not what the enum order
+     suggests). Now 0, with four desktops from the XDG `kwinrc`.
+
 ### Next
 
 - Stage 5: first ISO build on `czd-build` (`sudo ./build.sh --tag czd-2026-10-231`), then boot

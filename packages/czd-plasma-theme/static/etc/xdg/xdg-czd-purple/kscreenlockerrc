@@ -8,4 +8,5 @@ Theme=org.czd.purple.desktop
 
 [Greeter][Wallpaper][org.kde.image][General]
 Image=file:///usr/share/wallpapers/czd-purple-lock/
-FillMode=2
+FillMode=1
+Color=10,10,10

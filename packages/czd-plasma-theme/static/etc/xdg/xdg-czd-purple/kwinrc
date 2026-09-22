@@ -38,6 +38,10 @@ screenedgeEnabled=false
 startupfeedbackEnabled=false
 outlineEnabled=true
 
+[Desktops]
+Number=4
+Rows=1
+
 [Windows]
 BorderlessMaximizedWindows=false
 Placement=Centered

@@ -12,7 +12,10 @@ for (var i = 0; i < allDesktops.length; i++) {
     d.wallpaperPlugin = "org.kde.image";
     d.currentConfigGroup = ["Wallpaper", "org.kde.image", "General"];
     d.writeConfig("Image", "file:///usr/share/wallpapers/czd-purple-default/");
-    d.writeConfig("FillMode", 2);
+    // Fit, never crop: on a screen that is not 16:9 the plate letterboxes onto surface.base,
+    // which is invisible, instead of losing the wordmark or the dragon at the right edge.
+    d.writeConfig("FillMode", 1);
+    d.writeConfig("Color", "10,10,10");
     d.currentConfigGroup = ["General"];
     // Icon cells 160px from x64 y64 down the quiet zone (batch 04). Folder View sizes are
     // indices into its scale; 4 is the 64px icon step. Alignment left, sorted by name.
@@ -36,7 +39,7 @@ panel.height = panelHeight;
 // Launcher. Kickoff opens on DEFENSIVE; category list is the inset column.
 var kickoff = panel.addWidget("org.kde.plasma.kickoff");
 kickoff.currentConfigGroup = ["General"];
-kickoff.writeConfig("icon", "czd-mark");
+kickoff.writeConfig("icon", "czd-launcher");
 kickoff.writeConfig("alphaSort", true);
 kickoff.writeConfig("showActionButtonCaptions", true);
 kickoff.writeConfig("compactMode", true);
@@ -48,7 +51,7 @@ kickoff.writeConfig("systemFavorites", "lock-screen\\,logout\\,shutdown");
 // Virtual desktops 1–4 as numbers.
 var pager = panel.addWidget("org.kde.plasma.pager");
 pager.currentConfigGroup = ["General"];
-pager.writeConfig("displayedText", 1);
+pager.writeConfig("displayedText", 0);   // observed on Plasma 6.7: 0 number, 1 name, 2 nothing
 pager.writeConfig("showWindowIcons", false);
 
 // Task manager: text labels, no icons-only mode, no grouping, no tooltips (batch 04, 02).
