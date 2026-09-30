@@ -15,7 +15,7 @@ MODE="${1:-uefi}"; shift || true
 MARKS=("${@:-25 60 120 200}")
 [[ ${#MARKS[@]} -eq 1 && "${MARKS[0]}" == *" "* ]] && read -r -a MARKS <<<"${MARKS[0]}"
 ISO="${ISO:-out/kali-purple-czd-2026.iso}"
-OUTDIR="build/boot-test"
+OUTDIR="$(pwd)/build/boot-test"   # absolute: a daemonized QEMU chdirs to / before screendump
 MON="/tmp/czd-qemu-$MODE.mon"
 mkdir -p "$OUTDIR"
 [[ -f "$ISO" ]] || { echo "no ISO at $ISO" >&2; exit 1; }
