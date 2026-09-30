@@ -302,6 +302,23 @@ Screenshots taken over SSH with `spectacle -b` inside the autologin session.
 - Build 3 started with both fixes. Brett reported "boot failed" on the Proxmox `czd-test` VM
   with build 2; the same ISO boots under OVMF here, so the console text is still needed.
 
+## 2026-09-30 · Build 3 boots end to end (QEMU on the build host)
+
+- Build 3 ISO (`a3b48ea0…`, 8.7 GB) served on port 8080. Under OVMF: GRUB menu in the CZD fonts,
+  the CZD Plymouth splash (mark, wordmark, rule, build string), then autologin into the CZD
+  Plasma session with the welcome window, gold launcher, pager 1–4, CZD tray cuts. Under SeaBIOS:
+  the isolinux menu on the boot plate.
+- Collect step failed a third time: `find` exits 1 when `images/` is absent, and pipefail took
+  the script down with it. Now wrapped in `{ … || true; }`. Verified by hand-collecting.
+- isolinux: `menu.cfg` gets no `@FLAVOUR@` substitution (only `live.cfg.in` does) and the VGA
+  text font has no middot; title is literal, separators are dashes.
+- `scripts/iso-boot-test.sh`: screendump paths must be absolute (a daemonized QEMU chdirs to /).
+  Stop `sddm` on the build host before running it; 2 GB guest is enough for the menu, splash and
+  desktop at 1280×800.
+- Known: the 1280 × 760 welcome window overhangs the panel on a 1280 × 800 screen; it is drawn
+  for 1080p. Brett's "boot failed" on Proxmox is unexplained; the same ISO boots here in both
+  firmware modes, so the next step is the czd-test console text.
+
 ### Next
 
 - Stage 5: first ISO build on `czd-build` (`sudo ./build.sh --tag czd-2026-10-231`), then boot
